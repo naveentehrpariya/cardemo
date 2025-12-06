@@ -1,0 +1,227 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Formik, Form, Field } from 'formik';
+import { liteClient as algoliasearch } from 'algoliasearch/lite';
+import { InstantSearch, ClearRefinements, Hits, useSearchBox, useHits } from 'react-instantsearch';
+import ValidationError from '../../Errors/ValidationError';
+import * as Yup from 'yup';
+
+const searchClient = algoliasearch(
+    'E8DWRSZE4Q',
+    '2e1db67e90eec79f4968c0073885c388'
+);
+
+const CustomSearchBox = (props) => {
+    const {
+        query,
+        refine,
+        clear,
+        currentRefinement
+    } = useSearchBox(props);
+    const [isFocused, setIsFocused] = useState(false);
+    const [selectedHit, setSelectedHit] = useState("");
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = (e) => {
+        // Only hide suggestions if user is not clicking inside the hits list
+        setTimeout(() => {
+            if (!e.relatedTarget || !e.relatedTarget.classList.contains('hit')) {
+            setIsFocused(false);
+            }
+        }, 200);
+    };
+    const handleHitClick = (hit) => {
+        //console.log("handleHitClick", handleHitClick)
+        setSelectedHit(hit.vehicle_name);
+        refine(hit.vehicle_name);
+        props.onHitClick(hit);
+    };
+
+    const { items, results, banner, sendEvent } = useHits(props);
+
+    useEffect(() => {
+        //console.log(items,results);
+        if (items.length === 1) {
+            setSelectedHit(items[0].vehicle_name);
+            //refine(hit.vehicle_name);
+            props.onHitClick(items[0]);
+        }
+    }, [items, results]);
+
+
+    return (
+        <>
+            <div className="custom-searchbox position-relative">
+                <input
+                    type="search"
+                    value={selectedHit || currentRefinement || ''}
+                    onChange={event => {
+                        refine(event.currentTarget.value);
+                        setSelectedHit(event.currentTarget.value);
+                    }}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    name="vehicle"
+                    className="form-control"
+                    placeholder="Year Make Model Trim or VIN"
+                />
+                {isFocused && (
+                    <Hits hitComponent={({ hit }) => (
+                        <div className="hit" onMouseDown={() => handleHitClick(hit)}>
+                            <p>{hit.vehicle_name}</p>
+                        </div>
+                    )} />
+                )}
+            </div>
+        </>
+    );
+}
+
+const MyVehicleForm = ({ setGetQuoteModal, setSelectedValue, sotForm }) => {
+
+    const [suggestions, setSuggestions] = useState([]);
+    const vehicleOptions = [
+        '2020 Honda Civic EX',
+        '2019 Toyota Corolla LE',
+        '2018 Ford Focus SE',
+        '2022 Tesla Model 3',
+        '2021 BMW 330i'
+    ];
+
+    const handleInputChange = (value, setFieldValue) => {
+        setFieldValue('vehicle', value);
+
+        // Filter suggestion list based on input
+        const filtered = vehicleOptions.filter(option =>
+            option.toLowerCase().includes(value.toLowerCase())
+        );
+        setSuggestions(value ? filtered : []);
+    };
+
+    const handleSuggestionClick = (value, setFieldValue) => {
+        setFieldValue('vehicle', value);
+        setSuggestions([]);
+        setGetQuoteModal(true)
+        setSelectedValue(value)
+        document.body.classList.add('body-overflow');
+    };
+
+    const renderInputWithSuggestions = (setFieldValue) => (
+        <div className='w-100 position-relative'>
+            <Field
+                type="text"
+                name="vehicle"
+                className="form-control"
+                placeholder="Year Make Model Trim or VIN"
+                onChange={(e) => handleInputChange(e.target.value, setFieldValue)}
+                autoComplete="off"
+            />
+            {suggestions.length > 0 && (
+                <ul className="suggestions-list">
+                    {suggestions.map((item, index) => (
+                        <li
+                            key={index}
+                            onClick={() => handleSuggestionClick(item, setFieldValue)}
+                        >
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
+
+    const formikRef = useRef(null);
+
+    const handleSearchClick = (hit) => {
+        formikRef.current.setFieldValue("vehicle", hit.vehicle_name);
+        formikRef.current.setFieldValue("year", hit.year_is);
+        formikRef.current.setFieldValue("make", hit.make_ss);
+        formikRef.current.setFieldValue("model", hit.model_ss);
+        formikRef.current.setFieldValue("trim", hit.trim_ss);
+        // console.log(hit, formikRef.current.values);
+
+        setGetQuoteModal(true);
+        setSelectedValue(hit.vehicle_name);
+        document.body.classList.add('body-overflow');
+    }
+
+    const queryHook = (query, search) => {
+        search(query);
+
+        formikRef.current.setFieldValue("vehicle", query);
+    };
+     const validationSchema = Yup.object({
+        vehicle: Yup.string()
+        .trim()
+        .required('Please enter your vehicle info'),
+    });
+    return (
+        <Formik
+            initialValues={{
+                vehicle: '',
+                year: '',
+                make: '',
+                model: '',
+                trim: ''
+            }}
+            validationSchema={validationSchema}
+            innerRef={formikRef}
+            onSubmit={(values, { resetForm }) => {
+                console.log(values);
+
+                setSuggestions([]);
+                setGetQuoteModal(true)
+                setSelectedValue(values.vehicle ?? "");
+                resetForm();
+                document.body.classList.add('body-overflow');
+            }}
+        >
+            {({ values, setFieldValue }) => (
+                <Form className={`custom-form contact-form offer-form ${!sotForm ? 'mt-70' : ''}`} autoComplete="off">
+                    <Field type="hidden" name="year" value={values.year} />
+                    <Field type="hidden" name="make" value={values.make} />
+                    <Field type="hidden" name="model" value={values.model} />
+                    <Field type="hidden" name="trim" value={values.trim} />
+                    <div className='form-group '>
+                        <div className='cs-label mb-2'>Enter your vehicle info <span className='text-danger font-15'>*</span></div>
+                        {!sotForm ? (
+                            <InstantSearch indexName="taxonomy_vins" searchClient={searchClient} >
+                                <CustomSearchBox 
+                                    onHitClick={handleSearchClick} 
+                                    queryHook={queryHook} 
+                                />
+                            </InstantSearch>
+                        ) : (
+                            <div className="d-md-flex align-items-center">
+                                <InstantSearch indexName="taxonomy_vins" searchClient={searchClient} >
+                                    <CustomSearchBox 
+                                        onHitClick={handleSearchClick} 
+                                        queryHook={queryHook} 
+                                    />
+                                </InstantSearch>
+                                <div className=''>
+                                    <button
+                                        className="sme-btn text-uppercase get-started-btn text-uppercase px-3 text-nowrap"
+                                        type='submit'
+                                    >
+                                        GET My Value
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                        <ValidationError  name="vehicle" />
+                    </div>
+
+                    {!sotForm && (
+                        <div className=''>
+                            <button className="sme-btn text-uppercase get-started-btn w-100 text-uppercase" type='submit'>
+                                GET My Value
+                            </button>
+                        </div>
+                    )}
+                </Form>
+            )}
+        </Formik>
+    );
+};
+
+export default MyVehicleForm;
