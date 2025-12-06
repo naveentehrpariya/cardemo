@@ -72,7 +72,7 @@ export default function Home() {
       <section className='facility-wrap'>
         <div className='d-flex facility-flex'>
           <div className='facility-col wow fadeIn' data-wow-delay="0.2s">
-            <img src={getImages('facility-image1.jpg')} alt="Our Latest" />
+            <img src={getImages('facility-image1.jpg')} alt="Our Latest" loading="lazy" />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='lg-title text-uppercase mb-4'>Our <br />LATEST</div>
@@ -85,7 +85,7 @@ export default function Home() {
             </div>
           </div>
           <div className='facility-col wow fadeIn' data-wow-delay="0.4s">
-            <img src={getImages('facility-image2.jpg')} alt="Get Your Cash Offer" />
+            <img src={getImages('facility-image2.jpg')} alt="Get Your Cash Offer" loading="lazy" />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='lg-title text-uppercase mb-4'>Get Your <br />Cash Offer</div>
@@ -98,7 +98,7 @@ export default function Home() {
             </div>
           </div>
           <div className='facility-col wow fadeIn' data-wow-delay="0.6s">
-            <img src={getImages('facility-image3.jpg')} alt="Consignment Services" />
+            <img src={getImages('facility-image3.jpg')} alt="Consignment Services" loading="lazy" />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='lg-title text-uppercase mb-4'>Consignment <br />Services</div>
@@ -157,7 +157,7 @@ export default function Home() {
             <div className='col-md-6 wow fadeInLeft' data-wow-duration="1s" data-wow-delay="0.2s">
               <div className='black-box d-flex align-items-center'>
                 <div>
-                  <img src={getImages('ao-ford-logo.png')} alt="Alpha One Ford" />
+                  <img src={getImages('ao-ford-logo.png')} alt="Alpha One Ford" loading="lazy" />
                 </div>
                 <div className='ps-4'>
                   <div className='sm-title text-uppercase font-18 mb-3'>Alpha One Ford</div>
@@ -170,7 +170,7 @@ export default function Home() {
             <div className='col-md-6 wow fadeInRight' data-wow-duration="1s" data-wow-delay="0.4s">
               <div className='black-box d-flex align-items-center'>
                 <div>
-                  <img src={getImages('ao-chv-logo.png')} alt="Alpha One Chevrolet" />
+                  <img src={getImages('ao-chv-logo.png')} alt="Alpha One Chevrolet" loading="lazy" />
                 </div>
                 <div className='ps-4'>
                   <div className='sm-title text-uppercase font-18 mb-3'>Alpha One Chevrolet</div>
@@ -193,7 +193,7 @@ export default function Home() {
                 <div className='d-flex align-items-center justify-content-between mb-3'>
                   <div className='xl-title helveticaneue'>4.9</div>
                   <div className='google-icon'>
-                    <img src={getImages('google-logo.png')} alt='Google' />
+                    <img src={getImages('google-logo.png')} alt='Google' loading="lazy" />
                   </div>
                 </div>
                 <div className='d-flex align-items-center justify-content-between mb-3'>
@@ -279,7 +279,7 @@ export default function Home() {
               <div className='lg-title text-uppercase mb-4'>OUR PASSION</div>
               <div className='about-box'>
                 <div className='about-image'>
-                  <img src={getImages('porche.jpg')} alt="Our Passion" />
+                  <img src={getImages('porche.jpg')} alt="Our Passion" loading="lazy" />
                 </div>
                 <div className='about-content'>Our passion is sharing our love for elite cars with incredible people. We put reputation above all else. Our network of investors and collectors ensure you get the most value on any appraisal you bring us. We cut out the middleman and connect investors across the country.
                 </div>
