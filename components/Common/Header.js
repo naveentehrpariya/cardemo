@@ -25,8 +25,8 @@ const Header = forwardRef(function Header({ secref }, ref) {
         <>
             <header className={`header-wrap ${router.pathname === "/" ? "" : "inner-header-wrap"}`} ref={ref || secref}>
                 <div className='container container-lg'>
-                    <div className='header-flex d-flex justify-content-between'>
-                        <div className='main-logo d-flex align-items-center'>
+                    <div className='pb-4 pt-3 header-flex d-flex justify-content-between'>
+                        <div className='main-logo flex items-center'>
                             <Link href="/"><img src={getImages('alpha-one-logo.webp')} alt="Alpha One Motors" /></Link>
                         </div>
                         <div className={`main-menu ${isMob ? 'active' : ''}`}>
@@ -57,13 +57,13 @@ const Header = forwardRef(function Header({ secref }, ref) {
                                 </li>
                             </ul>
                         </div>
-                        <div className='d-lg-flex align-items-center d-none mb-5'>
+                        <div className='d-lg-flex items-center d-none'>
                             <div>
                                 <Link href="tel:5127771240" className='phone-no'>
                                     <span className='phone-icon'></span> <span className='d-none d-md-inline-block'>(512) 777-1240</span>
                                 </Link>
                             </div>
-                            <div className='social-links ms-4'>
+                            <div className='social-links ms-4 flex items-center'>
                                 <a href='https://www.facebook.com/alphaonemotors/' target='_blank' rel="noopener noreferrer" className='ms-3'><img src={getImages('fb-icon.svg')} alt="Facebook" /></a>
                                 <a href='https://www.instagram.com/alpha_one_motors/' target='_blank' rel="noopener noreferrer" className='ms-3'><img src={getImages('instagram-font-awesome.svg')} alt="Instagram" /></a>
                             </div>

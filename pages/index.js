@@ -115,30 +115,30 @@ export default function Home() {
         <div className='container container-lg'>
           <div className='d-flex align-items-center justify-content-between process-flex'>
             <div className='process-left wow fadeInLeft' data-wow-delay="0.4s">
-              <div className='lg-title text-uppercase mb-4 fw-300'>ALPHA ONE DIFFERENCE</div>
-              <p>At Alpha One Motors, we specialize in helping owners of luxury and exotic vehicles sell with confidence and ease. Whether you're in San Antonio, Austin, or anywhere across Central Texas, our team is here to deliver top-market offers and a seamless selling experience.</p>
+              <div className='lg-title text-uppercase mb-4 !font-[100]'>ALPHA ONE DIFFERENCE</div>
+              <p className='!font-light'>At Alpha One Motors, we specialize in helping owners of luxury and exotic vehicles sell with confidence and ease. Whether you're in San Antonio, Austin, or anywhere across Central Texas, our team is here to deliver top-market offers and a seamless selling experience.</p>
 
-              <p>We buy high-end models from brands like Ferrari, Lamborghini, Porsche, Lexus, BMW, Mercedes-Benz, Audi, and more. From rare exotics to highline luxury, we value every unique vehicle and offer competitive appraisals that reflect the true worth of your collection.</p>
+              <p className='!font-light'>We buy high-end models from brands like Ferrari, Lamborghini, Porsche, Lexus, BMW, Mercedes-Benz, Audi, and more. From rare exotics to highline luxury, we value every unique vehicle and offer competitive appraisals that reflect the true worth of your collection.</p>
 
-              <p>Ready to sell? Let Alpha One Motors be your trusted partner in getting the most out of your luxury car.</p>
+              <p className='!font-light'>Ready to sell? Let Alpha One Motors be your trusted partner in getting the most out of your luxury car.</p>
             </div>
             <div className='process-right'>
               <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.5s">
-                <span className='pr-circle lg-title'>1</span>
+                <span className='pr-circle lg-title flex items-center justify-content-center'>1</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>ENTER VEHICLE DETAILS</div>
                   <p>Simply fill out the 2 part form that takes less than 1 minute.</p>
                 </div>
               </div>
               <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.7s">
-                <span className='pr-circle lg-title'>2</span>
+                <span className='pr-circle lg-title flex items-center justify-content-center'>2</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>GET OFFER</div>
                   <p>Our tenured appraisers will contact you on the same day with a competitive price.</p>
                 </div>
               </div>
               <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.9s">
-                <span className='pr-circle lg-title'>3</span>
+                <span className='pr-circle lg-title flex items-center justify-content-center'>3</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>FINISH</div>
                   <p>Get a check cut on the day you exchange the vehicle. Simple, easy & no-hassle!</p>

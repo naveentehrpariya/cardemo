@@ -101,7 +101,9 @@ const nextConfig = {
     ];
   },
   // Enable Turbopack configuration (Next.js 16+)
-  turbopack: {},
+  turbopack: {
+    root: '/Users/naveentehrpariya/Work/alphaonehome/nextjs-alphaone',
+  },
 };
 
 export default nextConfig;

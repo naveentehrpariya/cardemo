@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <footer className="bg-black">
       <div className="container-lg">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between py-12 md:py-14 border-b-0">
+        <div className="flex  items-start md:items-center justify-between py-12 border-b-0">
           <div className="w-full md:w-auto mb-8 md:mb-0">
-            <div className="mb-4 text-center md:text-left">
-              <Link href="/">
+            
+              <Link className='' href="/">
                 <Image
                   src="/images/alpha-one-logo.webp"
                   alt="Alpha One Motors"
@@ -17,21 +17,13 @@ const Footer = () => {
                   className="inline-block w-56 md:w-[220px] h-auto"
                 />
               </Link>
-            </div>
-            <div className="sm-title font-18 mb-3 text-center md:text-left">
-              2301 Double Creek Dr. Suite 270, Round Rock, Texas 78664
-            </div>
-            <div className="sm-title font-16 mb-3">
+            <div className="!mt-[40px] sm-title font-16 mb-3">
               <Link href="tel:5127771240">
                 <span className="text-gray">Sales:</span> (512) 777-1240
               </Link>
             </div>
-            <div className="sm-title font-16 mb-3">
-              <Link href="tel:5127771240">
-                <span className="text-gray">Service:</span> (512) 777-1240
-              </Link>
-            </div>
           </div>
+
           <div className="w-full md:w-auto">
             <div className="sm-title font-16 mb-4 uppercase fw-500 text-center md:text-left">
               Store Hours
@@ -58,6 +50,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        
         <div className="flex flex-col md:flex-row items-center justify-between py-5 md:py-6">
           <div className="flex items-center gap-4 mb-6 md:mb-0 order-2 md:order-1">
             <a

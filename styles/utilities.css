@@ -269,9 +269,7 @@ p {
 .opacity-0-7 {
     opacity: 0.7 !important;
 }
-.main-menu {
-    padding-top: 25px;
-}
+
 .main-menu ul li a {
     font-family: HelveticaNeue;
     font-size: 14px;

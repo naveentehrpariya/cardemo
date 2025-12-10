@@ -32,9 +32,9 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
   };
 
   return (
-    <div className="rounded-lg backdrop-blur-[10px] bg-white/10 px-12 py-8 w-full md:w-[420px] min-h-[440px]">
+    <div className="rounded-[10px] p-[50px] pb-[100px] pt-[30px] shadow-lg  max-w-[410px]  backdrop-blur-[10px] bg-white/10  w-full">
       <div className="custom-form">
-        <div className="font-eurostile text-xl font-normal leading-normal tracking-normal text-black mb-4 uppercase">
+        <div className="font-eurostile text-[20px] font-[100] leading-normal tracking-normal text-black mb-4 uppercase">
           Enter Vehicle Info
         </div>
         <Formik
@@ -50,8 +50,8 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                     <Field
                       type="text"
                       name="year"
-                      className="form-control"
-                      placeholder="Vehicle Year"
+                      className="form-control !font-[100] font-euro"
+                      placeholder="Vehicle Year *"
                     />
                     <ErrorMessage
                       name="year"
@@ -63,8 +63,8 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                     <Field
                       type="text"
                       name="make"
-                      className="form-control"
-                      placeholder="Vehicle Make"
+                      className="form-control !font-[100] font-euro"
+                      placeholder="Vehicle Make *"
                     />
                     <ErrorMessage
                       name="make"
@@ -76,8 +76,8 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                     <Field
                       type="text"
                       name="model"
-                      className="form-control"
-                      placeholder="Vehicle Model"
+                      className="form-control !font-[100] font-euro"
+                      placeholder="Vehicle Model *"
                     />
                     <ErrorMessage
                       name="model"
@@ -89,7 +89,7 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                     <Field
                       type="text"
                       name="trim"
-                      className="form-control"
+                      className="form-control !font-[100] font-euro"
                       placeholder="Vehicle Trim"
                     />
                   </div>
@@ -97,7 +97,7 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                     <Field
                       type="text"
                       name="mileage"
-                      className="form-control"
+                      className="form-control !font-[100] font-euro"
                       placeholder="Estimated Mileage"
                     />
                   </div>

@@ -3789,3 +3789,7 @@ p {
 .font-3em {
     font-size: 3em !important;
 }}
+
+.font-euro { 
+    font-family: Eurostile !important;
+}
