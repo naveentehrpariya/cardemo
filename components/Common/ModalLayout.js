@@ -29,8 +29,8 @@ const ModalLayout = ({ children, open, close, modalWidth = 1200, darkThemeCls = 
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`w-full transform overflow-hidden transition-all ${
-                  darkThemeCls ? 'bg-white' : 'bg-white'
+                className={`transform overflow-hidden transition-all mx-auto ${
+                  darkThemeCls ? 'custom-modal dark-theme-modal' : 'custom-modal'
                 }`}
                 style={{ maxWidth: `${modalWidth}px` }}
               >

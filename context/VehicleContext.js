@@ -312,7 +312,17 @@ export const VehicleContextProvider = ({ children }) => {
             if (gtm_info) values.gtm_info = gtm_info;
         }
 
-        const response = await Axios.post('bridge/contact/', values);
+        let response;
+        try {
+            response = await Axios.post('bridge/contact/', values);
+        } catch (error) {
+            try {
+                response = await axios.post('/api/contact-proxy', values);
+            } catch (error2) {
+                if (error2 && error2.response && error2.response.data) return error2.response.data;
+                return { error: 'Network Error' };
+            }
+        }
 
         if (typeof window !== 'undefined' && window.dataLayer) {
             window.dataLayer.push({ 'event': 'gasFormEvent', 'eventCategory': 'Submit', 'eventAction': 'GAS Form Submission' });

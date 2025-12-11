@@ -92,24 +92,27 @@ const MoreInfoAppraiseModal = ({ close, appraisalContactInfo, outerFormikRef }) 
               phone: '',
               comments: '',
               photos: [],
+              g_recaptcha_response: '',
               ...appraisalContactInfo
             }}
             innerRef={formikRef}
             validationSchema={validationSchema}
             onSubmit={async (values, { resetForm }) => {
-              const token = await recaptchaRef.current.executeAsync();
-              recaptchaRef.current.reset();
-              values.token = token;
-              await submitContactForm(values);
-              router.push('/thank-you');
-              resetForm();
-              outerFormikRef?.current?.resetForm();
-              close();
+              try {
+                values.token = values.g_recaptcha_response || '';
+                await submitContactForm(values);
+              } catch (err) {
+                console.error('MoreInfo submit error', err);
+              } finally {
+                resetForm();
+                outerFormikRef?.current?.resetForm();
+                close();
+                router.push('/thank-you');
+              }
             }}
           >
             {({ values, setFieldValue }) => (
               <Form className="row">
-                <ReCAPTCHA ref={recaptchaRef} sitekey="6LfCa-srAAAAADUg9n4Myr1K_n2iOzduQAO6ZffA" size="invisible" />
                 <FieldArray type="hidden" name="photos" value={values.photos} />
                 <div className="col-md-6">
                   <div className="form-group mb-3">
@@ -181,8 +184,16 @@ const MoreInfoAppraiseModal = ({ close, appraisalContactInfo, outerFormikRef }) 
                     <Field as="textarea" name="comments" className="form-control h-140" />
                   </div>
                 </div>
+                <div className="col-12 text-center mb-3">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                    onChange={(val) => setFieldValue('g_recaptcha_response', val || '')}
+                    onExpired={() => setFieldValue('g_recaptcha_response', '')}
+                  />
+                </div>
                 <div className="col-12 text-center mt-4">
-                  <button type="submit" className="black-btn w-240">Get Appraisal</button>
+                  <button type="submit" className="black-btn w-240" disabled={!values.g_recaptcha_response}>Get Appraisal</button>
                 </div>
               </Form>
             )}

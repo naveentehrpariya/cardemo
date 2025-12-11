@@ -166,6 +166,7 @@ const SellMyExotic = () => {
         setopenDragDropModal(false)
     }
     const [files, setFiles] = useState([]);
+    const [activeIndex, setActiveIndex] = useState(null);
 
     useEffect(() => {
         getVehicleData();
@@ -315,29 +316,24 @@ const SellMyExotic = () => {
                         {accordionItems.map((item, index) => {
                             const collapseId = `collapse${index}`;
                             const headingId = `heading${index}`;
+                            const isOpen = activeIndex === index;
 
                             return (
                                 <div className="accordion-item" key={index}>
                                     <h2 className="accordion-header" id={headingId}>
                                         <button
-                                            className="accordion-button collapsed"
+                                            className={`accordion-button${isOpen ? '' : ' collapsed'}`}
                                             type="button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target={`#${collapseId}`}
-                                            aria-expanded="false"
+                                            aria-expanded={isOpen ? 'true' : 'false'}
                                             aria-controls={collapseId}
+                                            onClick={() => setActiveIndex(isOpen ? null : index)}
                                         >
                                             {item.title}
                                         </button>
                                     </h2>
-                                    <div
-                                        id={collapseId}
-                                        className="accordion-collapse collapse"
-                                        aria-labelledby={headingId}
-                                        data-bs-parent="#accordionExample"
-                                    >
-                                        <div className="accordion-body">{item.content}</div>
-                                    </div>
+                                    {isOpen ? (
+                                        <div className="accordion-body" style={{ color: '#e1e1e1' }}>{item.content}</div>
+                                    ) : null}
                                 </div>
                             );
                         })}

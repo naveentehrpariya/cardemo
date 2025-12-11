@@ -1,6 +1,11 @@
-import Image from 'next/image';
+import { useContext, useRef } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import dynamic from 'next/dynamic';
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
+import { VehicleContext } from '../../context/VehicleContext';
+import { useRouter } from 'next/router';
+import { getImages } from '../Common/const';
 
 const makes = [
   { name: 'Toyota', models: ['Corolla', 'Camry', 'RAV4'] },
@@ -15,62 +20,93 @@ const validationSchema = Yup.object().shape({
   year: Yup.string().required('Year is required'),
   make: Yup.string().required('Make is required'),
   model: Yup.string().required('Model is required'),
-  comments: Yup.string()
+  comments: Yup.string(),
+  g_recaptcha_response: Yup.string().required('Please complete reCAPTCHA')
 });
 
 const VehicleConsignmentInquiry = ({ close }) => {
+  const router = useRouter();
+  const { submitContactForm } = useContext(VehicleContext);
+  const recaptchaRef = useRef(null);
   return (
-    <div className="bg-white">
-      <div className="bg-[#212020] px-5 py-5 flex items-center justify-between">
-        <h1 className="font-eurostile text-xl font-bold text-center text-white w-full">
-          Vehicle Consignment Inquiry
-        </h1>
-        <button className="text-white hover:opacity-80" type="button" onClick={close}>
-          <Image src="/images/white-close.svg" alt="Close" width={24} height={24} />
+    <div className="!mt-[10vh] max-w-[1000px] !rounded-2xl modal-content max-h-[80vh] overflow-auto m-auto">
+      <div className="modal-header">
+        <h1 className="modal-title filter-modal-title">Vehicle Consignment Inquiry</h1>
+        <button className="sm-box-close" type="button" onClick={close}>
+          <img src={getImages('white-close.svg')} alt="Close" />
         </button>
       </div>
-      <div className="py-8 px-4 md:px-24">
-        <div className="lg-title text-center text-black fw-400 pt-3 pb-4">
-          Vehicle Consignment Inquiry
-        </div>
-        <div className="rounded-lg bg-gray-light py-11 px-6 md:px-28 custom-form">
+      <div className="modal-body !p-6">
+        <div className="lg-title text-center text-black fw-400 pt-3 pb-4">Vehicle Consignment Inquiry</div>
+        <div className="vci-box custom-form">
           <Formik
-            initialValues={{ fullName: '', email: '', phone: '', year: '', make: '', model: '', comments: '' }}
+            initialValues={{ fullName: '', email: '', phone: '', year: '', make: '', model: '', comments: '', g_recaptcha_response: '' }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
-              console.log(values);
+            onSubmit={async (values, { resetForm }) => {
+              try {
+                const [first_name, ...rest] = (values.fullName || '').trim().split(' ');
+                const last_name = rest.join(' ');
+                const payload = {
+                  first_name: first_name || '',
+                  last_name: last_name || '',
+                  phone: values.phone,
+                  email: values.email,
+                  comments: values.comments,
+                  g_recaptcha_response: values.g_recaptcha_response,
+                  vehicle: [values.year, values.make, values.model].filter(Boolean).join(' '),
+                  subject: 'Vehicle Consignment Inquiry'
+                };
+
+                const data = await submitContactForm(payload);
+                console.log('VCI payload', payload);
+                console.log('VCI response', data);
+                if (data && data.success) {
+                  resetForm();
+                  if (recaptchaRef.current && typeof recaptchaRef.current.reset === 'function') {
+                    recaptchaRef.current.reset();
+                  }
+                  close();
+                  router.push('/thank-you');
+                } else {
+                  const msg = (data && (data.error || data.message)) ? (data.error || data.message) : 'There was a problem with your submission';
+                  alert(msg);
+                }
+              } catch (err) {
+                console.error('VCI submit error', err);
+                alert('There was a problem with your submission');
+              }
             }}
           >
             {({ values, setFieldValue }) => (
-              <Form className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
-                <div className="md:col-span-1">
-                  <div className="mb-3">
-                    <label>Full Name</label>
+              <Form className="row">
+                <div className="col-md-6">
+                  <div className="form-group mb-3">
+                    <label>Full Name<span className="text-danger">*</span></label>
                     <Field type="text" name="fullName" className="form-control" />
-                    <ErrorMessage name="fullName" component="div" className="text-error text-red-500" />
+                    <ErrorMessage name="fullName" component="div" className="text-error text-danger" />
                   </div>
-                  <div className="mb-3">
-                    <label>Email</label>
+                  <div className="form-group mb-3">
+                    <label>Email<span className="text-danger">*</span></label>
                     <Field type="text" name="email" className="form-control" />
-                    <ErrorMessage name="email" component="div" className="text-error text-red-500" />
+                    <ErrorMessage name="email" component="div" className="text-error text-danger" />
                   </div>
-                  <div className="mb-3">
-                    <label>Phone</label>
+                  <div className="form-group mb-3">
+                    <label>Phone<span className="text-danger">*</span></label>
                     <Field type="text" name="phone" className="form-control" />
-                    <ErrorMessage name="phone" component="div" className="text-error text-red-500" />
+                    <ErrorMessage name="phone" component="div" className="text-error text-danger" />
                   </div>
-                  <div className="mb-3">
-                    <label>Year</label>
+                  <div className="form-group mb-3">
+                    <label>Year<span className="text-danger">*</span></label>
                     <Field as="select" name="year" className="form-control">
                       <option value="">Select Year</option>
-                      {[2022, 2023, 2024, 2025].map(year => (
+                      {[2022, 2023, 2024, 2025].map((year) => (
                         <option key={year} value={year}>{year}</option>
                       ))}
                     </Field>
-                    <ErrorMessage name="year" component="div" className="text-error text-red-500" />
+                    <ErrorMessage name="year" component="div" className="text-error text-danger" />
                   </div>
-                  <div className="mb-3">
-                    <label>Make</label>
+                  <div className="form-group mb-3">
+                    <label>Make<span className="text-danger">*</span></label>
                     <Field
                       as="select"
                       name="make"
@@ -85,27 +121,35 @@ const VehicleConsignmentInquiry = ({ close }) => {
                         <option key={index} value={make.name}>{make.name}</option>
                       ))}
                     </Field>
-                    <ErrorMessage name="make" component="div" className="text-error text-red-500" />
+                    <ErrorMessage name="make" component="div" className="text-error text-danger" />
                   </div>
-                  <div className="mb-3">
-                    <label>Model</label>
+                  <div className="form-group mb-3">
+                    <label>Model<span className="text-danger">*</span></label>
                     <Field as="select" name="model" className="form-control">
                       <option value="">Select Model</option>
-                      {makes.find(m => m.name === values.make)?.models.map((model, index) => (
+                      {makes.find((m) => m.name === values.make)?.models.map((model, index) => (
                         <option key={index} value={model}>{model}</option>
                       ))}
                     </Field>
-                    <ErrorMessage name="model" component="div" className="text-error text-red-500" />
+                    <ErrorMessage name="model" component="div" className="text-error text-danger" />
                   </div>
                 </div>
-                <div className="md:col-span-1">
-                  <div className="h-full mb-3">
+                <div className="col-md-6">
+                  <div className="form-group h-100 mb-3">
                     <label>Comments</label>
-                    <Field as="textarea" name="comments" className="form-control h-[calc(100%-41px)]" />
+                    <Field as="textarea" name="comments" className="form-control" />
                   </div>
                 </div>
-                <div className="md:col-span-2 text-center mt-4">
-                  <button type="submit" className="black-btn w-240">SEND</button>
+                <div className="col-12 text-center mb-3">
+                  <ReCAPTCHA 
+                    ref={recaptchaRef} 
+                    sitekey="6LfCa-srAAAAADUg9n4Myr1K_n2iOzduQAO6ZffA" 
+                    onChange={(val) => setFieldValue('g_recaptcha_response', val || '')}
+                  />
+                  <ErrorMessage name="g_recaptcha_response" component="div" className="text-error text-danger mt-2" />
+                </div>
+                <div className="col-12 text-center mt-3">
+                  <button type="submit" className="black-btn w-240" disabled={!values.g_recaptcha_response}>SEND</button>
                 </div>
               </Form>
             )}

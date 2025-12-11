@@ -2201,7 +2201,7 @@ img {
 }
 
 .custom-accordion .accordion-body {
-    color: #717578;
+    color: #e1e1e1;
     padding: 15px 50px 24px;
     font-size: 17px;
     font-weight: 400
@@ -2209,7 +2209,7 @@ img {
 
 .custom-accordion .accordion-body p {
     font-family: HelveticaNeue;
-    color: #717578;
+    color: #e1e1e1;
     font-size: 17px;
     font-weight: 400
 }
@@ -2232,7 +2232,7 @@ img {
     list-style-type: disc;
     padding: 3px 0;
     font-family: HelveticaNeue;
-    color: #717578;
+    color: #e1e1e1;
     font-size: 17px;
     font-weight: 400
 }

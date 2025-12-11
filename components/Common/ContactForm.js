@@ -1,131 +1,88 @@
 import { useContext, useRef } from 'react';
-import { useFormik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import dynamic from 'next/dynamic';
 const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 import { VehicleContext } from '../../context/VehicleContext';
-import ValidationError from '../Errors/ValidationError';
 import { useRouter } from 'next/router';
 
 export default function ContactForm() {
     const router = useRouter();
     const { submitContactForm } = useContext(VehicleContext);
-    const captchaRef = useRef(null);
+    const recaptchaRef = useRef(null);
 
-    const formik = useFormik({
-        initialValues: {
-            first_name: '',
-            last_name: '',
-            phone: '',
-            email: '',
-            comments: '',
-            g_recaptcha_response: '',
-            subject: 'Contact Us Form Submission'
-        },
-        validationSchema: Yup.object({
-            first_name: Yup.string().required('First name is required'),
-            last_name: Yup.string().required('Last name is required'),
-            phone: Yup.string().required('Phone is required'),
-            email: Yup.string().email('Invalid email address').required('Email is required'),
-            comments: Yup.string().required('Message is required'),
-            g_recaptcha_response: Yup.string().required('Please complete the reCAPTCHA')
-        }),
-        onSubmit: async (values, { setSubmitting, resetForm }) => {
-            try {
-                await submitContactForm(values);
-                resetForm();
-                if (captchaRef.current) {
-                    captchaRef.current.reset();
-                }
-                router.push('/thank-you');
-            } catch (error) {
-                console.error('Form submission error:', error);
-                alert('An error occurred. Please try again.');
-            } finally {
-                setSubmitting(false);
-            }
-        },
+    const validationSchema = Yup.object().shape({
+        full_name: Yup.string().required('Full Name is required'),
+        email: Yup.string().email('Invalid email address').required('Email is required'),
+        phone: Yup.string().required('Phone number is required'),
+        comment: Yup.string().max(500, 'Comments cannot exceed 500 characters'),
+        g_recaptcha_response: Yup.string().required('Please complete reCAPTCHA')
     });
 
-    const handleCaptchaChange = (value) => {
-        formik.setFieldValue('g_recaptcha_response', value);
-    };
-
     return (
-        <form onSubmit={formik.handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <input
-                        type="text"
-                        name="first_name"
-                        placeholder="First Name*"
-                        className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-primary focus:outline-none"
-                        {...formik.getFieldProps('first_name')}
-                    />
-                    <ValidationError name="first_name" formik={formik} />
-                </div>
-                <div>
-                    <input
-                        type="text"
-                        name="last_name"
-                        placeholder="Last Name*"
-                        className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-primary focus:outline-none"
-                        {...formik.getFieldProps('last_name')}
-                    />
-                    <ValidationError name="last_name" formik={formik} />
-                </div>
-            </div>
+        <Formik
+            initialValues={{ full_name: '', email: '', phone: '', comment: '', g_recaptcha_response: '', subject: 'Contact Us Form Submission' }}
+            validationSchema={validationSchema}
+            onSubmit={async (values, { resetForm }) => {
+                try {
+                    const payload = {
+                        ...values,
+                        token: values.g_recaptcha_response,
+                        g_recaptcha_response: values.g_recaptcha_response
+                    };
+                    if (recaptchaRef.current && typeof recaptchaRef.current.reset === 'function') {
+                        recaptchaRef.current.reset();
+                    }
+                    const data = await submitContactForm(payload);
+                    if (data && data.success) {
+                        resetForm();
+                        router.push('/thank-you');
+                    } else {
+                        const msg = (data && (data.error || data.message)) ? (data.error || data.message) : 'There was a problem with your submission';
+                        alert(msg);
+                    }
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    alert('An error occurred. Please try again.');
+                }
+            }}
+        >
+            {({ handleSubmit, values, setFieldValue }) => (
+                <Form className="custom-form contact-form" autoComplete="off" name="contact-form" onSubmit={handleSubmit}>
+                    <div className='form-group'>
+                        <div className='cs-label'>Full Name <span className='text-danger font-15'>*</span></div>
+                        <Field type='text' name='full_name' className='form-control' />
+                        <ErrorMessage name='full_name' component='div' className='text-error text-danger' />
+                    </div>
+                    <div className='form-group'>
+                        <div className='cs-label'>Email <span className='text-danger font-15'>*</span></div>
+                        <Field type='email' name='email' className='form-control' />
+                        <ErrorMessage name='email' component='div' className='text-error text-danger' />
+                    </div>
+                    <div className='form-group'>
+                        <div className='cs-label'>Phone <span className='text-danger font-15'>*</span></div>
+                        <Field type='tel' name='phone' className='form-control' />
+                        <ErrorMessage name='phone' component='div' className='text-error text-danger' />
+                    </div>
+                    <div className='form-group'>
+                        <div className='cs-label'>Message</div>
+                        <Field as='textarea' name='comment' rows='5' className='form-control' />
+                        <ErrorMessage name='comment' component='div' className='text-error text-danger' />
+                    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Phone Number*"
-                        className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-primary focus:outline-none"
-                        {...formik.getFieldProps('phone')}
-                    />
-                    <ValidationError name="phone" formik={formik} />
-                </div>
-                <div>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder="Email Address*"
-                        className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-primary focus:outline-none"
-                        {...formik.getFieldProps('email')}
-                    />
-                    <ValidationError name="email" formik={formik} />
-                </div>
-            </div>
+                    <div className='mb-3 text-center'>
+                        <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                            onChange={(val) => setFieldValue('g_recaptcha_response', val || '')}
+                            onExpired={() => setFieldValue('g_recaptcha_response', '')}
+                        />
+                        <ErrorMessage name="g_recaptcha_response" component="div" className="text-error text-danger mt-2" />
+                    </div>
 
-            <div>
-                <textarea
-                    name="comments"
-                    placeholder="Your Message*"
-                    rows={5}
-                    className="w-full px-4 py-3 bg-white border border-gray-300 focus:border-primary focus:outline-none resize-none"
-                    {...formik.getFieldProps('comments')}
-                />
-                <ValidationError name="comments" formik={formik} />
-            </div>
-
-            <div>
-                <ReCAPTCHA
-                    ref={captchaRef}
-                    sitekey="6LfCa-srAAAAADUg9n4Myr1K_n2iOzduQAO6ZffA"
-                    onChange={handleCaptchaChange}
-                />
-                <ValidationError name="g_recaptcha_response" formik={formik} />
-            </div>
-
-            <button
-                type="submit"
-                disabled={formik.isSubmitting}
-                className="black-btn w-full md:w-auto"
-            >
-                {formik.isSubmitting ? 'Sending...' : 'Send Message'}
-            </button>
-        </form>
+                    <button type='submit' className='black-btn w-240' disabled={!values.g_recaptcha_response}>Send Message</button>
+                </Form>
+            )}
+        </Formik>
     );
 }

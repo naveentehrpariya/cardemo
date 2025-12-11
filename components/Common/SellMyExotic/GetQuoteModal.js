@@ -32,7 +32,8 @@ const GetQuoteModal = ({ close, selectedValue }) => {
         phone: '',
         mileage: '',
         comments: '',
-        photos: []
+        photos: [],
+        g_recaptcha_response: ''
     };
 
     const handleNext = async (validateForm, setTouched) => {
@@ -111,10 +112,7 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                         validationSchema={step === 1 ? validationSchemaStep1 : validationSchemaStep2}
                         innerRef={formikRef}
                         onSubmit={async (values, { resetForm }) => {
-                            const token = await recaptchaRef.current.executeAsync();
-                            recaptchaRef.current.reset();
-                            
-                            values.token = token;
+                            values.token = values.g_recaptcha_response || '';
                             values = { ...values, vehicle: selectedValue };
                             
                             const data = await submitContactForm(values);
@@ -131,11 +129,14 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                     >
                         {({ values, validateForm, setTouched, setFieldValue }) => (
                             <Form className="custom-form custom-style2 get-quote-form" autoComplete="off">
-                                <ReCAPTCHA
-                                    ref={recaptchaRef}
-                                    sitekey="6LfCa-srAAAAADUg9n4Myr1K_n2iOzduQAO6ZffA"
-                                    size="invisible"
-                                /> 
+                                <div className="text-center mb-3">
+                                    <ReCAPTCHA
+                                        ref={recaptchaRef}
+                                        sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                                        onChange={(val) => setFieldValue('g_recaptcha_response', val || '')}
+                                        onExpired={() => setFieldValue('g_recaptcha_response', '')}
+                                    />
+                                </div>
                                 <FieldArray type="hidden" name="photos" value={values.photos} />
                                 {step === 1 && (
                                     <div className="getquotesetp1">
@@ -198,7 +199,7 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                                                 <span className="camera-icon"></span> Choose File
                                             </label>
                                         </div>
-                                        <button type="submit" className="white-btn uppercase py-3 w-full mt-3">
+                                        <button type="submit" className="white-btn uppercase py-3 w-full mt-3" disabled={!values.g_recaptcha_response}>
                                             Submit
                                         </button>
                                     </div>
