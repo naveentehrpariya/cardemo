@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Slider from 'react-slick';
+import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
 import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 const reviewsList = [
     {
@@ -59,6 +57,8 @@ const reviewsList = [
     },
 ];
 
+const Slider = dynamic(() => import('react-slick'), { ssr: false });
+
 export default function WhyUs() {
     const sliderSettings = {
         slidesToShow: 4,
@@ -108,7 +108,7 @@ export default function WhyUs() {
                         We Know Luxury Automotive
                     </div>
                     <div className="text-center mt-5 wow reveal fadeInUp">
-                        <Link href="/sell-my-exotic" className="black-btn get-started-btn w-240 text-uppercase">
+                        <Link href="/sell-my-exotic" prefetch={false} className="black-btn get-started-btn w-240 text-uppercase">
                             GET My Cash Offer
                         </Link>
                     </div>

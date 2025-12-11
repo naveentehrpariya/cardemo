@@ -1,0 +1,15 @@
+{
+  "short_name": "AlphaOne",
+  "name": "Alpha One Motors",
+  "icons": [
+    {
+      "src": "/images/alpha-one-logo.webp",
+      "type": "image/webp",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

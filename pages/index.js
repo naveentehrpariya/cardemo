@@ -61,7 +61,7 @@ export default function Home() {
         <div className='banner-shadow'></div>
         <div className='banner-pos'>
           <div className='container container-lg'>
-            <div className='d-flex align-items-center justify-content-between w-100 banner-flex'>
+            <div className='w-full d-flex align-items-center justify-content-between w-100 banner-flex'>
               <div className='banner-title text-uppercase wow fadeIn' data-wow-duration="1s" data-wow-delay="0.2s">SELL US YOUR <br /><span>Exotic Vehicle</span></div>
               <EnterVehicleInfo setOpenMoreInfoModal={setOpenMoreInfoModal} setAppraisalContactInfo={setAppraisalContactInfo} formikRef={formikRef}/>
             </div>
@@ -192,12 +192,12 @@ export default function Home() {
               <div className='rating-box'>
                 <div className='d-flex align-items-center justify-content-between mb-3'>
                   <div className='xl-title helveticaneue'>4.9</div>
-                  <div className='google-icon'>
+                  <div className='google-icon flex justify-content-center align-items-center'>
                     <img src={getImages('google-logo.png')} alt='Google' loading="lazy" />
                   </div>
                 </div>
                 <div className='d-flex align-items-center justify-content-between mb-3'>
-                  <div className='star-icons'>
+                  <div className='star-icons flex'>
                     <img className="me-1" src={getImages('star-off.svg')} alt='star' />
                     <img className="me-1" src={getImages('star-off.svg')} alt='star' />
                     <img className="me-1" src={getImages('star-off.svg')} alt='star' />

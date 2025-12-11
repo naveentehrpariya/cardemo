@@ -80,7 +80,7 @@ const accordionItems = [
         title: "CAN I SELL MY EXOTIC CAR FAST & SECURELY?",
         content: (
             <>
-                <p>At Alpha One Motors, we make it simple to <Link href="/">sell your exotic car</Link> — fast, fair, and with complete peace of mind.
+                <p>At Alpha One Motors, we make it simple to <Link href="/" prefetch={false}>sell your exotic car</Link> — fast, fair, and with complete peace of mind.
                     Whether you’re selling a Bentley, Porsche, Ferrari, or another high-end brand, our team of exotic car buyers specializes in discreet, high-value transactions across the U.S.<br />
                     We’re not just another exotic car trader, we’re enthusiasts who understand the true value of your vehicle.
                     That’s why owners choose us when searching for the best place to sell exotic cars or the best way to sell a Porsche online.
@@ -99,7 +99,7 @@ const accordionItems = [
                     <li>Fast payment via verified bank transfer or cashier’s check.</li>
                     <li>Confidential process trusted by collectors and dealers alike.</li>
                 </ul>
-                <p>You can learn more about our roots and our passion for <Link href="/about-us">exotic car trading</Link>.  If you’ve ever thought, “I want to sell my Bentley” or “Where can I sell my exotic car online?” you’re in the right place. We make it effortless to sell your exotic car from the comfort of your home.</p>
+                <p>You can learn more about our roots and our passion for <Link href="/about-us" prefetch={false}>exotic car trading</Link>.  If you’ve ever thought, “I want to sell my Bentley” or “Where can I sell my exotic car online?” you’re in the right place. We make it effortless to sell your exotic car from the comfort of your home.</p>
             </>
         ),
     },
@@ -123,7 +123,7 @@ const accordionItems = [
         content: (
             <>
                 <p>Join hundreds of satisfied clients who chose Alpha One Motors as their preferred exotic car buyer.
-Complete the quick form above and discover why we’re the best place to sell exotic cars online. Enter your vehicle above or <Link href="/contact-us"> contact our exotic car buying team</Link> today.</p>
+Complete the quick form above and discover why we’re the best place to sell exotic cars online. Enter your vehicle above or <Link href="/contact-us" prefetch={false}> contact our exotic car buying team</Link> today.</p>
             </>
         ),
     },

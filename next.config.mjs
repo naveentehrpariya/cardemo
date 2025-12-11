@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  outputFileTracingRoot: '/Users/naveentehrpariya/Work/alphaonehome/nextjs-alphaone',
   // Optimize production builds
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
@@ -8,7 +9,8 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ['react-slick', 'formik', 'yup'],
+    // Disabled to improve dev stability
+    optimizePackageImports: [],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -99,10 +101,6 @@ const nextConfig = {
         ],
       },
     ];
-  },
-  // Enable Turbopack configuration (Next.js 16+)
-  turbopack: {
-    root: '/Users/naveentehrpariya/Work/alphaonehome/nextjs-alphaone',
   },
 };
 

@@ -7,8 +7,6 @@ import { getImages } from '../Common/const';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import ModalLayout from '../Common/ModalLayout';
 import SelectFilterModal from '../Srp/SelectFilterModal';
 import Header from '../Common/Header';

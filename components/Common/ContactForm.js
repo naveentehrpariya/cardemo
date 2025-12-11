@@ -1,7 +1,8 @@
 import { useContext, useRef } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import ReCAPTCHA from 'react-google-recaptcha';
+import dynamic from 'next/dynamic';
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 import { VehicleContext } from '../../context/VehicleContext';
 import ValidationError from '../Errors/ValidationError';
 import { useRouter } from 'next/router';

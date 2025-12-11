@@ -2,12 +2,24 @@ import { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
+const EnterVehicleInfo = ({ setOpenMoreInfoModal, setAppraisalContactInfo, formikRef }) => {
   const [step, setStep] = useState(1);
 
-  const validationSchema = Yup.object({
-    // Add validation if needed
-  });
+  const getValidationSchema = (currentStep) => {
+    return Yup.object().shape({
+      year: Yup.string().required('Vehicle Year is required'),
+      make: Yup.string().required('Vehicle Make is required'),
+      model: Yup.string().required('Vehicle Model is required'),
+      ...(currentStep === 2 && {
+        fullName: Yup.string().required('Full Name is required'),
+        phone: Yup.string().required('Phone is required'),
+        email: Yup.string().email('Invalid email').required('Email is required'),
+        zipcode: Yup.string()
+          .matches(/^\d{5}$/, 'Zipcode must be exactly 5 digits')
+          .required('Zipcode is required'),
+      }),
+    });
+  };
 
   const initialValues = {
     year: '',
@@ -23,26 +35,38 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
     desiredamount: '',
   };
 
-  const handleSubmit = (values) => {
-    if (step === 1) {
+  const handleNext = async (validateForm, setTouched) => {
+    const errors = await validateForm();
+    if (Object.keys(errors).length === 0) {
       setStep(2);
     } else {
-      setOpenMoreInfotModal(true);
+      setTouched({
+        year: true,
+        make: true,
+        model: true,
+        trim: true,
+        mileage: true,
+      });
     }
   };
 
   return (
-    <div className="rounded-[10px] p-[50px] pb-[100px] pt-[30px] shadow-lg  max-w-[410px]  backdrop-blur-[10px] bg-white/10  w-full">
+    <div className="rounded-[10px] !p-[50px] !pb-[70px] !pt-[30px] shadow-md  max-w-[410px]  backdrop-blur-[10px] bg-white/10  w-full">
       <div className="custom-form">
         <div className="font-eurostile text-[20px] font-[100] leading-normal tracking-normal text-black mb-4 uppercase">
           Enter Vehicle Info
         </div>
         <Formik
           initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          validationSchema={getValidationSchema(step)}
+          innerRef={formikRef}
+          onSubmit={(values) => {
+            setAppraisalContactInfo(values);
+            setOpenMoreInfoModal(true);
+            setStep(1);
+          }}
         >
-          {({ touched, errors }) => (
+          {({ validateForm, setTouched }) => (
             <Form>
               {step === 1 ? (
                 <>
@@ -107,12 +131,12 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                   <div className="mb-3">
                     <Field
                       type="text"
-                      name="fullname"
+                      name="fullName"
                       className="form-control"
-                      placeholder="Full Name"
+                      placeholder="Full Name*"
                     />
                     <ErrorMessage
-                      name="fullname"
+                      name="fullName"
                       component="div"
                       className="text-error text-red-500"
                     />
@@ -122,7 +146,7 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                       type="text"
                       name="phone"
                       className="form-control"
-                      placeholder="Phone number"
+                      placeholder="Phone number*"
                     />
                     <ErrorMessage
                       name="phone"
@@ -135,7 +159,7 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                       type="email"
                       name="email"
                       className="form-control"
-                      placeholder="Email"
+                      placeholder="Email*"
                     />
                     <ErrorMessage
                       name="email"
@@ -148,7 +172,7 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                       type="text"
                       name="zipcode"
                       className="form-control"
-                      placeholder="Zip code"
+                      placeholder="Zip code*"
                     />
                     <ErrorMessage
                       name="zipcode"
@@ -174,11 +198,32 @@ const EnterVehicleInfo = ({ setOpenMoreInfotModal }) => {
                   </div>
                 </>
               )}
-              <div>
-                <button type="submit" className="black-btn w-full uppercase">
-                  {step === 1 ? 'Next' : 'Submit'}
+              {step === 1 ? (
+                <button
+                  type="button"
+                  className="black-btn w-full uppercase"
+                  onClick={() => handleNext(validateForm, setTouched)}
+                >
+                  Next
                 </button>
-              </div>
+              ) : (
+                <div className="d-flex align-item-center w-100">
+                  <div className="w-50 pe-1">
+                    <button
+                      type="button"
+                      className="black-btn w-100 uppercase"
+                      onClick={() => setStep(1)}
+                    >
+                      Previous
+                    </button>
+                  </div>
+                  <div className="w-50 ps-1">
+                    <button type="submit" className="black-btn w-100 uppercase">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              )}
             </Form>
           )}
         </Formik>

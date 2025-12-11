@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <footer className="bg-black">
       <div className="container-lg">
-        <div className="flex  items-start md:items-center justify-between py-12 border-b-0">
+        <div className="flex  items-start md:items-center justify-between !py-12 border-b-0">
           <div className="w-full md:w-auto mb-8 md:mb-0">
             
-              <Link className='' href="/">
+              <Link className='' href="/" prefetch={false}>
                 <Image
                   src="/images/alpha-one-logo.webp"
                   alt="Alpha One Motors"
@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
 
           <div className="w-full md:w-auto">
-            <div className="sm-title font-16 mb-4 uppercase fw-500 text-center md:text-left">
+            <div className="sm-title font-16 mb-4 uppercase fw-500 text-center md:!text-left">
               Store Hours
             </div>
             <div className="flex items-center justify-between mb-3 max-w-xs mx-auto md:mx-0">
@@ -33,13 +33,13 @@ const Footer = () => {
                 Monday - Friday
               </div>
               <div className="sm-title font-16 w-80px fw-500 text-gray text-right">
-                9am - 6pm
+                10am - 5pm
               </div>
             </div>
             <div className="flex items-center justify-between mb-3 max-w-xs mx-auto md:mx-0">
               <div className="sm-title font-16 fw-500 text-gray">Saturday</div>
               <div className="sm-title font-16 w-80px fw-500 text-gray text-right">
-                9am - 5pm
+                Appointment Only
               </div>
             </div>
             <div className="flex items-center justify-between mb-3 max-w-xs mx-auto md:mx-0">
@@ -53,6 +53,9 @@ const Footer = () => {
 
         
         <div className="flex flex-col md:flex-row items-center justify-between py-5 md:py-6">
+          <div className="font-helvetica text-base font-light tracking-tight text-white order-1 md:order-2">
+            &copy; 2025 Alpha One Motors. All Rights Reserved.
+          </div>
           <div className="flex items-center gap-4 mb-6 md:mb-0 order-2 md:order-1">
             <a
               href="https://www.facebook.com/alphaonemotors/"
@@ -80,42 +83,6 @@ const Footer = () => {
                 height={32}
               />
             </a>
-            <a
-              href="#"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <Image
-                src="/images/yt-icon.png"
-                alt="YouTube"
-                width={32}
-                height={32}
-              />
-            </a>
-            <a
-              href="#"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <Image
-                src="/images/tw-icon.png"
-                alt="Twitter"
-                width={32}
-                height={32}
-              />
-            </a>
-            <a
-              href="#"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <Image
-                src="/images/pin-icon.png"
-                alt="Pinterest"
-                width={32}
-                height={32}
-              />
-            </a>
-          </div>
-          <div className="font-helvetica text-base font-light tracking-tight text-white order-1 md:order-2">
-            &copy; 2025 Alpha One Motors. All Rights Reserved.
           </div>
         </div>
       </div>

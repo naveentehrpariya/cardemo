@@ -38,13 +38,9 @@ export default function Document() {
         
         {/* Preload critical resources */}
         <link rel="preload" as="image" href="/images/banner-image.webp" />
-        <link rel="preload" as="style" href="/bootstrap.min.css" />
         <link rel="preload" as="style" href="/fonts/lato/lato.css" />
         <link rel="preload" as="font" href="/fonts/HelveticaNeue-Medium.woff2" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" as="font" href="/fonts/EurostileRegular.woff2" type="font/woff2" crossOrigin="anonymous" />
-        
-        {/* Self-hosted Bootstrap CSS - Faster than CDN */}
-        <link rel="stylesheet" href="/bootstrap.min.css" />
         
         {/* Self-hosted Lato fonts */}
         <link rel="stylesheet" href="/fonts/lato/lato.css" />

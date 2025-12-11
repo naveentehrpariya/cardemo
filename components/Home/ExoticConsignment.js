@@ -22,9 +22,9 @@ const ExoticConsignment = ({ handleConsignmentModal }) => {
       <div className="mouse-container" onMouseMove={handleMouseMove}>
         <div className='consignment-overlay'></div>
         <div className='container container-lg'>
-          <div className='w-100 text-center mouse-text'>
-            <div className='d-flex align-items-center consignment-flex'>
-              <div className='w-100'>
+          <div className='w-full text-center mouse-text'>
+            <div className='w-full d-flex align-items-center consignment-flex'>
+              <div className='w-full'>
                 <div className='xl-title text-uppercase text-center wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s">Exotic Car Consignment</div>
                 <div className='lg-title font-40 text-uppercase text-center fw-300 my-4 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.4s">Looking to sell your supercar?</div>
                 <div className='text-center mt-5 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.6s">

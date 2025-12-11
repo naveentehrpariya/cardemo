@@ -27,8 +27,9 @@ const Header = forwardRef(function Header({ secref }, ref) {
                 <div className='container container-lg'>
                     <div className='pb-4 pt-3 header-flex d-flex justify-content-between'>
                         <div className='main-logo flex items-center'>
-                            <Link href="/"><img src={getImages('alpha-one-logo.webp')} alt="Alpha One Motors" /></Link>
+                            <Link href="/" prefetch={false}><img src={getImages('alpha-one-logo.webp')} alt="Alpha One Motors" /></Link>
                         </div>
+                        
                         <div className={`main-menu ${isMob ? 'active' : ''}`}>
                             <div className='d-lg-none'>
                                 <div className='social-links'>
@@ -41,19 +42,19 @@ const Header = forwardRef(function Header({ secref }, ref) {
                             </div>
                             <ul className='d-flex align-items-center'>
                                 <li>
-                                    <Link href="/" className={router.pathname === "/" ? "active" : ""} onClick={closeMenu}>Home</Link>
+                                    <Link href="/" prefetch={false} className={router.pathname === "/" ? "active" : ""} onClick={closeMenu}>Home</Link>
                                 </li>
                                 <li>
-                                    <Link href="/why-us" className={router.pathname === "/why-us" ? "active" : ""} onClick={closeMenu}>Why Us</Link>
+                                    <Link href="/why-us" prefetch={false} className={router.pathname === "/why-us" ? "active" : ""} onClick={closeMenu}>Why Us</Link>
                                 </li>
                                 <li>
-                                    <Link href="/sell-my-exotic" className={router.pathname === "/sell-my-exotic" ? "active" : ""} onClick={closeMenu}>Sell my Exotic</Link>
+                                    <Link href="/sell-my-exotic" prefetch={false} className={router.pathname === "/sell-my-exotic" ? "active" : ""} onClick={closeMenu}>Sell my Exotic</Link>
                                 </li>
                                 <li>
-                                    <Link href="/about-us" className={router.pathname === "/about-us" ? "active" : ""} onClick={closeMenu}>ABOUT US</Link>
+                                    <Link href="/about-us" prefetch={false} className={router.pathname === "/about-us" ? "active" : ""} onClick={closeMenu}>ABOUT US</Link>
                                 </li>
                                 <li>
-                                    <Link href="/contact-us" className={router.pathname === "/contact-us" ? "active" : ""} onClick={closeMenu}>Contact</Link>
+                                    <Link href="/contact-us" prefetch={false} className={router.pathname === "/contact-us" ? "active" : ""} onClick={closeMenu}>Contact</Link>
                                 </li>
                             </ul>
                         </div>

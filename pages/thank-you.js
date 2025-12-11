@@ -18,7 +18,7 @@ export default function ThankYou() {
                     <p className="text-lg text-gray-600 mb-8">
                         We appreciate you contacting us. One of our team members will get back to you shortly.
                     </p>
-                    <Link href="/" className="black-btn inline-block">
+                    <Link href="/" prefetch={false} className="black-btn inline-block">
                         Return to Home
                     </Link>
                 </div>
