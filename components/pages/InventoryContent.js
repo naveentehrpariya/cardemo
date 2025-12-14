@@ -352,9 +352,9 @@ export default function Inventory() {
 
                             <div className='row g-4 mt-md-2'>
                                 {/* {console.log("filteredVehicleData", filteredVehicleData)} */}
-                                {filteredVehicleData &&
+                                        {filteredVehicleData &&
                                     filteredVehicleData.sort((a, b) => (b[sortColumn] - a[sortColumn]) * sortOrder).map((item, index) => (
-                                        <div className='col-xl-4 col-sm-6 col-12 wow fadeIn' data-wow-duration="0.5s" data-wow-delay={`0.2s`} key={index}>
+                                        <div className='col-xl-4 col-sm-6 col-12' key={index}>
                                             <div className='srp-box'
                                                 onMouseEnter={() => handleMouseEnter(index)}
                                                 onMouseLeave={handleMouseLeave}

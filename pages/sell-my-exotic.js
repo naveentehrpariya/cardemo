@@ -203,7 +203,6 @@ const SellMyExotic = () => {
         };
     }, []);
 
-    // Removed WOW initialization to avoid non-composited animations and main-thread work
 
     return (
         <>

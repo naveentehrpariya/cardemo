@@ -370,7 +370,7 @@ const Vdp = () => {
     return (
         <>
             <Header />
-            <section className='vdp-wrap' style={{ backgroundImage: `url(${getImages('vdp-hero.webp')})` }}>
+            <section className='vdp-wrap !max-h-[300px] md:!max-h-[50vh] lg:!max-h-[70vh] '  style={{ backgroundImage: `url(${getImages('vdp-hero.webp')})` }}>
                 <Image src={getImages('vdp-hero.webp')} alt="" width={1600} height={900} sizes="100vw" priority style={{display:'none'}} />
             </section>
             <section className='vdp-hero-bottom'>
@@ -383,14 +383,14 @@ const Vdp = () => {
                                 </div>
                             </div>
                             <div>
-                                <div className='vdp-title1'>{vehicleData.year} {vehicleData.make}</div>
-                                <div className='vdp-title2 mt-1'>{vehicleData.model}</div>
+                                <div className='vdp-title1 !text-xl md:!text-3xl lg:!text-4xl'>{vehicleData.year} {vehicleData.make}</div>
+                                <div className='vdp-title2  !text-xl md:!text-3xl lg:!text-4xl mt-1'>{vehicleData.model}</div>
                             </div>
                         </div>
                         <div className='d-flex align-items-center vdpb-right'>
                             <div className='mr-84'>
-                                <div className='vdp-label'>Price</div>
-                                <div className='vdp-price'>{priceFormatter(vehicleData.price, true)}</div>
+                                <div className=' vdp-label'>Price</div>
+                                <div className='!text-xl md:!text-3xl lg:!text-4xl vdp-price'>{priceFormatter(vehicleData.price, true)}</div>
                             </div>
                             <div>
                                 <button type='button' className='black-btn get-started-btn w-220 lg-btn text-uppercase'>Inquire</button>

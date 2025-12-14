@@ -44,7 +44,6 @@ export default function Document() {
         {/* Self-hosted Lato fonts */}
         <link rel="stylesheet" href="/fonts/lato/lato.css" />
         
-        {/* Removed WOW.js injection to avoid non-composited animations and JS parsing */}
       </Head>
       <body>
         <Main />
