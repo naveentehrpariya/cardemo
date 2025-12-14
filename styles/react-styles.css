@@ -727,7 +727,7 @@
     padding: 65px 95px
 }
 
-.hpb-right .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+.hpb-right .lg-title   {
     line-height: 1.2
 }
 
@@ -809,7 +809,7 @@
 }
 
 .customer-served-wrap .xl-title,
-.hpb-right .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+.hpb-right .xl-title {
     letter-spacing: 1px
 }
 
@@ -1086,7 +1086,7 @@
 }
 
 .about-info-wrap .sm-title,
-.customer-served-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+.customer-served-wrap .lg-title   {
     color: #a5a8a9
 }
 
@@ -1297,7 +1297,7 @@
     padding: 200px 0 100px
 }
 
-.thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+.thank-you-block .lg-title   {
     line-height: 1.4;
     font-size: 40px
 }

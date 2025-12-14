@@ -19,16 +19,16 @@
     .banner-title span {
         font-size: 50px;
     }
-    .facility-col .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .facility-col .lg-title   {
         font-size: 28px;
     }
-    .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+    .xl-title {
         font-size: 45px;
     }
     .font-40 {
         font-size: 30px;
     }
-    .lg-title  !text-2xl md:!text-3xl lg:!text-5xl.my-4 {
+    .lg-title  .my-4 {
         margin-top: 0.75rem !important;
         margin-bottom: 0.75rem !important;
     }
@@ -38,7 +38,7 @@
     .black-box img {
         max-width: 200px;
     }
-    .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .lg-title   {
         font-size: 24px;
     }
     .slideshow {
@@ -113,7 +113,7 @@
     .at-image img {
         max-width: 100%;
     }
-    .thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .thank-you-block .lg-title   {
         font-size: 30px;
     }
     .srr-search-box {
@@ -436,7 +436,7 @@
         text-align: center;
         margin-bottom: 35px;
     }
-    .sot-left .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .sot-left .lg-title   {
         text-align: center !important;
     }
     .sot-right {
@@ -597,7 +597,7 @@
         display: block;
         margin-top: 10px;
     }
-    .facility-col .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .facility-col .lg-title   {
         font-size: 30px;
         margin-bottom: 0px !important;
     }
@@ -622,13 +622,13 @@
     .process-right {
         padding: 45px 0;
     }
-    .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+    .xl-title {
         font-size: 40px;
     }
     .consignment-flex {
         height: 400px;
     }
-    .consignment-flex .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+    .consignment-flex .xl-title {
         margin-bottom: 100px;
     }
     .alpha-one-wrap {
@@ -645,7 +645,7 @@
     .rate-about-wrap .container {
         padding: 0;
     }
-    .rate-about-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .rate-about-wrap .lg-title   {
         font-size: 23px;
         text-align: center;
         font-weight: 400;
@@ -744,14 +744,14 @@
     .font-80 {
         font-size: 38px !important;
     }
-    .common-banner-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .common-banner-wrap .lg-title   {
         font-size: 24px;
         max-width: 326px;
         margin: 0 auto;
         line-height: 32px;
         margin-top: 15px !important;
     }
-    .hpb-right .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+    .hpb-right .xl-title {
         font-size: 48px;
         line-height: 60px;
     }
@@ -812,7 +812,7 @@
     .sot-right .offer-form.contact-form .sme-btn {
         width: 100%;
     }
-    .trading-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .trading-wrap .lg-title   {
         font-size: 32px;
         text-align: left !important;
         line-height: 48px;
@@ -830,11 +830,11 @@
     .letter-spacing-3 {
         letter-spacing: 1px !important;
     }
-    .customer-served-wrap .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+    .customer-served-wrap .xl-title {
         font-size: 32px;
     }
     .customer-served-wrap .xl-title,
-    .customer-served-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .customer-served-wrap .lg-title   {
         max-width: 345px;
         margin: 0 auto 25px !important;
     }
@@ -854,14 +854,14 @@
     .about-info-wrap .aiw-col:last-child  {
         border-bottom: none;
     }
-    .about-info-wrap .aiw-col .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+    .about-info-wrap .aiw-col .xl-title {
         min-width: 100px;
         text-align: left;
     }
     .w-330 {
         width: 230px !important;
     }
-    .aw-right .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .aw-right .lg-title   {
         line-height: 32px;
         letter-spacing: 1px;
     }
@@ -918,10 +918,10 @@
     .thank-you-wrap {
         padding: 150px 0 80px;
     }
-    .thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .thank-you-block .lg-title   {
         font-size: 24px;
     }
-    .thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl br {
+    .thank-you-block .lg-title   br {
         display: none;
     }
     .srs-field .form-control {
@@ -965,7 +965,7 @@
         width: 43px;
         height: 24px;
     }
-    .vdpa-box .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .vdpa-box .lg-title   {
         letter-spacing: 1.29px !important;
         font-weight: bold !important;
     }
@@ -983,11 +983,11 @@
     .vdpa-question-box {
         padding: 0 20px 60px;
     }
-    .vdpa-about-box .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
+    .vdpa-about-box .xl-title {
         font-size: 24px !important;
         letter-spacing: 1.2px;
     }
-    .vdpa-question-box .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
+    .vdpa-question-box .lg-title   {
         letter-spacing: -0.5px !important;
         font-size: 26px;
         text-align: center;
