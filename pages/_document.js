@@ -38,36 +38,13 @@ export default function Document() {
         
         {/* Preload critical resources */}
         <link rel="preload" as="image" href="/images/banner-image.webp" />
-        <link rel="preload" as="style" href="/fonts/lato/lato.css" />
         <link rel="preload" as="font" href="/fonts/HelveticaNeue-Medium.woff2" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" as="font" href="/fonts/EurostileRegular.woff2" type="font/woff2" crossOrigin="anonymous" />
         
         {/* Self-hosted Lato fonts */}
         <link rel="stylesheet" href="/fonts/lato/lato.css" />
         
-        {/* WOW.js for scroll animations - Load after page interactive */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.addEventListener('load', function() {
-                var script = document.createElement('script');
-                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js';
-                script.onload = function() {
-                  if (typeof WOW !== 'undefined') {
-                    new WOW({
-                      boxClass: 'wow',
-                      animateClass: 'animated',
-                      offset: 0,
-                      mobile: true,
-                      live: true
-                    }).init();
-                  }
-                };
-                document.body.appendChild(script);
-              });
-            `,
-          }}
-        />
+        {/* Removed WOW.js injection to avoid non-composited animations and JS parsing */}
       </Head>
       <body>
         <Main />

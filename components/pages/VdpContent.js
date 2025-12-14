@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import { getImages } from '../Common/const'
 import { VehicleContext } from '../../context/VehicleContext';
 import { useRouter } from 'next/router';
-import { Fancybox as NativeFancybox } from "@fancyapps/ui";
+// Defer Fancybox until user opens gallery to reduce JS on initial load
 import Slider from "react-slick";
 import { Field, Form, Formik } from 'formik';
 import ValidationError from '../Errors/ValidationError';
@@ -344,11 +345,11 @@ const Vdp = () => {
     const [showAll, setShowAll] = useState(false);
     const visibleItems = showAll ? vehicleData?.descriptions : vehicleData?.descriptions?.slice(0, 6);
     const galleryRef = useRef(null);
-    const openGallery = () => {
+    const openGallery = async () => {
         const flatImages = vehicleData?.gallery_images?.flat();
         const items = flatImages.map((src) => ({ src, type: "image" }));
-
-        NativeFancybox.show(items);
+        const mod = await import('@fancyapps/ui');
+        mod.Fancybox.show(items);
     };
     const sectionRef = useRef(null);
     const scrollToSection = () => {
@@ -369,14 +370,16 @@ const Vdp = () => {
     return (
         <>
             <Header />
-            <section className='vdp-wrap' style={{ backgroundImage: `url(${getImages('vdp-hero.webp')})` }}></section>
+            <section className='vdp-wrap' style={{ backgroundImage: `url(${getImages('vdp-hero.webp')})` }}>
+                <Image src={getImages('vdp-hero.webp')} alt="" width={1600} height={900} sizes="100vw" priority style={{display:'none'}} />
+            </section>
             <section className='vdp-hero-bottom'>
                 <div className='container'>
                     <div className='d-lg-flex align-items-center justify-content-between'>
                         <div className='d-flex align-items-center vdpb-left'>
                             <div>
                                 <div className='brand-logo'>
-                                    <img src={getImages(`logos/${vehicleData.make}.png`)} />
+                                    <Image src={getImages(`logos/${vehicleData.make}.png`)} alt={`${vehicleData.make} logo`} width={64} height={64} />
                                 </div>
                             </div>
                             <div>
@@ -401,46 +404,46 @@ const Vdp = () => {
                     <div className='row vdpg-block'>
                         <div className='col-md-6 col-6'>
                             <div className='vdpg-box'>
-                                <img src={getImages('vdp-thumb1.webp')} />
+                                <Image src={getImages('vdp-thumb1.webp')} alt='' width={320} height={180} />
                             </div>
                         </div>
                         <div className='col-md-6 col-6'>
                             <div className='vdpg-box'>
-                                <img src={getImages('vdp-thumb2.webp')} />
+                                <Image src={getImages('vdp-thumb2.webp')} alt='' width={320} height={180} />
                             </div>
                         </div>
                         <div className='col-md-4 col-6'>
                             <div className='vdpg-box'>
-                                <img src={getImages('vdp-thumb3.webp')} />
+                                <Image src={getImages('vdp-thumb3.webp')} alt='' width={320} height={180} />
                             </div>
                         </div>
                         <div className='col-md-4 col-6'>
                             <div className='vdpg-box'>
-                                <img src={getImages('vdp-thumb4.webp')} />
+                                <Image src={getImages('vdp-thumb4.webp')} alt='' width={320} height={180} />
                             </div>
                         </div>
                         {isMobile &&(
                             <>
                                 <div className='col-md-4 col-6'>
                                     <div className='vdpg-box'>
-                                        <img src={getImages('vdp-thumb4.webp')} />
+                                        <Image src={getImages('vdp-thumb4.webp')} alt='' width={320} height={180} />
                                     </div>
                                 </div>
                                 <div className='col-md-4 col-6'>
                                     <div className='vdpg-box'>
-                                        <img src={getImages('vdp-thumb4.webp')} />
+                                        <Image src={getImages('vdp-thumb4.webp')} alt='' width={320} height={180} />
                                     </div>
                                 </div>
                                 <div className='col-md-4 col-6'>
                                     <div className='vdpg-box'>
-                                        <img src={getImages('vdp-thumb4.webp')} />
+                                        <Image src={getImages('vdp-thumb4.webp')} alt='' width={320} height={180} />
                                     </div>
                                 </div>
                             </>
                         )}
                         <div className='col-md-4 col-6'>
                             <div className='vdpg-box position-relative'>
-                                <img src={getImages('vdp-thumb5.webp')} />
+                                <Image src={getImages('vdp-thumb5.webp')} alt='' width={320} height={180} />
                                 <div className='vdpg-count'>+15</div>
                             </div>
                         </div>
@@ -508,7 +511,7 @@ const Vdp = () => {
                                 <div className='mt-4 mb-2 wow fadeInUp' data-wow-delay="0.2s">
                                     <div className='text-center'>
                                         {/* <a href={'http://www.carfax.com/VehicleHistory/p/Report.cfx?partner=DVW_1&vin=' + vehicleData.vin} target="_blank">
-                                            <img src={getImages('logo-square-svg.svg')} alt='carfax' />
+                                            <Image src={getImages('logo-square-svg.svg')} alt='carfax' width={24} height={24} />
                                         </a> */}
                                     </div>
                                 </div>
@@ -623,7 +626,7 @@ const Vdp = () => {
                                                 <div className='row mt-3 align-items-center about-action-flex wow fadeInUp' data-wow-delay="0.6s">
                                                     <div className='col-md-6 fb-contact-info'>
                                                         <a href='tel:5127771240' className='d-inline-flex align-items-center phone-no-text'>
-                                                            <span className='call-icon me-3'><img src={getImages('local-phone-material.png')} alt='call' /></span>
+                                                            <span className='call-icon me-3'><Image src={getImages('local-phone-material.png')} alt='call' width={24} height={24} /></span>
                                                             <span>(512) 777-1240</span>
                                                         </a>
                                                     </div>

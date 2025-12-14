@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Slider from 'react-slick';
 import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
@@ -72,6 +72,20 @@ export default function WhyUs() {
         window.addEventListener('resize', updateSlides);
         return () => window.removeEventListener('resize', updateSlides);
     }, []);
+    const reviewsRef = useRef(null);
+    const [reviewsReady, setReviewsReady] = useState(false);
+    useEffect(() => {
+        if (!reviewsRef.current) return;
+        const io = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            if (entry && entry.isIntersecting) {
+                setReviewsReady(true);
+                io.disconnect();
+            }
+        }, { rootMargin: '200px' });
+        io.observe(reviewsRef.current);
+        return () => io.disconnect();
+    }, []);
     const sliderSettings = {
         dots: false,
         arrows: true,
@@ -120,15 +134,15 @@ export default function WhyUs() {
                     backgroundImage: `url(${getImages('about-hero.webp')})`
                 }}
             >
-                <Image src={getImages('about-hero.webp')} alt="" width={1600} height={900} priority style={{display: 'none'}} />
+                <Image src={getImages('about-hero.webp')} alt="" width={1600} height={900} sizes="100vw" priority style={{display: 'none'}} />
                 <div className="w-100">
-                    <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xl!text-3xl md:!text-5xl lg:!text-7xl text-uppercase text-center font-80 letter-spacing-3 wow reveal fadeInUp">
+                    <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xl!text-3xl md:!text-5xl lg:!text-7xl text-uppercase text-center font-80 letter-spacing-3">
                         Why Choose Us
                     </div>
-                    <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 text-uppercase text-center fw-300 mt-3 wow reveal fadeInUp">
+                    <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 text-uppercase text-center fw-300 mt-3">
                         We Know Luxury Automotive
                     </div>
-                    <div className="text-center mt-5 wow reveal fadeInUp">
+                    <div className="text-center mt-5">
                         <Link href="/sell-my-exotic" prefetch={false} className="black-btn get-started-btn w-240 text-uppercase">
                             GET My Cash Offer
                         </Link>
@@ -139,21 +153,21 @@ export default function WhyUs() {
             <section className="about-info-wrap">
                 <div className="container">
                     <div className="d-md-flex align-items-center justify-content-between">
-                        <div className="aiw-col wow reveal fadeIn">
+                        <div className="aiw-col">
                             <div className="d-inline-flex align-items-center">
                                 <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase pe-3 !text-3xl md:!text-5xl">+5k</div>
                                 <div className="sm-title fw-500">Customers Served</div>
                             </div>
                         </div>
-                        <div className="aiw-sep d-none d-md-block wow reveal fadeIn"></div>
-                        <div className="aiw-col wow reveal fadeIn">
+                        <div className="aiw-sep d-none d-md-block"></div>
+                        <div className="aiw-col">
                             <div className="d-inline-flex align-items-center">
                                 <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase pe-3 !text-3xl md:!text-5xl">4.7</div>
                                 <div className="sm-title fw-500">Google Rating</div>
                             </div>
                         </div>
-                        <div className="aiw-sep d-none d-md-block wow reveal fadeIn"></div>
-                        <div className="aiw-col wow reveal fadeIn">
+                        <div className="aiw-sep d-none d-md-block"></div>
+                        <div className="aiw-col">
                             <div className="d-inline-flex align-items-center">
                                 <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase pe-3 !text-3xl md:!text-5xl">193</div>
                                 <div className="sm-title fw-500">Google Reviews</div>
@@ -165,10 +179,10 @@ export default function WhyUs() {
 
             <section className="about-wrap">
                 <div className="d-lg-flex align-items-center">
-                    <div className="aw-left w-50 wow reveal fadeInLeft">
+                    <div className="aw-left w-50">
                         <Image src={getImages('about-side-bg.webp')} alt="Alpha One Motors" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
-                    <div className="aw-right w-50 wow reveal fadeInRight">
+                    <div className="aw-right w-50">
                         <div className="mxw-560">
                             <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-uppercase mb-lg-4 mb-3 !text-[23px] !text-4xl">We Know Luxury Automotive!</div>
                             <div className="common-text">
@@ -186,10 +200,10 @@ export default function WhyUs() {
                     </div>
                 </div>
                 <div className="d-lg-flex align-items-center reverse-block">
-                    <div className="aw-left w-50 order-2 wow reveal fadeInRight">
+                    <div className="aw-left w-50 order-2">
                         <Image src={getImages('about-side-bg2.webp')} alt="Sell Your Exotic" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
-                    <div className="aw-right w-50 wow reveal fadeInLeft">
+                    <div className="aw-right w-50">
                         <div className="mxw-560">
                             <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-uppercase mb-lg-4 mb-3 !text-[23px] !text-4xl">Ready to Sell Your Exotic Car?</div>
                             <div className="common-text">
@@ -206,13 +220,14 @@ export default function WhyUs() {
 
             <section className="customer-served-wrap">
                 <div className="container">
-                    <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase mb-2 wow reveal fadeInUp">
+                    <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase mb-2">
                         Don&apos;t Take our Word for it!
                     </div>
-                    <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl !text-xl md:!text-3xl fw-normal text-center font-40 mb-5 text-uppercase wow reveal fadeInUp">
+                    <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl !text-xl md:!text-3xl fw-normal text-center font-40 mb-5 text-uppercase">
                         See what our Customers Have to Say!
                     </div>
-                    <div className="mt-70 wow reveal fadeInUp">
+                    <div className="mt-70" ref={reviewsRef}>
+                        {reviewsReady && (
                         <Slider {...sliderSettings} className="wbecs-slider">
                             {reviewsList.map((review, index) => (
                                 <div key={index}>
@@ -250,6 +265,7 @@ export default function WhyUs() {
                                 </div>
                             ))}
                         </Slider>
+                        )}
                     </div>
                     <div className="text-center mt-75">
                         <a href="https://share.google/erYHCMlUwduOzew3b" target="_blank" rel="noopener noreferrer" className="black-btn get-started-btn font-bold uppercase w-330 inline-block lg-btn">

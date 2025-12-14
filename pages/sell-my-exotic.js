@@ -143,6 +143,12 @@ const SellMyExotic = () => {
     }
 
     const sliderRef = useRef(null);
+    const formRef = useRef(null);
+    const form2Ref = useRef(null);
+    const reviewsRef = useRef(null);
+    const [formReady, setFormReady] = useState(false);
+    const [form2Ready, setForm2Ready] = useState(false);
+    const [reviewsReady, setReviewsReady] = useState(false);
     const settings = {
         dots: true,
         infinite: true,
@@ -175,10 +181,29 @@ const SellMyExotic = () => {
     }, []);
 
     useEffect(() => {
-        if (typeof window !== 'undefined' && window.WOW) {
-            new window.WOW({ live: false }).init();
-        }
+        const makeObserver = (ref, setter) => {
+            if (!ref.current) return;
+            const io = new IntersectionObserver((entries) => {
+                const entry = entries[0];
+                if (entry && entry.isIntersecting) {
+                    setter(true);
+                    io.disconnect();
+                }
+            }, { rootMargin: '200px' });
+            io.observe(ref.current);
+            return () => io.disconnect();
+        };
+        const c1 = makeObserver(formRef, setFormReady);
+        const c2 = makeObserver(form2Ref, setForm2Ready);
+        const c3 = makeObserver(reviewsRef, setReviewsReady);
+        return () => {
+            if (typeof c1 === 'function') c1();
+            if (typeof c2 === 'function') c2();
+            if (typeof c3 === 'function') c3();
+        };
     }, []);
+
+    // Removed WOW initialization to avoid non-composited animations and main-thread work
 
     return (
         <>
@@ -195,7 +220,7 @@ const SellMyExotic = () => {
                     backgroundImage: `url(${getImages('sell-exotic-hero.webp')})`
                 }}
             >
-                <Image src={getImages('sell-exotic-hero.webp')} alt="" width={1600} height={900} priority style={{display: 'none'}} />
+                <Image src={getImages('sell-exotic-hero.webp')} alt="" width={1600} height={900} sizes="100vw" priority style={{display: 'none'}} />
                 <div className='w-100'>
                     <div className='xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase text-center font-80 letter-spacing-3'>SAME DAY OFFERS</div>
                     <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 text-uppercase text-center fw-300 mt-3'>Enjoy our stress-free process</div>
@@ -204,40 +229,41 @@ const SellMyExotic = () => {
             <main role='main'>
             <section className='hassle-process-wrap'>
                 <div className='container'>
-                    <div className='hassle-process-box d-md-flex wow reveal fadeIn'>
+                    <div className='hassle-process-box d-md-flex'>
                         <div className='hpb-right w-50 order-2'>
-                            <div className='xl-title !text-xl md:!text-4xl lg:!text-6xl text-uppercase mb-md-5 mb-4 text-center wow reveal fadeInUp'>NO HASSLE <br />PROCESS</div>
-                            <div className='wow reveal fadeInUp'>
-                                <MyVehicleForm
-                                    setSelectedValue={setSelectedValue}
-                                    getQuoteModal={getQuoteModal}
-                                    setGetQuoteModal={setGetQuoteModal}
-
-                                />
+                            <div className='xl-title !text-xl md:!text-4xl lg:!text-6xl text-uppercase mb-md-5 mb-4 text-center'>NO HASSLE <br />PROCESS</div>
+                            <div ref={formRef}>
+                                {formReady && (
+                                    <MyVehicleForm
+                                        setSelectedValue={setSelectedValue}
+                                        getQuoteModal={getQuoteModal}
+                                        setGetQuoteModal={setGetQuoteModal}
+                                    />
+                                )}
                             </div>
-                            <div className='sm-title text-center roboto mt-100 fw-500 text-white wow reveal fadeInUp'>Simple, Fast & Free</div>
-                            <div className='text-center pt-3 wow reveal fadeInUp'>
+                            <div className='sm-title text-center roboto mt-100 fw-500 text-white'>Simple, Fast & Free</div>
+                            <div className='text-center pt-3'>
                                     <span className='px-5 d-inline-block hpb-border-t pt-3'>
                                         <Image src={getImages('tg-logo-bw.png')} alt='Trade Group' width={120} height={36} />
                                     </span>
                             </div>
                         </div>
                         <div className='hpb-left w-50'>
-                            <div className='hpb-xs-title text-uppercase text-orange mb-3 wow reveal fadeInUp'>Call</div>
-                            <div className='text-center wow reveal fadeInUp'>
+                            <div className='hpb-xs-title text-uppercase text-orange mb-3'>Call</div>
+                            <div className='text-center'>
                                 <a href='tel:5127771240' className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl call-text-title text-white font-40 fw-700'>512-777-1240</a>
                             </div>
-                            <div className='md-title font-1-9em text-center text-white fw-300 text-uppercase mt-md-5 mt-4 mb-md-4 mb-3 wow reveal fadeInUp'>How Our Process Works</div>
+                            <div className='md-title font-1-9em text-center text-white fw-300 text-uppercase mt-md-5 mt-4 mb-md-4 mb-3'>How Our Process Works</div>
                             <div className='hpb-process-list'>
-                                <div className='d-flex align-items-center wow reveal fadeInUp'>
+                                <div className='d-flex align-items-center'>
                                     <div className='hpb-circle me-3'>1</div>
                                     <div className='xs-title text-uppercase'>SUBMIT YOUR VEHICLE INFO</div>
                                 </div>
-                                <div className='d-flex align-items-center wow reveal fadeInUp'>
+                                <div className='d-flex align-items-center'>
                                     <div className='hpb-circle me-3'>2</div>
                                     <div className='xs-title text-uppercase'>RECEIVE A SAME DAY APPRAISAL</div>
                                 </div>
-                                <div className='d-flex align-items-center wow reveal fadeInUp'>
+                                <div className='d-flex align-items-center'>
                                     <div className='hpb-circle me-3'>3</div>
                                     <div className='xs-title text-uppercase'>FINALIZE WITH OUR FRIENDLY STAFF</div>
                                 </div>
@@ -248,9 +274,10 @@ const SellMyExotic = () => {
             </section>
             <section className='reviews-wrap'>
                 <div className='container'>
-                    <div className='hpb-xs-title text-uppercase mb-3 wow reveal fadeInUp'>Recent</div>
-                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-center font-40 text-uppercase mb-md-5 mb-4 wow reveal fadeInUp'>Google Reviews</div>
-                    <div className='wow reveal fadeIn'>
+                    <div className='hpb-xs-title text-uppercase mb-3'>Recent</div>
+                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-center font-40 text-uppercase mb-md-5 mb-4'>Google Reviews</div>
+                    <div ref={reviewsRef}>
+                        {reviewsReady && (
                         <Slider ref={sliderRef} {...settings} className='review-slider'>
                             {reviewsList.map((review, index) => (
                                 <div className="review-item" key={index}>
@@ -278,26 +305,30 @@ const SellMyExotic = () => {
                             ))}
 
                         </Slider>
+                        )}
                     </div>
                 </div>
             </section>
             <section className='sell-or-trade-wrap'>
                 <div className='container'>
                     <div className='d-lg-flex justify-content-between sot-flex'>
-                        <div className='sot-left wow reveal fadeInUp'>
+                        <div className='sot-left'>
                             <div className='mb-3'>
                                 <Image src={getImages('tg-logo-bw.png')} alt='Trade Group' width={120} height={36} />
                             </div>
                             <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-start font-2-2em roboto'>Sell or Trade your Vehicle</div>
                         </div>
-                        <div className='sot-right wow reveal fadeInUp'>
-                            <MyVehicleForm
-                                setSelectedValue={setSelectedValue}
-                                getQuoteModal={getQuoteModal}
-                                setGetQuoteModal={setGetQuoteModal}
-                                sotForm={true}
-
-                            />
+                        <div className='sot-right'>
+                            <div ref={form2Ref}>
+                                {form2Ready && (
+                                    <MyVehicleForm
+                                        setSelectedValue={setSelectedValue}
+                                        getQuoteModal={getQuoteModal}
+                                        setGetQuoteModal={setGetQuoteModal}
+                                        sotForm={true}
+                                    />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -305,8 +336,8 @@ const SellMyExotic = () => {
             </main>
             <section className='trading-wrap'>
                 <div className='container '>
-                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 mb-md-5 mb-3 text-center text-uppercase wow reveal fadeInUp'>Tips on Trading or Selling Your Exotic Vehicle</div>
-                    <div className='common-text px-md-4 wow reveal fadeInUp'>
+                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 mb-md-5 mb-3 text-center text-uppercase'>Tips on Trading or Selling Your Exotic Vehicle</div>
+                    <div className='common-text px-md-4'>
                         <p>At Alpha One Motors, we simplify the process to sell your exotic car, offering a premier experience for owners looking to sell their Porsche, Ferrari, Lamborghini, McLaren, and Bugatti vehicles. As a leading exotic car trader, we pride ourselves on delivering exceptional service and fair, competitive offers to ensure you get the best value when you choose to sell your exotic car with us.</p>
 
                         <p>At Alpha One Motors we buy exotic cars of all types and backgrounds. We are dedicated to making your transaction smooth and stress-free, with expert appraisals tailored to your luxury vehicle. We’ve built relationships with thousands of satisfied clients that trust us to handle selling your Ferrari, Porsche , Lamborghini, McLaren, or Bugatti with the care and expertise it deserves. Contact Alpha One Motors today to experience why we’re the top choice for selling exotic cars with confidence and ease.</p>
@@ -315,7 +346,7 @@ const SellMyExotic = () => {
             </section>
             <section className='faqs-wrap'>
                 <div className='container'>
-                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 mb-md-5 mb-3 text-center text-uppercase wow reveal fadeInUp'>FREQUENTLY ASKED QUESTIONS</div>
+                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 mb-md-5 mb-3 text-center text-uppercase'>FREQUENTLY ASKED QUESTIONS</div>
                     <div className="accordion custom-accordion" id="accordionExample">
                         {accordionItems.map((item, index) => {
                             const collapseId = `collapse${index}`;
