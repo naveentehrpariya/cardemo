@@ -195,15 +195,15 @@ const SellMyExotic = () => {
             >
                 <img src={getImages('sell-exotic-hero.webp')} alt="" width="0" height="0" style={{display: "none !important"}} fetchPriority="high"/>
                 <div className='w-100'>
-                    <div className='xl-title text-uppercase text-center font-80 letter-spacing-3 wow reveal fadeInUp'>SAME DAY OFFERS</div>
-                    <div className='lg-title font-40 text-uppercase text-center fw-300 mt-3 wow reveal fadeInUp'>Enjoy our stress-free process</div>
+                    <div className='xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase text-center font-80 letter-spacing-3 wow reveal fadeInUp'>SAME DAY OFFERS</div>
+                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 text-uppercase text-center fw-300 mt-3 wow reveal fadeInUp'>Enjoy our stress-free process</div>
                 </div>
             </section>
             <section className='hassle-process-wrap'>
                 <div className='container'>
                     <div className='hassle-process-box d-md-flex wow reveal fadeIn'>
                         <div className='hpb-right w-50 order-2'>
-                            <div className='xl-title text-uppercase mb-md-5 mb-4 text-center wow reveal fadeInUp'>NO HASSLE <br />PROCESS</div>
+                            <div className='xl-title !text-xl md:!text-4xl lg:!text-6xl text-uppercase mb-md-5 mb-4 text-center wow reveal fadeInUp'>NO HASSLE <br />PROCESS</div>
                             <div className='wow reveal fadeInUp'>
                                 <MyVehicleForm
                                     setSelectedValue={setSelectedValue}
@@ -222,7 +222,7 @@ const SellMyExotic = () => {
                         <div className='hpb-left w-50'>
                             <div className='hpb-xs-title text-uppercase text-orange mb-3 wow reveal fadeInUp'>Call</div>
                             <div className='text-center wow reveal fadeInUp'>
-                                <a href='tel:5127771240' className='lg-title call-text-title text-white font-40 fw-700'>512-777-1240</a>
+                                <a href='tel:5127771240' className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl call-text-title text-white font-40 fw-700'>512-777-1240</a>
                             </div>
                             <div className='md-title font-1-9em text-center text-white fw-300 text-uppercase mt-md-5 mt-4 mb-md-4 mb-3 wow reveal fadeInUp'>How Our Process Works</div>
                             <div className='hpb-process-list'>
@@ -246,7 +246,7 @@ const SellMyExotic = () => {
             <section className='reviews-wrap'>
                 <div className='container'>
                     <div className='hpb-xs-title text-uppercase mb-3 wow reveal fadeInUp'>Recent</div>
-                    <div className='lg-title text-center font-40 text-uppercase mb-md-5 mb-4 wow reveal fadeInUp'>Google Reviews</div>
+                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-center font-40 text-uppercase mb-md-5 mb-4 wow reveal fadeInUp'>Google Reviews</div>
                     <div className='wow reveal fadeIn'>
                         <Slider ref={sliderRef} {...settings} className='review-slider'>
                             {reviewsList.map((review, index) => (
@@ -285,7 +285,7 @@ const SellMyExotic = () => {
                             <div className='mb-3'>
                                 <img loading="lazy" src={getImages('tg-logo-bw.png')} />
                             </div>
-                            <div className='lg-title text-start font-2-2em roboto'>Sell or Trade your Vehicle</div>
+                            <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-start font-2-2em roboto'>Sell or Trade your Vehicle</div>
                         </div>
                         <div className='sot-right wow reveal fadeInUp'>
                             <MyVehicleForm
@@ -301,7 +301,7 @@ const SellMyExotic = () => {
             </section>
             <section className='trading-wrap'>
                 <div className='container '>
-                    <div className='lg-title font-40 mb-md-5 mb-3 text-center text-uppercase wow reveal fadeInUp'>Tips on Trading or Selling Your Exotic Vehicle</div>
+                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 mb-md-5 mb-3 text-center text-uppercase wow reveal fadeInUp'>Tips on Trading or Selling Your Exotic Vehicle</div>
                     <div className='common-text px-md-4 wow reveal fadeInUp'>
                         <p>At Alpha One Motors, we simplify the process to sell your exotic car, offering a premier experience for owners looking to sell their Porsche, Ferrari, Lamborghini, McLaren, and Bugatti vehicles. As a leading exotic car trader, we pride ourselves on delivering exceptional service and fair, competitive offers to ensure you get the best value when you choose to sell your exotic car with us.</p>
 
@@ -311,7 +311,7 @@ const SellMyExotic = () => {
             </section>
             <section className='faqs-wrap'>
                 <div className='container'>
-                    <div className='lg-title font-40 mb-md-5 mb-3 text-center text-uppercase wow reveal fadeInUp'>FREQUENTLY ASKED QUESTIONS</div>
+                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 mb-md-5 mb-3 text-center text-uppercase wow reveal fadeInUp'>FREQUENTLY ASKED QUESTIONS</div>
                     <div className="accordion custom-accordion" id="accordionExample">
                         {accordionItems.map((item, index) => {
                             const collapseId = `collapse${index}`;
@@ -320,9 +320,9 @@ const SellMyExotic = () => {
 
                             return (
                                 <div className="accordion-item" key={index}>
-                                    <h2 className="accordion-header" id={headingId}>
+                                    <h2 className="accordion-header   " id={headingId}>
                                         <button
-                                            className={`accordion-button${isOpen ? '' : ' collapsed'}`}
+                                            className={`accordion-button${isOpen ? '' : ' collapsed'} !p-3 md:!p-3 lg:!p-5 font-euro !text-[14px] md:!text-[16px] lg:!text-[18px]`}
                                             type="button"
                                             aria-expanded={isOpen ? 'true' : 'false'}
                                             aria-controls={collapseId}
@@ -332,7 +332,7 @@ const SellMyExotic = () => {
                                         </button>
                                     </h2>
                                     {isOpen ? (
-                                        <div className="accordion-body" style={{ color: '#e1e1e1' }}>{item.content}</div>
+                                        <div className="accordion-body !p-3 md:!p-3 lg:!p-5 font-euro !text-[16px] md:!text-[16px] lg:!text-[18px]" style={{ color: '#e1e1e1' }}>{item.content}</div>
                                     ) : null}
                                 </div>
                             );

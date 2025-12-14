@@ -75,7 +75,7 @@ export default function Home() {
             <img src={getImages('facility-image1.jpg')} alt="Our Latest" loading="lazy" />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
-                <div className='lg-title text-uppercase mb-4'>Our <br />LATEST</div>
+                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Our <br />LATEST</div>
                 <div className='mt-3'>
                   <button onClick={() => scrollToSection(section1Ref)} className='white-btn pe-5'>
                     <span className='caret-right-icon'></span> View
@@ -88,7 +88,7 @@ export default function Home() {
             <img src={getImages('facility-image2.jpg')} alt="Get Your Cash Offer" loading="lazy" />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
-                <div className='lg-title text-uppercase mb-4'>Get Your <br />Cash Offer</div>
+                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Get Your <br />Cash Offer</div>
                 <div className='mt-3'>
                   <button onClick={() => scrollToSection(section2Ref)} className='white-btn pe-5'>
                     <span className='caret-right-icon'></span> View
@@ -101,7 +101,7 @@ export default function Home() {
             <img src={getImages('facility-image3.jpg')} alt="Consignment Services" loading="lazy" />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
-                <div className='lg-title text-uppercase mb-4'>Consignment <br />Services</div>
+                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Consignment <br />Services</div>
                 <div className='mt-3'>
                   <button type="button" onClick={handleConsignmentModal} className='white-btn pe-5'><span className='caret-right-icon'></span> View</button>
                 </div>
@@ -115,7 +115,7 @@ export default function Home() {
         <div className='container container-lg'>
           <div className='d-flex align-items-center justify-content-between process-flex'>
             <div className='process-left wow fadeInLeft' data-wow-delay="0.4s">
-              <div className='lg-title text-uppercase mb-4 !font-[100]'>ALPHA ONE DIFFERENCE</div>
+              <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl !text-2xl md:!text-4xl text-uppercase mb-2 md:mb-4 !font-[100]'>ALPHA ONE DIFFERENCE</div>
               <p className='!font-light'>At Alpha One Motors, we specialize in helping owners of luxury and exotic vehicles sell with confidence and ease. Whether you're in San Antonio, Austin, or anywhere across Central Texas, our team is here to deliver top-market offers and a seamless selling experience.</p>
 
               <p className='!font-light'>We buy high-end models from brands like Ferrari, Lamborghini, Porsche, Lexus, BMW, Mercedes-Benz, Audi, and more. From rare exotics to highline luxury, we value every unique vehicle and offer competitive appraisals that reflect the true worth of your collection.</p>
@@ -124,21 +124,21 @@ export default function Home() {
             </div>
             <div className='process-right'>
               <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.5s">
-                <span className='pr-circle lg-title flex items-center justify-content-center'>1</span>
+                <span className='pr-circle lg-title  !text-2xl md:!text-3xl lg:!text-5xl flex items-center justify-content-center'>1</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>ENTER VEHICLE DETAILS</div>
                   <p>Simply fill out the 2 part form that takes less than 1 minute.</p>
                 </div>
               </div>
               <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.7s">
-                <span className='pr-circle lg-title flex items-center justify-content-center'>2</span>
+                <span className='pr-circle lg-title  !text-2xl md:!text-3xl lg:!text-5xl flex items-center justify-content-center'>2</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>GET OFFER</div>
                   <p>Our tenured appraisers will contact you on the same day with a competitive price.</p>
                 </div>
               </div>
               <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.9s">
-                <span className='pr-circle lg-title flex items-center justify-content-center'>3</span>
+                <span className='pr-circle lg-title  !text-2xl md:!text-3xl lg:!text-5xl flex items-center justify-content-center'>3</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>FINISH</div>
                   <p>Get a check cut on the day you exchange the vehicle. Simple, easy & no-hassle!</p>
@@ -160,7 +160,7 @@ export default function Home() {
                   <img src={getImages('ao-ford-logo.png')} alt="Alpha One Ford" loading="lazy" />
                 </div>
                 <div className='ps-4'>
-                  <div className='sm-title text-uppercase font-18 mb-3'>Alpha One Ford</div>
+                  <div className='sm-title text-uppercase font-18 text-lg md:!text-xl font-euro mb-3'>Alpha One Ford</div>
                   <div>
                     <a href='https://www.alphaoneford.com/' target="_blank" rel="noopener noreferrer" className='black-btn pe-5 fw-300 text-uppercase'><span className="white-caret-icon"></span> Visit Site</a>
                   </div>
@@ -173,7 +173,7 @@ export default function Home() {
                   <img src={getImages('ao-chv-logo.png')} alt="Alpha One Chevrolet" loading="lazy" />
                 </div>
                 <div className='ps-4'>
-                  <div className='sm-title text-uppercase font-18 mb-3'>Alpha One Chevrolet</div>
+                  <div className='sm-title text-uppercase font-18 text-lg md:!text-xl font-euro mb-3'>Alpha One Chevrolet</div>
                   <div>
                     <a href='https://www.alphaonechevrolet.com/' target="_blank" rel="noopener noreferrer" className='black-btn pe-5 fw-300 text-uppercase'><span className="white-caret-icon"></span> Visit Site</a>
                   </div>
@@ -186,12 +186,12 @@ export default function Home() {
 
       <section className='rate-about-wrap'>
         <div className='container container-lg'>
-          <div className='row gx-5'>
+          <div className='row px-3 md:px-0'>
             <div className='col-md-6 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s">
-              <div className='lg-title text-uppercase mb-4'>Highly Ranked by Customers</div>
+              <div className='text-center lg:text-start text-xl md:text-2xl font-euro text-uppercase mb-4'>Highly Ranked by Customers</div>
               <div className='rating-box'>
                 <div className='d-flex align-items-center justify-content-between mb-3'>
-                  <div className='xl-title helveticaneue'>4.9</div>
+                  <div className='xl-title !text-3xl md:!text-5xl lg:!text-7xl!text-3xl lg:!text-5xl helveticaneue'>4.9</div>
                   <div className='google-icon flex justify-content-center align-items-center'>
                     <img src={getImages('google-logo.png')} alt='Google' loading="lazy" />
                   </div>
@@ -276,7 +276,7 @@ export default function Home() {
               </div>
             </div>
             <div className='col-md-6 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.4s">
-              <div className='lg-title text-uppercase mb-4'>OUR PASSION</div>
+              <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-uppercase mb-4'>OUR PASSION</div>
               <div className='about-box'>
                 <div className='about-image'>
                   <img src={getImages('porche.jpg')} alt="Our Passion" loading="lazy" />

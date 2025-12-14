@@ -25,7 +25,7 @@ const Header = forwardRef(function Header({ secref }, ref) {
         <>
             <header className={`header-wrap ${router.pathname === "/" ? "" : "inner-header-wrap"}`} ref={ref || secref}>
                 <div className='container container-lg'>
-                    <div className='pb-4 pt-3 header-flex d-flex justify-content-between'>
+                    <div className='md:!pb-4 md:!pt-3 header-flex d-flex justify-content-between'>
                         <div className='main-logo flex items-center'>
                             <Link href="/" prefetch={false}><img src={getImages('alpha-one-logo.webp')} alt="Alpha One Motors" /></Link>
                         </div>

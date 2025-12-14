@@ -132,7 +132,7 @@ img {
   }
 
   /* Typography */
-  .xl-title {
+  .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
     font-family: var(--font-eurostile);
     font-size: 60px;
     font-weight: bold;
@@ -141,7 +141,7 @@ img {
     color: white;
   }
 
-  .lg-title {
+  .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
     font-family: var(--font-eurostile);
     font-size: 30px;
     font-weight: bold;
@@ -1007,7 +1007,7 @@ img {
     padding: 65px 95px
 }
 
-.hpb-right .lg-title {
+.hpb-right .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
     line-height: 1.2
 }
 
@@ -1089,7 +1089,7 @@ img {
 }
 
 .customer-served-wrap .xl-title,
-.hpb-right .xl-title {
+.hpb-right .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
     letter-spacing: 1px
 }
 
@@ -1366,7 +1366,7 @@ img {
 }
 
 .about-info-wrap .sm-title,
-.customer-served-wrap .lg-title {
+.customer-served-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
     color: #a5a8a9
 }
 
@@ -1577,7 +1577,7 @@ img {
     padding: 200px 0 100px
 }
 
-.thank-you-block .lg-title {
+.thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
     line-height: 1.4;
     font-size: 40px
 }
@@ -2347,16 +2347,16 @@ img {
     .banner-title span {
         font-size: 50px;
     }
-    .facility-col .lg-title {
+    .facility-col .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 28px;
     }
-    .xl-title {
+    .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
         font-size: 45px;
     }
     .font-40 {
         font-size: 30px;
     }
-    .lg-title.my-4 {
+    .lg-title  !text-2xl md:!text-3xl lg:!text-5xl.my-4 {
         margin-top: 0.75rem !important;
         margin-bottom: 0.75rem !important;
     }
@@ -2366,7 +2366,7 @@ img {
     .black-box img {
         max-width: 200px;
     }
-    .lg-title {
+    .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 24px;
     }
     .slideshow {
@@ -2441,7 +2441,7 @@ img {
     .at-image img {
         max-width: 100%;
     }
-    .thank-you-block .lg-title {
+    .thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 30px;
     }
     .srr-search-box {
@@ -2764,7 +2764,7 @@ img {
         text-align: center;
         margin-bottom: 35px;
     }
-    .sot-left .lg-title {
+    .sot-left .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         text-align: center !important;
     }
     .sot-right {
@@ -2874,9 +2874,6 @@ img {
         width: 100%;
         position: relative;
     }
-    .header-wrap {
-        padding: 17px 0;
-    }
     .main-logo img {
         max-width: 190px;
     }
@@ -2925,7 +2922,7 @@ img {
         display: block;
         margin-top: 10px;
     }
-    .facility-col .lg-title {
+    .facility-col .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 30px;
         margin-bottom: 0px !important;
     }
@@ -2950,13 +2947,13 @@ img {
     .process-right {
         padding: 45px 0;
     }
-    .xl-title {
+    .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
         font-size: 40px;
     }
     .consignment-flex {
         height: 400px;
     }
-    .consignment-flex .xl-title {
+    .consignment-flex .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
         margin-bottom: 100px;
     }
     .alpha-one-wrap {
@@ -2973,7 +2970,7 @@ img {
     .rate-about-wrap .container {
         padding: 0;
     }
-    .rate-about-wrap .lg-title {
+    .rate-about-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 23px;
         text-align: center;
         font-weight: 400;
@@ -3072,14 +3069,14 @@ img {
     .font-80 {
         font-size: 38px !important;
     }
-    .common-banner-wrap .lg-title {
+    .common-banner-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 24px;
         max-width: 326px;
         margin: 0 auto;
         line-height: 32px;
         margin-top: 15px !important;
     }
-    .hpb-right .xl-title {
+    .hpb-right .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
         font-size: 48px;
         line-height: 60px;
     }
@@ -3138,7 +3135,7 @@ img {
     .sot-right .offer-form.contact-form .sme-btn {
         width: 100%;
     }
-    .trading-wrap .lg-title {
+    .trading-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 32px;
         text-align: left !important;
         line-height: 48px;
@@ -3156,11 +3153,11 @@ img {
     .letter-spacing-3 {
         letter-spacing: 1px !important;
     }
-    .customer-served-wrap .xl-title {
+    .customer-served-wrap .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
         font-size: 32px;
     }
     .customer-served-wrap .xl-title,
-    .customer-served-wrap .lg-title {
+    .customer-served-wrap .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         max-width: 345px;
         margin: 0 auto 25px !important;
     }
@@ -3180,14 +3177,14 @@ img {
     .about-info-wrap .aiw-col:last-child  {
         border-bottom: none;
     }
-    .about-info-wrap .aiw-col .xl-title {
+    .about-info-wrap .aiw-col .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
         min-width: 100px;
         text-align: left;
     }
     .w-330 {
         width: 230px !important;
     }
-    .aw-right .lg-title {
+    .aw-right .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         line-height: 32px;
         letter-spacing: 1px;
     }
@@ -3244,10 +3241,10 @@ img {
     .thank-you-wrap {
         padding: 150px 0 80px;
     }
-    .thank-you-block .lg-title {
+    .thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         font-size: 24px;
     }
-    .thank-you-block .lg-title br {
+    .thank-you-block .lg-title  !text-2xl md:!text-3xl lg:!text-5xl br {
         display: none;
     }
     .srs-field .form-control {
@@ -3291,7 +3288,7 @@ img {
         width: 43px;
         height: 24px;
     }
-    .vdpa-box .lg-title {
+    .vdpa-box .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         letter-spacing: 1.29px !important;
         font-weight: bold !important;
     }
@@ -3309,11 +3306,11 @@ img {
     .vdpa-question-box {
         padding: 0 20px 60px;
     }
-    .vdpa-about-box .xl-title {
+    .vdpa-about-box .xl-title !text-3xl md:!text-5xl lg:!text-7xl{
         font-size: 24px !important;
         letter-spacing: 1.2px;
     }
-    .vdpa-question-box .lg-title {
+    .vdpa-question-box .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
         letter-spacing: -0.5px !important;
         font-size: 26px;
         text-align: center;
@@ -3547,7 +3544,7 @@ body {
     color: #000;
     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 70%);
 }
-.lg-title {
+.lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
     font-family: Eurostile;
     font-size: 30px;
     font-weight: bold;
@@ -3557,7 +3554,7 @@ body {
     letter-spacing: normal;
     color: #f4eeee;
 }
-.facility-col .lg-title {
+.facility-col .lg-title  !text-2xl md:!text-3xl lg:!text-5xl {
     font-size: 38px;
 }
 .caret-right-icon {
@@ -3598,7 +3595,7 @@ p {
     font-size: 13px;
     font-weight: 300;
 }
-.xl-title {
+.xl-title !text-3xl md:!text-5xl lg:!text-7xl{
     font-family: Eurostile;
     font-size: 60px;
     font-weight: bold;

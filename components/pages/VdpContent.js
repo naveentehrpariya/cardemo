@@ -452,7 +452,7 @@ const Vdp = () => {
                     <div className='vdpa-block mt-xl-4 row'>
                         <div className='col-xl-4 order-xl-2 mb-3 mb-xl-0'>
                             <div className='vdpa-box p-4 h-100'>
-                                <div className='lg-title text-uppercase fw-400 mb-3 wow fadeInUp' data-wow-delay="0.2s">Vehicle Info</div>
+                                <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-uppercase fw-400 mb-3 wow fadeInUp' data-wow-delay="0.2s">Vehicle Info</div>
                                 <div className='vdpa-table'>
                                     <table className='w-100'>
                                         <tbody>
@@ -516,7 +516,7 @@ const Vdp = () => {
                         </div>
                         <div className='col-xl-8'>
                             <div className='vdpa-box vdpa-about-box'>
-                                <div className='xl-title mb-4 wow fadeInUp text-start text-uppercase font-3em' data-wow-delay="0.6s">About this Vehicle</div>
+                                <div className='xl-title !text-3xl md:!text-5xl lg:!text-7xlmb-4 wow fadeInUp text-start text-uppercase font-3em' data-wow-delay="0.6s">About this Vehicle</div>
                                 <div className='vdp-text'>
                                     <p>{displayText}
                                         {text.length > maxLength && (
@@ -535,7 +535,7 @@ const Vdp = () => {
                             </div>
                             <div className='vdpa-box vdpa-question-box'>
                                 <div id="gotAQuestion" ref={sectionRef} >
-                                    <div className='lg-title mb-90 wow fadeInUp' data-wow-delay="0.6s">Got a question? <a href="#" className='text-theme'>Call</a> or <a href="#" className='text-theme'>Chat</a> live with a sales representative</div>
+                                    <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl mb-90 wow fadeInUp' data-wow-delay="0.6s">Got a question? <a href="#" className='text-theme'>Call</a> or <a href="#" className='text-theme'>Chat</a> live with a sales representative</div>
                                     <Formik
                                         // validationSchema={validationSchema}
                                         initialValues={{

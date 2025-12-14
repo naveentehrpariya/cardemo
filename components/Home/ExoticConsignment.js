@@ -25,8 +25,8 @@ const ExoticConsignment = ({ handleConsignmentModal }) => {
           <div className='w-full text-center mouse-text'>
             <div className='w-full d-flex align-items-center consignment-flex'>
               <div className='w-full'>
-                <div className='xl-title text-uppercase text-center wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s">Exotic Car Consignment</div>
-                <div className='lg-title font-40 text-uppercase text-center fw-300 my-4 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.4s">Looking to sell your supercar?</div>
+                <div className='xl-title !text-3xl md:!text-5xl lg:!text-7xl!text-4xl md:!text-6xl text-uppercase text-center wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s">Exotic Car Consignment</div>
+                <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl !text-2xl md:!text-4xl font-40 text-uppercase text-center fw-300 my-4 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.4s">Looking to sell your supercar?</div>
                 <div className='text-center mt-5 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.6s">
                   <button type='button' className='black-btn get-started-btn w-240 text-uppercase' onClick={handleConsignmentModal}>Get Started</button>
                 </div>

@@ -37,7 +37,7 @@ const VehicleConsignmentInquiry = ({ close }) => {
         </button>
       </div>
       <div className="modal-body !p-6">
-        <div className="lg-title text-center text-black fw-400 pt-3 pb-4">Vehicle Consignment Inquiry</div>
+        <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-center text-black fw-400 pt-3 pb-4">Vehicle Consignment Inquiry</div>
         <div className="vci-box custom-form">
           <Formik
             initialValues={{ fullName: '', email: '', phone: '', year: '', make: '', model: '', comments: '', g_recaptcha_response: '' }}

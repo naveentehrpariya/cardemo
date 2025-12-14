@@ -11,7 +11,7 @@ export default function ThankYou() {
       <section className='thank-you-wrap'>
         <div className='container container-lg'>
           <div className='thank-you-block text-center'>
-            <h1 className='lg-title text-center mb-4'>
+            <h1 className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-center mb-4'>
               Thank you for your interest in Alpha One Motors <br/>
               Our representative will be in contact with you shortly.
             </h1>

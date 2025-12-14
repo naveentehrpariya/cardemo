@@ -4,27 +4,22 @@ import Image from 'next/image';
 const Footer = () => {
   return (
     <footer className="bg-black">
-      <div className="container-lg">
-        <div className="flex  items-start md:items-center justify-between !py-12 border-b-0">
+      <div className="container">
+        <div className="md:flex items-start md:items-center justify-between pb-6 md:!pb-12 !py-12 border-b-0">
           <div className="w-full md:w-auto mb-8 md:mb-0">
-            
-              <Link className='' href="/" prefetch={false}>
-                <Image
-                  src="/images/alpha-one-logo.webp"
-                  alt="Alpha One Motors"
-                  width={220}
-                  height={40}
-                  className="inline-block w-56 md:w-[220px] h-auto"
-                />
-              </Link>
-            <div className="!mt-[40px] sm-title font-16 mb-3">
-              <Link href="tel:5127771240">
-                <span className="text-gray">Sales:</span> (512) 777-1240
-              </Link>
+                <Link className='flex md:flex justify-center lg:justify-start ' href="/" prefetch={false}>
+                    <Image src="/images/alpha-one-logo.webp"
+                    alt="Alpha One Motors" width={220} height={40}
+                    className="inline-block w-56 md:w-[220px] h-auto" />
+                </Link>
+            <div className="flex md:flex justify-center md:justify-start sm-title font-16  !mb-4 md:!mb-0 !mt-4 md:!mb-4 ">
+                <Link href="tel:5127771240">
+                  <span className="text-gray">Sales:</span> (512) 777-1240
+                </Link>
             </div>
           </div>
 
-          <div className="w-full md:w-auto">
+          <div className="w-full md:w-auto  !mt-8 md:!mt-0">
             <div className="sm-title font-16 mb-4 uppercase fw-500 text-center md:!text-left">
               Store Hours
             </div>
@@ -52,11 +47,11 @@ const Footer = () => {
         </div>
 
         
-        <div className="flex flex-col md:flex-row items-center justify-between py-5 md:py-6">
-          <div className="font-helvetica text-base font-light tracking-tight text-white order-1 md:order-2">
+        <div className="flex flex-col md:flex-row   items-center !justify-center md:!justify-between py-5 md:py-6">
+          <div className="font-helvetica text-base font-light tracking-tight text-white    text-center lg:text-start">
             &copy; 2025 Alpha One Motors. All Rights Reserved.
           </div>
-          <div className="flex items-center gap-4 mb-6 md:mb-0 order-2 md:order-1">
+          <div className="flex items-center gap-4 mt-4 md:mt-0 mb-6 md:mb-0 ">
             <a
               href="https://www.facebook.com/alphaonemotors/"
               target="_blank"

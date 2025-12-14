@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
+import { useEffect, useState } from 'react';
+import Slider from 'react-slick';
 import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
 import Footer from '../components/Common/Footer';
@@ -57,33 +58,52 @@ const reviewsList = [
     },
 ];
 
-const Slider = dynamic(() => import('react-slick'), { ssr: false });
-
 export default function WhyUs() {
+    const [computedSlides, setComputedSlides] = useState(4);
+    useEffect(() => {
+        const updateSlides = () => {
+            const w = typeof window !== 'undefined' ? window.innerWidth : 1200;
+            if (w <= 768) setComputedSlides(1);
+            else if (w <= 992) setComputedSlides(2);
+            else if (w <= 1200) setComputedSlides(3);
+            else setComputedSlides(4);
+        };
+        updateSlides();
+        window.addEventListener('resize', updateSlides);
+        return () => window.removeEventListener('resize', updateSlides);
+    }, []);
     const sliderSettings = {
-        slidesToShow: 4,
+        dots: false,
+        arrows: true,
+        infinite: true,
+        speed: 500,
         autoplay: true,
         autoplaySpeed: 3000,
-        arrows: true,
-        dots: false,
+        slidesToShow: computedSlides,
+        slidesToScroll: 1,
         responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
             {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    dots: false,
-                }
+                },
             },
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    dots: false,
-                }
-            }
-        ]
+        ],
     };
 
     return (
@@ -101,10 +121,10 @@ export default function WhyUs() {
                 }}
             >
                 <div className="w-100">
-                    <div className="xl-title text-uppercase text-center font-80 letter-spacing-3 wow reveal fadeInUp">
+                    <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xl!text-3xl md:!text-5xl lg:!text-7xl text-uppercase text-center font-80 letter-spacing-3 wow reveal fadeInUp">
                         Why Choose Us
                     </div>
-                    <div className="lg-title font-40 text-uppercase text-center fw-300 mt-3 wow reveal fadeInUp">
+                    <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 text-uppercase text-center fw-300 mt-3 wow reveal fadeInUp">
                         We Know Luxury Automotive
                     </div>
                     <div className="text-center mt-5 wow reveal fadeInUp">
@@ -120,21 +140,21 @@ export default function WhyUs() {
                     <div className="d-md-flex align-items-center justify-content-between">
                         <div className="aiw-col wow reveal fadeIn">
                             <div className="d-inline-flex align-items-center">
-                                <div className="xl-title text-uppercase pe-3">+5k</div>
+                                <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase pe-3 !text-3xl md:!text-5xl">+5k</div>
                                 <div className="sm-title fw-500">Customers Served</div>
                             </div>
                         </div>
                         <div className="aiw-sep d-none d-md-block wow reveal fadeIn"></div>
                         <div className="aiw-col wow reveal fadeIn">
                             <div className="d-inline-flex align-items-center">
-                                <div className="xl-title text-uppercase pe-3">4.7</div>
+                                <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase pe-3 !text-3xl md:!text-5xl">4.7</div>
                                 <div className="sm-title fw-500">Google Rating</div>
                             </div>
                         </div>
                         <div className="aiw-sep d-none d-md-block wow reveal fadeIn"></div>
                         <div className="aiw-col wow reveal fadeIn">
                             <div className="d-inline-flex align-items-center">
-                                <div className="xl-title text-uppercase pe-3">193</div>
+                                <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase pe-3 !text-3xl md:!text-5xl">193</div>
                                 <div className="sm-title fw-500">Google Reviews</div>
                             </div>
                         </div>
@@ -149,7 +169,7 @@ export default function WhyUs() {
                     </div>
                     <div className="aw-right w-50 wow reveal fadeInRight">
                         <div className="mxw-560">
-                            <div className="lg-title text-uppercase mb-lg-4 mb-3">We Know Luxury Automotive!</div>
+                            <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-uppercase mb-lg-4 mb-3 !text-[23px] !text-4xl">We Know Luxury Automotive!</div>
                             <div className="common-text">
                                 <p>Alpha One Motors is redefining the luxury automotive experience. We now focus on acquiring the finest exotic and luxury vehicles directly from private owners, ensuring a seamless, trusted selling process. For buyers, we offer a highly curated, exclusive inventory — hand-selected to represent only the best in class. Fewer cars. Higher standards. A sharper focus on excellence.</p>
 
@@ -170,7 +190,7 @@ export default function WhyUs() {
                     </div>
                     <div className="aw-right w-50 wow reveal fadeInLeft">
                         <div className="mxw-560">
-                            <div className="lg-title text-uppercase mb-lg-4 mb-3">Ready to Sell Your Exotic Car?</div>
+                            <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-uppercase mb-lg-4 mb-3 !text-[23px] !text-4xl">Ready to Sell Your Exotic Car?</div>
                             <div className="common-text">
                                 <p>Trust Alpha One Motors for Top Value. In today&apos;s luxury car market, savvy sellers know to check a vehicle&apos;s history with Carfax. So why settle for less than the best offer when trading in your exotic car? At Alpha One Motors, we specialize in high-end vehicles, ensuring you get the maximum value for your sale.</p>
 
@@ -185,10 +205,10 @@ export default function WhyUs() {
 
             <section className="customer-served-wrap">
                 <div className="container">
-                    <div className="xl-title text-uppercase mb-2 wow reveal fadeInUp">
-                        Don't Take our Word for it!
+                    <div className="xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase mb-2 wow reveal fadeInUp">
+                        Don&apos;t Take our Word for it!
                     </div>
-                    <div className="lg-title fw-normal text-center font-40 mb-5 text-uppercase wow reveal fadeInUp">
+                    <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl !text-xl md:!text-3xl fw-normal text-center font-40 mb-5 text-uppercase wow reveal fadeInUp">
                         See what our Customers Have to Say!
                     </div>
                     <div className="mt-70 wow reveal fadeInUp">
@@ -197,7 +217,7 @@ export default function WhyUs() {
                                 <div key={index}>
                                     <div className="wbe-cs-box">
                                         <div className="flex items-center justify-between mb-2">
-                                            <div className="flex items-center">
+                                            <div className="flex items-center gap-2">
                                                 <div className="wbe-cs-circle" style={{ backgroundColor: review.bgColor }}>
                                                     {review.name?.charAt(0).toUpperCase()}
                                                 </div>
@@ -209,7 +229,7 @@ export default function WhyUs() {
                                                 <Image src="/images/icon.svg" alt="Google" width={24} height={24} />
                                             </div>
                                         </div>
-                                        <div className="wbe-cs-rating mb-2">
+                                        <div className="flex gap-1 wbe-cs-rating mb-2">
                                             <Image className="inline-block star-icon" src="/images/star.svg" alt="star" width={16} height={16} />
                                             <Image className="inline-block star-icon" src="/images/star.svg" alt="star" width={16} height={16} />
                                             <Image className="inline-block star-icon" src="/images/star.svg" alt="star" width={16} height={16} />

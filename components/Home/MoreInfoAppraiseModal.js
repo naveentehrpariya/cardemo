@@ -72,15 +72,15 @@ const MoreInfoAppraiseModal = ({ close, appraisalContactInfo, outerFormikRef }) 
   };
 
   return (
-    <div className="modal-content border-0">
+    <div className="modal-content border-0 !rounded-lg top-[10vh] max-h-[80vh] overflow-auto">
       <div className="modal-header bg-black">
-        <h1 className="modal-title filter-modal-title !text-lg !text-center w-full">Thank You</h1>
+        <h1 className="!sticky !top-0 bg-black modal-title filter-modal-title !text-lg !text-center w-full">Thank You</h1>
         <button className="sm-box-close" type="button" onClick={close}>
           <img src={getImages('white-close.svg')} />
         </button>
       </div>
-      <div className="modal-body py-4 px-120">
-        <div className="lg-title text-center text-black fw-400 pt-3 pb-4">
+      <div className="modal-body  py-4 px-120">
+        <div className="lg-title  !text-2xl md:!text-3xl lg:!text-5xl text-center text-black fw-400 pt-3 pb-4">
           We need a little more info to appraise your vehicle
         </div>
         <div className="vci-box custom-form">
