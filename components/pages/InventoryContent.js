@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import SrpLeft from '../Srp/SrpLeft';
+import Image from 'next/image';
 import { VehicleContext } from '../../context/VehicleContext';
 import SearchComponent from '../Srp/SearchComponent';
 import { getImages } from '../Common/const';
@@ -370,7 +371,13 @@ export default function Inventory() {
                                                                     return (
                                                                         <div onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)} key={"vdp" + j}>
                                                                             <div className='inner'>
-                                                                                <img src={photo} alt={`${item.year} ${item.make} ${item.model}`} onError={(e) => { e.target.src = getImages("unavailable_stockphoto.avif") }} />
+                                                                                <Image 
+                                                                                    src={photo}
+                                                                                    alt={`${item.year} ${item.make} ${item.model}`}
+                                                                                    width={800}
+                                                                                    height={533}
+                                                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                                                />
                                                                             </div>
                                                                         </div>
                                                                     )
@@ -379,7 +386,7 @@ export default function Inventory() {
                                                         </>
                                                         :
                                                         <div style={{ cursor: 'pointer' }} onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)} key={"vdp" + index}>
-                                                            <img src={getImages('srp_coming_soon.webp')} alt='' />
+                                                            <Image src={getImages('srp_coming_soon.webp')} alt='' width={800} height={533} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
                                                         </div>
                                                     }
                                                 </div>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState, Suspense } from 'react'
 import Link from 'next/link';
 import Slider from "react-slick";
+import Image from 'next/image';
 import { getImages } from '../components/Common/const'
 import ModalLayout from '../components/Common/ModalLayout'
 import { VehicleContext } from '../context/VehicleContext';
@@ -193,7 +194,7 @@ const SellMyExotic = () => {
                     backgroundImage: `url(${getImages('sell-exotic-hero.webp')})`
                 }}
             >
-                <img src={getImages('sell-exotic-hero.webp')} alt="" width="0" height="0" style={{display: "none !important"}} fetchPriority="high"/>
+                <Image src={getImages('sell-exotic-hero.webp')} alt="" width={1600} height={900} priority style={{display: 'none'}} />
                 <div className='w-100'>
                     <div className='xl-title !text-3xl md:!text-5xl lg:!text-7xltext-uppercase text-center font-80 letter-spacing-3 wow reveal fadeInUp'>SAME DAY OFFERS</div>
                     <div className='lg-title  !text-2xl md:!text-3xl lg:!text-5xl font-40 text-uppercase text-center fw-300 mt-3 wow reveal fadeInUp'>Enjoy our stress-free process</div>

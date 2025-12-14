@@ -4,6 +4,7 @@ import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
 import ContactForm from '../components/Common/ContactForm';
 import { getImages } from '../components/Common/const';
+import Image from 'next/image';
 
 export default function ContactUs() {
     useEffect(() => {
@@ -36,16 +37,16 @@ export default function ContactUs() {
                             <div className='contact-black-box wow reveal fadeIn'>
                                 <div className='xs-title font-1-4em eurostile fw-bold mb-4 wow reveal fadeInUp'>AUSTIN OFFICE</div>
                                 <div className='d-flex align-items-center mb-4 wow reveal fadeInUp'>
-                                    <div className='cb-icon'><img src={getImages('local-phone-material.png')} alt='phone'/></div> 
+                                    <div className='cb-icon'><Image src={getImages('local-phone-material.png')} alt='phone' width={24} height={24} /></div> 
                                     <div className='xs-title font-1-1em eurostile fw-bold'>512-777-1240</div>
                                 </div>
                                 <div className='d-flex align-items-center wow reveal fadeInUp'>
-                                    <div className='cb-icon'><img src={getImages('contact-location-icon.svg')} alt='location'/></div> 
+                                    <div className='cb-icon'><Image src={getImages('contact-location-icon.svg')} alt='location' width={24} height={24} /></div> 
                                     <div className='xs-title fw-400'>8140 N. Mopac Suite 4-150 Austin, TX 78759</div>
                                 </div>
                             </div>
                             <div className='wow reveal fadeInUp'>
-                                <iframe src="https://snazzymaps.com/embed/744745" width="100%" height="380px" style={{border:'none'}} title='Alpha One Motors Location'></iframe>
+                                <iframe src="https://snazzymaps.com/embed/744745" width="100%" height="380px" style={{border:'none'}} title='Alpha One Motors Location' loading="lazy"></iframe>
                             </div>
                         </div>
                     </div>
