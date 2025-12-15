@@ -1012,6 +1012,12 @@
         width: 43px;
         height: 24px;
     }
+    .vdpa-table tr th {
+        width: 40%;
+    }
+    .vdpa-table tr td {
+        width: 60%;
+    }
     .vdpa-box .lg-title   {
         letter-spacing: 1.29px !important;
         font-weight: bold !important;

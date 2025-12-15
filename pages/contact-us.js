@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import Header from '../components/Common/Header';
 import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
@@ -24,14 +23,16 @@ export default function ContactUs() {
             >
                 <Image src={getImages('contact-hero.webp')} alt="" width={1600} height={900} sizes="100vw" priority style={{display:'none'}} />
                 <div className='container'>
-                    <div className='xl-title contact-title1 text-start text-uppercase letter-spacing-3 mb-3'>Contact Us</div>
-                    <div className='xs-title contact-title2 text-uppercase eurostile fw-300 font-1-4em letter-spacing-1 mb-md-5 mb-4 pb-md-4'>Drop us a line, we\'d love to hear from you</div>
+                    <div className='xl-title contact-title1 text-start text-uppercase letter-spacing-3 mb-3 wow fadeIn'>Contact Us</div>
+                    <div className='xs-title contact-title2 text-uppercase eurostile fw-300 font-1-4em letter-spacing-1 mb-md-5 mb-4 pb-md-4 wow fadeIn'>{"Drop us a line, we'd love to hear from you"}</div>
                     <div className='row mlr-50'>
                         <div className='col-md-6 order-md-2'>
-                            <ContactForm/>
+                            <div className='wow fadeInUp'>
+                                <ContactForm/>
+                            </div>
                         </div>
                         <div className='col-md-6'>
-                            <div className='contact-black-box cv-auto'>
+                            <div className='contact-black-box cv-auto wow fadeInUp'>
                                 <div className='xs-title font-1-4em eurostile fw-bold mb-4'>AUSTIN OFFICE</div>
                                 <div className='d-flex align-items-center mb-4'>
                                     <div className='cb-icon'><Image src={getImages('local-phone-material.png')} alt='phone' width={24} height={24} /></div> 
