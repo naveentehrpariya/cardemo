@@ -64,8 +64,7 @@ const SellMyExoticReviews = () => {
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 2,
-        autoplay: true,
-        autoplaySpeed: 3000,
+        autoplay: false,
         arrows: true,
         responsive: [
             {
@@ -81,9 +80,9 @@ const SellMyExoticReviews = () => {
     return (
         <section className='reviews-wrap'>
             <div className='container'>
-                <div className='hpb-xs-title text-uppercase mb-3'>Recent</div>
-                <div className='lg-title text-center font-40 text-uppercase mb-md-5 mb-4'>Google Reviews</div>
-                <div>
+                <div className='fading hpb-xs-title text-uppercase mb-3'>Recent</div>
+                <div className='fading lg-title text-center font-40 text-uppercase mb-md-5 mb-4'>Google Reviews</div>
+                <div className='fading'>
                     <Slider ref={sliderRef} {...settings} className='review-slider'>
                         {reviewsList.map((review, index) => (
                             <div className="review-item" key={index}>

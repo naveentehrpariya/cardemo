@@ -107,7 +107,7 @@ const SellMyExotic = () => {
                 <div className='container'>
                 <div className='hassle-process-box d-md-flex cv-auto'>
                     <div className='hpb-right w-50 order-2'>
-                            <div className='xl-title text-uppercase mb-md-5 mb-4 text-center'>NO HASSLE <br />PROCESS</div>
+                            <div className='fading xl-title text-uppercase mb-md-5 mb-4 text-center'>NO HASSLE <br />PROCESS</div>
                         <div ref={formRef}>
                             {formReady && (
                                 <MyVehicleForm
@@ -117,29 +117,29 @@ const SellMyExotic = () => {
                                     />
                                 )}
                             </div>
-                            <div className='sm-title text-center roboto mt-100 fw-500 text-white'>Simple, Fast & Free</div>
-                            <div className='text-center pt-3'>
+                            <div className='fading sm-title text-center roboto mt-100 fw-500 text-white'>Simple, Fast & Free</div>
+                            <div className='fading text-center pt-3'>
                                     <span className='px-5 d-inline-block hpb-border-t pt-3'>
                                         <Image src={getImages('tg-logo-bw.png')} alt='Trade Group' width={120} height={36} />
                                     </span>
                             </div>
                         </div>
                     <div className='hpb-left w-50'>
-                        <div className='hpb-xs-title text-uppercase text-orange mb-3'>Call</div>
-                        <div className='text-center'>
+                        <div className='fading  hpb-xs-title text-uppercase text-orange mb-3'>Call</div>
+                        <div className='fading text-center'>
                                 <a href='tel:5127771240' className='lg-title call-text-title text-white font-40 fw-700'>512-777-1240</a>
                         </div>
-                        <div className='md-title font-1-9em text-center text-white fw-300 text-uppercase mt-md-5 mt-4 mb-md-4 mb-3'>How Our Process Works</div>
+                        <div className=' fading md-title font-1-9em text-center text-white fw-300 text-uppercase mt-md-5 mt-4 mb-md-4 mb-3'>How Our Process Works</div>
                         <div className='hpb-process-list'>
-                            <div className='d-flex align-items-center'>
+                            <div className=' fading d-flex align-items-center'>
                                 <div className='hpb-circle me-3'>1</div>
                                     <div className='xs-title text-uppercase'>SUBMIT YOUR VEHICLE INFO</div>
                                 </div>
-                                <div className='d-flex align-items-center'>
+                                <div className=' fading d-flex align-items-center'>
                                     <div className='hpb-circle me-3'>2</div>
                                     <div className='xs-title text-uppercase'>RECEIVE A SAME DAY APPRAISAL</div>
                                 </div>
-                                <div className='d-flex align-items-center'>
+                                <div className=' fading d-flex align-items-center'>
                                     <div className='hpb-circle me-3'>3</div>
                                     <div className='xs-title text-uppercase'>FINALIZE WITH OUR FRIENDLY STAFF</div>
                                 </div>
@@ -149,11 +149,10 @@ const SellMyExotic = () => {
                 </div>
             </section>
             
-            {/* <LazyLoadSection rootMargin="200px" height="500px"> */}
+            <LazyLoadSection rootMargin="200px" height="500px">
                 <SellMyExoticReviews />
-            {/* </LazyLoadSection> */}
+            </LazyLoadSection>
 
-            <LazyLoadSection rootMargin="200px" height="600px">
             <section className='sell-or-trade-wrap'>
                 <div className='container'>
                     <div className='d-lg-flex justify-content-between sot-flex'>
@@ -178,7 +177,6 @@ const SellMyExotic = () => {
                     </div>
                 </div>
             </section>
-            </LazyLoadSection>
             </main>
             
             <LazyLoadSection rootMargin="200px">

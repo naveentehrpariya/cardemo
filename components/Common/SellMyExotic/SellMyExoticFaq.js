@@ -82,10 +82,10 @@ const SellMyExoticFaq = () => {
                         const isOpen = activeIndex === index;
 
                         return (
-                            <div className="accordion-item" key={index}>
+                            <div className="accordion-item fading" key={index}>
                                 <h2 className="accordion-header   " id={headingId}>
                                     <button
-                                        className={`accordion-button${isOpen ? '' : ' collapsed'} !p-3 md:!p-3 lg:!p-5 font-euro`}
+                                        className={` accordion-button${isOpen ? '' : ' collapsed'} !p-3 md:!p-3 lg:!p-5 font-euro`}
                                         type="button"
                                         aria-expanded={isOpen ? 'true' : 'false'}
                                         aria-controls={collapseId}
