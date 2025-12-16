@@ -289,7 +289,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='insta-wrap wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s" ref={section1Ref}>
+      <section className=' insta-wrap wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s" ref={section1Ref}>
         <InstagramFeed/>
       </section>
 
