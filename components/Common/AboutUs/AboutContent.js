@@ -15,7 +15,6 @@ const AboutContent = () => {
                         height={600} 
                         sizes="(max-width: 768px) 100vw, 1100px"
                         style={{ width: '100%', height: 'auto' }}
-                        priority
                     />
                     <div className="d-flex align-items-center justify-content-between atb-flex">
                         <div className="fading md-title font-1-4em text-uppercase pe-3">Jeff Ahlfors</div>
