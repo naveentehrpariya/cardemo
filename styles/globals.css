@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@keyframes fading-effect {
+  from {
+    opacity: 0;
+    box-shadow: none;
+    transform: scale(.8) translateY(8vh);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .fading {
+      animation: fading-effect both;
+      animation-timeline: view();
+      animation-range: contain 0% contain 30%;
+    }
+  }
+}
+
+
 /* Font Face Declarations */
 @font-face {
   font-family: 'HelveticaNeue';
@@ -1285,7 +1303,6 @@ img {
 }
 
 .about-team-wrap,
-.about-wrap,
 .body-overflow,
 .contact-wrap,
 .wbe-cs-content {

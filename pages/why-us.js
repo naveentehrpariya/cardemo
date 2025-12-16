@@ -29,18 +29,18 @@ export default function WhyUs() {
                     src={getImages('about-hero.webp')} 
                     alt="Why Choose Us" 
                     fill
-                    priority
+                    priority 
                     sizes="100vw"
                     style={{ objectFit: 'cover', zIndex: -1 }}
                 />
                 <div className="w-100" style={{ zIndex: 1 }}>
-                    <div className="xl-title text-uppercase text-center font-80 letter-spacing-3">
+                    <div className=" xl-title text-uppercase text-center font-80 letter-spacing-3">
                         Why Choose Us
                     </div>
-                    <div className="lg-title font-40 text-uppercase text-center fw-300 mt-3">
+                    <div className=" lg-title font-40 text-uppercase text-center fw-300 mt-3">
                         We Know Luxury Automotive
                     </div>
-                    <div className="text-center mt-5">
+                    <div className=" text-center mt-5">
                         <Link href="/sell-my-exotic" prefetch={false} className="black-btn get-started-btn w-240 text-uppercase">
                             GET My Cash Offer
                         </Link>
@@ -48,10 +48,10 @@ export default function WhyUs() {
                 </div>
             </section>
             <main role="main">
-                <LazyLoadSection rootMargin="200px" height="800px">
+                <LazyLoadSection rootMargin="300px" height="1000px">
                     <WhyUsContent />
                 </LazyLoadSection>
-                <LazyLoadSection rootMargin="200px" height="500px">
+                <LazyLoadSection rootMargin="300px" height="800px">
                     <WhyUsReviews />
                 </LazyLoadSection>
             </main>

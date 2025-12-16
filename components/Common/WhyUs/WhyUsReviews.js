@@ -91,37 +91,37 @@ const WhyUsReviews = () => {
     return (
         <section className="customer-served-wrap cv-auto">
             <div className="container">
-                <div className="xl-title text-uppercase mb-2">
+                <div className="fading xl-title text-uppercase mb-2">
                     Don't Take our Word for it!
                 </div>
-                <div className="lg-title fw-normal text-center font-40 mb-5 text-uppercase">
+                <div className="fading lg-title fw-normal text-center font-40 mb-5 text-uppercase">
                     See what our Customers Have to Say!
                 </div>
-                <div className="mt-70">
+                <div className="mt-70 fading">
                     <Slider {...settings} className="wbecs-slider">
                         {reviewsList.map((review, index) => (
                             <div key={index}>
                                 <div className="wbe-cs-box">
                                     <div className="flex items-center justify-content-between mb-2">
                                         <div className="flex items-center gap-2">
-                                            <div className="wbe-cs-circle" style={{ backgroundColor: review.bgColor }}>
+                                            <div className="fading wbe-cs-circle" style={{ backgroundColor: review.bgColor }}>
                                                 {review.name?.charAt(0).toUpperCase()}
                                             </div>
-                                            <div className="pl-3">
+                                            <div className="fading pl-3">
                                                 <div className="xs-title font-bold text-black helveticaneue">{review.name}</div>
                                             </div>
                                         </div>
-                                        <div className="g-icon">
+                                        <div className="fading g-icon">
                                             <img src={getImages('icon.svg')} alt="Google" />
                                         </div>
                                     </div>
                                     <div className="flex gap-1 wbe-cs-rating mb-2">
-                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="inline-block verify-icon ml-2" src={getImages('ti-verified.svg')} alt="verified" />
+                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="fading inline-block verify-icon ml-2" src={getImages('ti-verified.svg')} alt="verified" />
                                     </div>
                                     <div className="mb-1 wbe-cs-content">
                                         <p>{review.content}</p>
@@ -136,7 +136,7 @@ const WhyUsReviews = () => {
                         ))}
                     </Slider>
                 </div>
-                <div className="text-center mt-75">
+                <div className="fading text-center mt-75">
                     <a href="https://share.google/erYHCMlUwduOzew3b" target="_blank" rel="noopener noreferrer" className="black-btn get-started-btn font-bold uppercase w-330 inline-block lg-btn">
                         Read Reviews
                     </a>
