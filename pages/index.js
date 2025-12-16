@@ -6,6 +6,7 @@ import { getImages } from '@/components/Common/const';
 import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
 import Header from '@/components/Common/Header';
 import Footer from '@/components/Common/Footer';
+import LazyLoadSection from '@/components/Common/LazyLoadSection';
 
 const ExoticConsignment = dynamic(() => import('@/components/Home/ExoticConsignment'), { ssr: false });
 const HomeRateAbout = dynamic(() => import('@/components/Home/HomeRateAbout'), { ssr: false });
@@ -198,7 +199,9 @@ export default function Home() {
       <HomeRateAbout />
 
       <section className=' insta-wrap wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s" ref={section1Ref}>
-        <InstagramFeed/>
+        <LazyLoadSection rootMargin="600px">
+          <InstagramFeed/>
+        </LazyLoadSection>
       </section>
 
       <Footer />

@@ -1,13 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import { getImages } from '@/components/Common/const';
+import WowElement from '../Common/WowElement';
 
 const HomeRateAbout = () => {
   return (
     <section className='rate-about-wrap'>
       <div className='container container-lg'>
         <div className='row px-3 md:px-0'>
-          <div className='col-md-6 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s">
+          <WowElement className='col-md-6 wow fadeInUp' duration="1s" delay="0.2s">
             <div className='text-center lg:text-start text-xl md:text-2xl font-euro text-uppercase mb-4'>Highly Ranked by Customers</div>
             <div className='rating-box'>
               <div className='d-flex align-items-center justify-content-between mb-3'>
@@ -94,8 +95,8 @@ const HomeRateAbout = () => {
                 <div className='w-50px'>0</div>
               </div>
             </div>
-          </div>
-          <div className='col-md-6 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.4s">
+          </WowElement>
+          <WowElement className='col-md-6 wow fadeInUp' duration="1s" delay="0.4s">
             <div className='lg-title text-uppercase mb-4'>OUR PASSION</div>
             <div className='about-box'>
               <div className='about-image'>
@@ -104,7 +105,7 @@ const HomeRateAbout = () => {
               <div className='about-content'>Our passion is sharing our love for elite cars with incredible people. We put reputation above all else. Our network of investors and collectors ensure you get the most value on any appraisal you bring us. We cut out the middleman and connect investors across the country.
               </div>
             </div>
-          </div>
+          </WowElement>
         </div>
       </div>
     </section>
