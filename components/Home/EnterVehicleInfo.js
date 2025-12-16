@@ -1,11 +1,20 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import ReCAPTCHA from 'react-google-recaptcha';
+import dynamic from 'next/dynamic';
+
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 
 const EnterVehicleInfo = ({ setOpenMoreInfoModal, setAppraisalContactInfo, formikRef }) => {
   const [step, setStep] = useState(1);
   const recaptchaRef = useRef(null);
+  const [loadRecaptcha, setLoadRecaptcha] = useState(false);
+
+  useEffect(() => {
+    if (step === 2) {
+      setLoadRecaptcha(true);
+    }
+  }, [step]);
 
   const getValidationSchema = (currentStep) => {
     return Yup.object().shape({

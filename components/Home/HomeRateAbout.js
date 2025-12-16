@@ -99,7 +99,7 @@ const HomeRateAbout = () => {
             <div className='lg-title text-uppercase mb-4'>OUR PASSION</div>
             <div className='about-box'>
               <div className='about-image'>
-                <Image src={getImages('porche.jpg')} alt="Our Passion" width={600} height={400} style={{ width: '100%', height: 'auto' }} />
+                <Image src={getImages('porche.jpg')} alt="Our Passion" width={600} height={400} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
               </div>
               <div className='about-content'>Our passion is sharing our love for elite cars with incredible people. We put reputation above all else. Our network of investors and collectors ensure you get the most value on any appraisal you bring us. We cut out the middleman and connect investors across the country.
               </div>

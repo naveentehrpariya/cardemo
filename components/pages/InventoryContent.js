@@ -332,67 +332,12 @@ export default function Inventory() {
                                         {filteredVehicleData &&
                                     filteredVehicleData.sort((a, b) => (b[sortColumn] - a[sortColumn]) * sortOrder).map((item, index) => (
                                         <div className='col-xl-4 col-sm-6 col-12' key={index}>
-                                            <div className='srp-box'
-                                                onMouseEnter={() => handleMouseEnter(index)}
-                                                onMouseLeave={handleMouseLeave}
-                                            >
-                                                {/* {console.log("item", item)} */}
-                                                <div className='srp-top'>
-                                                    {item.images.length > 0 ?
-                                                        <>
-                                                            {/* {(item.images.length > 2 && (isSlMobile || hoveredIndex === index)) ? ( */}             
-                                                            {/* {console.log("item.images", item.images[0])} */}
-                                                            <Slider className='srp-slider' {...srpCarSlider} >
-                                                                {item.images && item.images.map((photo, j) => {
-                                                                    if (j > 2) return false;
-                                                                    return (
-                                                                        <div onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)} key={"vdp" + j}>
-                                                                            <div className='inner'>
-                                                                                <Image 
-                                                                                    src={photo}
-                                                                                    alt={`${item.year} ${item.make} ${item.model}`}
-                                                                                    width={800}
-                                                                                    height={533}
-                                                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                                                />
-                                                                            </div>
-                                                                        </div>
-                                                                    )
-                                                                })}
-                                                            </Slider>
-                                                        </>
-                                                        :
-                                                        <div style={{ cursor: 'pointer' }} onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)} key={"vdp" + index}>
-                                                            <Image src={getImages('srp_coming_soon.webp')} alt='' width={800} height={533} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
-                                                        </div>
-                                                    }
-                                                </div>
-                                                <div className='srp-bottom'>
-                                                    <div className='srpb-title1'>{item.year} {item.make} {item.model}</div>
-                                                    <div className='srpb-title2'>{item.trim || '\u00A0'}</div>
-                                                    <div className='xs-title font-0-9em fw-400 mb-2 srpt-desc'>{item.desc}</div>
-                                                    <div className='d-flex align-items-center justify-content-between'>
-                                                        <div className='d-flex align-items-center'>
-                                                            {item?.carColors?.length > 0 && (
-                                                                <div className='position-relative sr-color-block me-3'>
-                                                                    {item.carColors?.map((colorItem, colorIndex) => (
-                                                                        <span
-                                                                            key={colorIndex}
-                                                                            className="sr-color"
-                                                                            style={{ background: colorItem }}
-                                                                        ></span>
-                                                                    ))}
-                                                                </div>
-                                                            )}
-                                                            <div className='srpb-mileage'>{priceFormatter(item.mileage)}mi</div>
-                                                        </div>
-                                                        <div className='srpb-price'>{priceFormatter(item.price, true)}</div>
-                                                    </div>
-                                                    <div className='mt-2'>
-                                                        <button className='white-btn w-100 d-block text-uppercase' type='button' onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)}>View</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <InventoryItem 
+                                                item={item} 
+                                                openVDP={openVDP} 
+                                                priceFormatter={priceFormatter} 
+                                                isSlMobile={isSlMobile}
+                                            />
                                         </div>
                                     ))
                                 }
