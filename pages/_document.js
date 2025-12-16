@@ -42,7 +42,11 @@ export default function Document() {
         <link rel="preload" as="font" href="/fonts/EurostileRegular.woff2" type="font/woff2" crossOrigin="anonymous" />
         
         {/* Self-hosted Lato fonts */}
-        <link rel="stylesheet" href="/fonts/lato/lato.css" />
+        <link rel="preload" href="/fonts/lato/lato.css" as="style" />
+        <link rel="stylesheet" href="/fonts/lato/lato.css" media="print" onLoad="this.media='all'" />
+        <noscript>
+            <link rel="stylesheet" href="/fonts/lato/lato.css" />
+        </noscript>
         
       </Head>
       <body>

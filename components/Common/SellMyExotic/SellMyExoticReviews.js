@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { getImages } from '../../Common/const';
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false });

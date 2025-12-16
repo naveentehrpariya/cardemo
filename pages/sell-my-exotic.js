@@ -73,7 +73,6 @@ const SellMyExotic = () => {
     return (
         <>
             <Head>
-                <link rel="preload" as="image" href={getImages('sell-exotic-hero.webp')} />
             </Head>
             <Header />
             <SeoMeta
