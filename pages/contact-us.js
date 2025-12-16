@@ -1,9 +1,12 @@
 import Header from '../components/Common/Header';
 import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
-import ContactForm from '../components/Common/ContactForm';
 import { getImages } from '../components/Common/const';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+
+const ContactForm = dynamic(() => import('../components/Common/ContactForm'), { ssr: false });
+const ContactInfo = dynamic(() => import('../components/Common/ContactUs/ContactInfo'), { ssr: false });
 
 export default function ContactUs() {
     

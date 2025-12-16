@@ -1,14 +1,18 @@
 import { useRef, useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
 import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
 import Header from '@/components/Common/Header';
 import Footer from '@/components/Common/Footer';
-import ModalLayout from '@/components/Common/ModalLayout';
-import VehicleConsignmentInquiry from '@/components/Home/VehicleConsignmentInquiry';
-import MoreInfoAppraiseModal from '@/components/Home/MoreInfoAppraiseModal';
-import InstagramFeed from '@/components/Home/InstagramFeed';
-import ExoticConsignment from '@/components/Home/ExoticConsignment';
+
+const ExoticConsignment = dynamic(() => import('@/components/Home/ExoticConsignment'), { ssr: false });
+const HomeRateAbout = dynamic(() => import('@/components/Home/HomeRateAbout'), { ssr: false });
+const ModalLayout = dynamic(() => import('@/components/Common/ModalLayout'), { ssr: false });
+const VehicleConsignmentInquiry = dynamic(() => import('@/components/Home/VehicleConsignmentInquiry'), { ssr: false });
+const MoreInfoAppraiseModal = dynamic(() => import('@/components/Home/MoreInfoAppraiseModal'), { ssr: false });
+const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), { ssr: false });
 
 export default function Home() {
   const section1Ref = useRef(null);
@@ -55,8 +59,15 @@ export default function Home() {
       <Header secref={section2Ref} />
 
       <section className='banner-wrap'>
-        <div className="slideshow">
-          <div className="slideshow-image" style={{backgroundImage: `url(${getImages('banner-image.webp')})`}}></div>
+        <div className="slideshow" style={{ position: 'relative' }}>
+          <Image 
+            src={getImages('banner-image.webp')} 
+            alt="Banner" 
+            fill 
+            priority 
+            className="slideshow-image"
+            style={{ objectFit: 'cover' }} 
+          />
         </div>
         <div className='banner-shadow'></div>
         <div className='banner-pos'>
@@ -72,7 +83,7 @@ export default function Home() {
       <section className='facility-wrap'>
         <div className='d-flex facility-flex'>
           <div className='facility-col wow fadeIn' data-wow-delay="0.2s">
-            <img src={getImages('facility-image1.jpg')} alt="Our Latest" loading="lazy" />
+            <Image src={getImages('facility-image1.jpg')} alt="Our Latest" width={800} height={600} style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Our <br />LATEST</div>
@@ -85,7 +96,7 @@ export default function Home() {
             </div>
           </div>
           <div className='facility-col wow fadeIn' data-wow-delay="0.4s">
-            <img src={getImages('facility-image2.jpg')} alt="Get Your Cash Offer" loading="lazy" />
+            <Image src={getImages('facility-image2.jpg')} alt="Get Your Cash Offer" width={800} height={600} style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Get Your <br />Cash Offer</div>
@@ -98,7 +109,7 @@ export default function Home() {
             </div>
           </div>
           <div className='facility-col wow fadeIn' data-wow-delay="0.6s">
-            <img src={getImages('facility-image3.jpg')} alt="Consignment Services" loading="lazy" />
+            <Image src={getImages('facility-image3.jpg')} alt="Consignment Services" width={800} height={600} style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Consignment <br />Services</div>
@@ -157,7 +168,7 @@ export default function Home() {
             <div className='col-md-6 wow fadeInLeft' data-wow-duration="1s" data-wow-delay="0.2s">
               <div className='black-box d-flex align-items-center'>
                 <div>
-                  <img src={getImages('ao-ford-logo.png')} alt="Alpha One Ford" loading="lazy" />
+                  <Image src={getImages('ao-ford-logo.png')} alt="Alpha One Ford" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                 </div>
                 <div className='ps-4'>
                   <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Ford</div>
@@ -170,7 +181,7 @@ export default function Home() {
             <div className='col-md-6 wow fadeInRight' data-wow-duration="1s" data-wow-delay="0.4s">
               <div className='black-box d-flex align-items-center'>
                 <div>
-                  <img src={getImages('ao-chv-logo.png')} alt="Alpha One Chevrolet" loading="lazy" />
+                  <Image src={getImages('ao-chv-logo.png')} alt="Alpha One Chevrolet" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                 </div>
                 <div className='ps-4'>
                   <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Chevrolet</div>
@@ -184,110 +195,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='rate-about-wrap'>
-        <div className='container container-lg'>
-          <div className='row px-3 md:px-0'>
-            <div className='col-md-6 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s">
-              <div className='text-center lg:text-start text-xl md:text-2xl font-euro text-uppercase mb-4'>Highly Ranked by Customers</div>
-              <div className='rating-box'>
-                <div className='d-flex align-items-center justify-content-between mb-3'>
-                  <div className='xl-title helveticaneue'>4.9</div>
-                  <div className='google-icon flex justify-content-center align-items-center'>
-                    <img src={getImages('google-logo.png')} alt='Google' loading="lazy" />
-                  </div>
-                </div>
-                <div className='d-flex align-items-center justify-content-between mb-3'>
-                  <div className='star-icons flex'>
-                    <img className="me-1" src={getImages('star-off.svg')} alt='star' />
-                    <img className="me-1" src={getImages('star-off.svg')} alt='star' />
-                    <img className="me-1" src={getImages('star-off.svg')} alt='star' />
-                    <img className="me-1" src={getImages('star-off.svg')} alt='star' />
-                    <img className="me-1" src={getImages('star-off.svg')} alt='star' />
-                  </div>
-                  <div className='total-review-count'>
-                    194 Reviews
-                  </div>
-                </div>
-                <div className="d-flex align-items-center rating-progress-flex">
-                  <div className='w-50px'>
-                    <div>5 Star</div>
-                  </div>
-                  <div className='cs-progress ms-2 me-3'>
-                    <div className="progress">
-                      <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style={{ width: "178%" }}>
-                        <span className="sr-only"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='w-50px'>178</div>
-                </div>
-                <div className="d-flex align-items-center rating-progress-flex">
-                  <div className='w-50px'>
-                    <div>4 Star</div>
-                  </div>
-                  <div className='cs-progress ms-2 me-3'>
-                    <div className="progress">
-                      <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style={{ width: "3%" }}>
-                        <span className="sr-only"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='w-50px'>3</div>
-                </div>
-                <div className="d-flex align-items-center rating-progress-flex">
-                  <div className='w-50px'>
-                    <div>3 Star</div>
-                  </div>
-                  <div className='cs-progress ms-2 me-3'>
-                    <div className="progress">
-                      <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style={{ width: "5%" }}>
-                        <span className="sr-only"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='w-50px'>5</div>
-                </div>
-                <div className="d-flex align-items-center rating-progress-flex">
-                  <div className='w-50px'>
-                    <div>2 Star</div>
-                  </div>
-                  <div className='cs-progress ms-2 me-3'>
-                    <div className="progress">
-                      <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style={{ width: "0%" }}>
-                        <span className="sr-only"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='w-50px'>0</div>
-                </div>
-                <div className="d-flex align-items-center rating-progress-flex">
-                  <div className='w-50px'>
-                    <div>1 Star</div>
-                  </div>
-                  <div className='cs-progress ms-2 me-3'>
-                    <div className="progress">
-                      <div className="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style={{ width: "0%" }}>
-                        <span className="sr-only"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='w-50px'>0</div>
-                </div>
-              </div>
-            </div>
-            <div className='col-md-6 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.4s">
-              <div className='lg-title text-uppercase mb-4'>OUR PASSION</div>
-              <div className='about-box'>
-                <div className='about-image'>
-                  <img src={getImages('porche.jpg')} alt="Our Passion" loading="lazy" />
-                </div>
-                <div className='about-content'>Our passion is sharing our love for elite cars with incredible people. We put reputation above all else. Our network of investors and collectors ensure you get the most value on any appraisal you bring us. We cut out the middleman and connect investors across the country.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HomeRateAbout />
 
       <section className=' insta-wrap wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s" ref={section1Ref}>
         <InstagramFeed/>

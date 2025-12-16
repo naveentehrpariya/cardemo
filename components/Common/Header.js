@@ -29,7 +29,7 @@ const Header = forwardRef(function Header({ secref }, ref) {
                     <div className='md:!pb-4 md:!pt-3 header-flex d-flex justify-content-between'>
                         <div className='main-logo flex items-center'>
                             <Link href="/" prefetch={false}>
-                                <Image src={getImages('alpha-one-logo.webp')} alt="Alpha One Motors" width={220} height={40} />
+                                <Image src={getImages('alpha-one-logo.webp')} alt="Alpha One Motors" width={220} height={40} priority />
                             </Link>
                         </div>
                         

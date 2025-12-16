@@ -7,13 +7,13 @@ import SearchComponent from '../Srp/SearchComponent';
 import { getImages } from '../Common/const';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
-import 'slick-carousel/slick/slick.css';
 import dynamic from 'next/dynamic';
-const Slider = dynamic(() => import('react-slick'), { ssr: false });
+import InventoryItem from '../Srp/InventoryItem';
 import ModalLayout from '../Common/ModalLayout';
 import SelectFilterModal from '../Srp/SelectFilterModal';
 import Header from '../Common/Header';
 import Footer from '../Common/Footer';
+
 export default function Inventory() {
     const router = useRouter();
     const { getVehicleData, vehicleData, filteredVehicleData, searchText, setSearchText, numberFormatter, priceFormatter, currentFilterData, setCurrentFilterData, activeFilter, setActiveFilter, priceFilterData, setPriceFilterData, } = useContext(VehicleContext);
@@ -215,14 +215,8 @@ export default function Inventory() {
             };
         }
     }, []);
-    const [hoveredIndex, setHoveredIndex] = useState(null);
-    const handleMouseEnter = (index) => {
-        setHoveredIndex(index);
-    };
-    const handleMouseLeave = () => {
-        setHoveredIndex(null);
-    };
-
+    // Hover state moved to InventoryItem
+    
     // Sort By data 
     const [sortColumn, setSortColumn] = useState('price');
     const [sortSelectValue, setSortSelectValue] = useState('price');
