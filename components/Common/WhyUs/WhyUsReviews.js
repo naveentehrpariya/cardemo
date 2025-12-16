@@ -65,8 +65,7 @@ const WhyUsReviews = () => {
         slidesToShow: 4,
         slidesToScroll: 1,
         arrows: true,
-        autoplay: true,
-        autoplaySpeed: 3000,
+        autoplay: false,
         adaptiveHeight: true,
         mobileFirst: true,
         responsive: [
@@ -102,7 +101,7 @@ const WhyUsReviews = () => {
                     <Slider {...settings} className="wbecs-slider">
                         {reviewsList.map((review, index) => (
                             <div key={index}>
-                                <div className="wbe-cs-box wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                                <div className="wbe-cs-box">
                                     <div className="flex items-center justify-content-between mb-2">
                                         <div className="flex items-center gap-2">
                                             <div className="wbe-cs-circle" style={{ backgroundColor: review.bgColor }}>

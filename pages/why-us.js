@@ -34,10 +34,10 @@ export default function WhyUs() {
                     style={{ objectFit: 'cover', zIndex: -1 }}
                 />
                 <div className="w-100" style={{ zIndex: 1 }}>
-                    <div className="xl-title text-uppercase text-center font-80 letter-spacing-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <div className="xl-title text-uppercase text-center font-80 letter-spacing-3">
                         Why Choose Us
                     </div>
-                    <div className="lg-title font-40 text-uppercase text-center fw-300 mt-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                    <div className="lg-title font-40 text-uppercase text-center fw-300 mt-3">
                         We Know Luxury Automotive
                     </div>
                     <div className="text-center mt-5">
@@ -48,8 +48,10 @@ export default function WhyUs() {
                 </div>
             </section>
             <main role="main">
-                <WhyUsContent />
-                <LazyLoadSection rootMargin="200px">
+                <LazyLoadSection rootMargin="200px" height="800px">
+                    <WhyUsContent />
+                </LazyLoadSection>
+                <LazyLoadSection rootMargin="200px" height="500px">
                     <WhyUsReviews />
                 </LazyLoadSection>
             </main>
