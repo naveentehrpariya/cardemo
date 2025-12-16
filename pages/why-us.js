@@ -6,15 +6,14 @@ import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
 import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
+import WowElement from '../components/Common/WowElement';
+import LazyLoadSection from '../components/Common/LazyLoadSection';
 
 const WhyUsReviews = dynamic(() => import('../components/Common/WhyUs/WhyUsReviews'), { ssr: false });
 
 export default function WhyUs() {
     return (
         <>
-            <Head>
-                <link rel="preload" as="image" href={getImages('about-hero.webp')} />
-            </Head>
             <SeoMeta 
                 title="Why Choose Us | Alpha One Motors" 
                 description="Why choose Alpha One Motors - We Know Luxury Automotive. 5000+ customers served, 4.7 Google rating, 193 reviews."
@@ -23,18 +22,23 @@ export default function WhyUs() {
 
             <section 
                 className="common-banner-wrap d-flex align-items-center"
-                style={{
-                    backgroundImage: `url(${getImages('about-hero.webp')})`
-                }}
+                style={{ position: 'relative', overflow: 'hidden' }}
             >
-                <Image src={getImages('about-hero.webp')} alt="" width={1600} height={900} sizes="100vw" priority style={{display: 'none'}} />
-                <div className="w-100">
-                    <div className="xl-title text-uppercase text-center font-80 letter-spacing-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                <Image 
+                    src={getImages('about-hero.webp')} 
+                    alt="Why Choose Us" 
+                    fill
+                    priority
+                    sizes="100vw"
+                    style={{ objectFit: 'cover', zIndex: -1 }}
+                />
+                <div className="w-100" style={{ zIndex: 1 }}>
+                    <WowElement className="xl-title text-uppercase text-center font-80 letter-spacing-3 wow fadeIn" duration="1s" delay="0.1s">
                         Why Choose Us
-                    </div>
-                    <div className="lg-title font-40 text-uppercase text-center fw-300 mt-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                    </WowElement>
+                    <WowElement className="lg-title font-40 text-uppercase text-center fw-300 mt-3 wow fadeIn" duration="1s" delay="0.2s">
                         We Know Luxury Automotive
-                    </div>
+                    </WowElement>
                     <div className="text-center mt-5">
                         <Link href="/sell-my-exotic" prefetch={false} className="black-btn get-started-btn w-240 text-uppercase">
                             GET My Cash Offer
@@ -46,36 +50,36 @@ export default function WhyUs() {
             <section className="about-info-wrap cv-auto">
                 <div className="container">
                     <div className="d-md-flex align-items-center justify-content-between">
-                        <div className="aiw-col wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <WowElement className="aiw-col wow fadeInUp" duration="1s" delay="0.1s">
                             <div className="d-inline-flex align-items-center">
                                 <div className="xl-title text-uppercase pe-3">+5k</div>
                                 <div className="sm-title fw-500">Customers Served</div>
                             </div>
-                        </div>
+                        </WowElement>
                         <div className="aiw-sep d-none d-md-block"></div>
-                        <div className="aiw-col wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
+                        <WowElement className="aiw-col wow fadeInUp" duration="1s" delay="0.2s">
                             <div className="d-inline-flex align-items-center">
                                 <div className="xl-title text-uppercase pe-3">4.7</div>
                                 <div className="sm-title fw-500">Google Rating</div>
                             </div>
-                        </div>
+                        </WowElement>
                         <div className="aiw-sep d-none d-md-block"></div>
-                        <div className="aiw-col wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                        <WowElement className="aiw-col wow fadeInUp" duration="1s" delay="0.3s">
                             <div className="d-inline-flex align-items-center">
                                 <div className="xl-title text-uppercase pe-3">193</div>
                                 <div className="sm-title fw-500">Google Reviews</div>
                             </div>
-                        </div>
+                        </WowElement>
                     </div>
                 </div>
             </section>
 
             <section className="about-wrap cv-auto">
                 <div className="d-lg-flex align-items-center">
-                    <div className="aw-left w-50 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <Image src={getImages('about-side-bg.webp')} alt="Alpha One Motors" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" />
-                    </div>
-                    <div className="aw-right w-50 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s">
+                    <WowElement className="aw-left w-50 wow fadeInLeft" duration="1s" delay="0.1s">
+                        <Image src={getImages('about-side-bg.webp')} alt="Alpha One Motors" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
+                    </WowElement>
+                    <WowElement className="aw-right w-50 wow fadeInRight" duration="1s" delay="0.2s">
                         <div className="mxw-560">
                             <div className="lg-title text-uppercase mb-lg-4 mb-3">We Know Luxury Automotive!</div>
                             <div className="common-text">
@@ -90,13 +94,13 @@ export default function WhyUs() {
                                 <p>Selling outright to dealers often means lowball offers, as their focus is upselling new inventory. Or they&apos;ll consign, list on AutoTrader for risk-free profits on your luxury car, netting you the same as our initial top cash offer!</p>
                             </div>
                         </div>
-                    </div>
+                    </WowElement>
                 </div>
                 <div className="d-lg-flex align-items-center reverse-block">
-                    <div className="aw-left w-50 order-2 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <Image src={getImages('about-side-bg2.webp')} alt="Sell Your Exotic" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" />
-                    </div>
-                    <div className="aw-right w-50 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s">
+                    <WowElement className="aw-left w-50 order-2 wow fadeInRight" duration="1s" delay="0.1s">
+                        <Image src={getImages('about-side-bg2.webp')} alt="Sell Your Exotic" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
+                    </WowElement>
+                    <WowElement className="aw-right w-50 wow fadeInLeft" duration="1s" delay="0.2s">
                         <div className="mxw-560">
                             <div className="lg-title text-uppercase mb-lg-4 mb-3">Ready to Sell Your Exotic Car?</div>
                             <div className="common-text">
@@ -107,11 +111,13 @@ export default function WhyUs() {
                                 <p>We urge our clients to compare offers. Call five other exotic car dealers or buyers in Texas and ask for their immediate cash offer. Then, contact Alpha One Motors. We&apos;re confident our offer will surpass the rest. Our process is seamless—sell your car, and we&apos;ll buy it, often in under 24 hours, including leased vehicles. Experience the smoothest, most rewarding car sale with Alpha One Motors, your trusted Texas exotic car dealership.</p>
                             </div>
                         </div>
-                    </div>
+                    </WowElement>
                 </div>
             </section>
 
-            <WhyUsReviews />
+            <LazyLoadSection rootMargin="200px">
+                <WhyUsReviews />
+            </LazyLoadSection>
             </main>
 
             <Footer />

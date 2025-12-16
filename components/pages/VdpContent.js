@@ -4,6 +4,9 @@ import { getImages } from '../Common/const'
 import { VehicleContext } from '../../context/VehicleContext';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 const Slider = dynamic(() => import('react-slick'), { ssr: false });
 const VdpContactForm = dynamic(() => import('./VdpContactForm'), { ssr: false });
 const VdpVehicleInfo = dynamic(() => import('./VdpVehicleInfo'), { ssr: false });
