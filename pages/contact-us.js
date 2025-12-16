@@ -11,6 +11,7 @@ const ContactForm = dynamic(() => import('../components/Common/ContactForm'), {
     loading: () => <div style={{ height: '600px' }} className="w-100 bg-white opacity-10"></div>
 });
 const ContactInfo = dynamic(() => import('../components/Common/ContactUs/ContactInfo'), { ssr: false });
+const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 
 export default function ContactUs() {
     

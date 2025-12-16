@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -9,6 +9,13 @@ export default function ContactForm() {
     const router = useRouter();
     const { submitContactForm } = useContext(VehicleContext);
     const recaptchaRef = useRef(null);
+    const [loadCaptcha, setLoadCaptcha] = useState(false);
+
+    const handleFocus = () => {
+        if (!loadCaptcha) {
+            setLoadCaptcha(true);
+        }
+    };
 
     const validationSchema = Yup.object().shape({
         full_name: Yup.string().required('Full Name is required'),
@@ -25,6 +32,12 @@ export default function ContactForm() {
             onSubmit={async (values, { resetForm, setSubmitting, setStatus }) => {
                 try {
                     setStatus(null);
+                    if (!loadCaptcha) {
+                        setLoadCaptcha(true);
+                        // Wait for captcha to load
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                    }
+                    
                     const token = recaptchaRef.current && typeof recaptchaRef.current.executeAsync === 'function'
                         ? await recaptchaRef.current.executeAsync()
                         : (values.g_recaptcha_response || '');
@@ -57,32 +70,34 @@ export default function ContactForm() {
         >
             {({ handleSubmit, isSubmitting, status }) => (
                 <Form className="custom-form contact-form" autoComplete="off" name="contact-form" onSubmit={handleSubmit}>
-                    <div className='form-group'>
+                    <div className='form-group' onFocus={handleFocus}>
                         <div className='cs-label'>Full Name <span className='text-danger font-15'>*</span></div>
                         <Field type='text' name='full_name' className='form-control' />
                         <ErrorMessage name='full_name' component='div' className='text-error text-danger' />
                     </div>
-                    <div className='form-group'>
+                    <div className='form-group' onFocus={handleFocus}>
                         <div className='cs-label'>Email <span className='text-danger font-15'>*</span></div>
                         <Field type='email' name='email' className='form-control' />
                         <ErrorMessage name='email' component='div' className='text-error text-danger' />
                     </div>
-                    <div className='form-group'>
+                    <div className='form-group' onFocus={handleFocus}>
                         <div className='cs-label'>Phone <span className='text-danger font-15'>*</span></div>
                         <Field type='tel' name='phone' className='form-control' />
                         <ErrorMessage name='phone' component='div' className='text-error text-danger' />
                     </div>
-                    <div className='form-group'>
+                    <div className='form-group' onFocus={handleFocus}>
                         <div className='cs-label'>Message</div>
                         <Field as='textarea' name='comment' rows='5' className='form-control' />
                         <ErrorMessage name='comment' component='div' className='text-error text-danger' />
                     </div>
 
-                    <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
-                        size="invisible"
-                    />
+                    {loadCaptcha && (
+                        <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+                            size="invisible"
+                        />
+                    )}
 
                     {status && status.error && (
                         <div className='text-error text-danger mt-2' role='alert'>{status.error}</div>
@@ -93,6 +108,8 @@ export default function ContactForm() {
                         className='black-btn get-started-btn border border-white p-3 w-100 text-uppercase d-inline-block'
                         disabled={isSubmitting}
                         aria-busy={isSubmitting ? 'true' : 'false'}
+                        onFocus={handleFocus}
+                        onMouseEnter={handleFocus}
                     >
                         {isSubmitting ? 'Submitting...' : 'SUBMIT'}
                     </button>
