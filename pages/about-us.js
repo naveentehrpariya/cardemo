@@ -4,6 +4,7 @@ import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import WowElement from '@/components/Common/WowElement';
 
 const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
 
@@ -19,17 +20,25 @@ export default function AboutUs() {
             <section 
                 className="common-banner-wrap d-flex align-items-center"
                 style={{
-                    backgroundImage: `url(${getImages('new-about-hero.webp')})`
+                    position: 'relative',
+                    overflow: 'hidden'
                 }}
             >
-                <Image src={getImages('new-about-hero.webp')} alt="" width={1600} height={900} sizes="100vw" priority style={{display: 'none'}} />
-                <div className="w-100">
-                    <div className="xl-title text-uppercase text-center font-80 letter-spacing-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                <Image 
+                    src={getImages('new-about-hero.webp')} 
+                    alt="About Us" 
+                    fill 
+                    priority 
+                    sizes="100vw"
+                    style={{objectFit: 'cover', zIndex: -1}} 
+                />
+                <div className="w-100" style={{ zIndex: 1 }}>
+                    <WowElement className="xl-title text-uppercase text-center font-80 letter-spacing-3 wow fadeIn" duration="1s" delay="0.1s">
                         About Us
-                    </div>
-                    <div className="lg-title font-40 text-uppercase text-center fw-300 mt-3 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
+                    </WowElement>
+                    <WowElement className="lg-title font-40 text-uppercase text-center fw-300 mt-3 wow fadeIn" duration="1s" delay="0.2s">
                         Passion for Exotic Cars
-                    </div>
+                    </WowElement>
                 </div>
             </section>
 
