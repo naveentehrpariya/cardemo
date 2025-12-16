@@ -196,11 +196,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <HomeRateAbout />
-
       <section className=' insta-wrap wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s" ref={section1Ref}>
-        <LazyLoadSection rootMargin="600px">
+        <LazyLoadSection rootMargin="1000px">
           <InstagramFeed/>
         </LazyLoadSection>
       </section>
