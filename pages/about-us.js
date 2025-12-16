@@ -21,7 +21,6 @@ export default function AboutUs() {
                 className="common-banner-wrap d-flex align-items-center"
                 style={{
                     position: 'relative',
-                    overflow: 'hidden'
                 }}
             >
                 <Image 
@@ -33,12 +32,12 @@ export default function AboutUs() {
                     style={{objectFit: 'cover', zIndex: -1}} 
                 />
                 <div className="w-100" style={{ zIndex: 1 }}>
-                    <WowElement className="xl-title text-uppercase text-center font-80 letter-spacing-3 wow fadeIn" duration="1s" delay="0.1s">
+                    <h2 className="xl-title text-uppercase text-center font-80 letter-spacing-3  "  >
                         About Us
-                    </WowElement>
-                    <WowElement className="lg-title font-40 text-uppercase text-center fw-300 mt-3 wow fadeIn" duration="1s" delay="0.2s">
+                    </h2>
+                    <h3 className="lg-title font-40 text-uppercase text-center fw-300 mt-3 " >
                         Passion for Exotic Cars
-                    </WowElement>
+                    </h3>
                 </div>
             </section>
 
