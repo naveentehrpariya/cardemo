@@ -13,10 +13,7 @@ const ModalLayout = dynamic(() => import('@/components/Common/ModalLayout'), { s
 const VehicleConsignmentInquiry = dynamic(() => import('@/components/Home/VehicleConsignmentInquiry'), { ssr: false });
 const MoreInfoAppraiseModal = dynamic(() => import('@/components/Home/MoreInfoAppraiseModal'), { ssr: false });
 const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), { ssr: false });
-const EnterVehicleInfo = dynamic(() => import('@/components/Home/EnterVehicleInfo'), { 
-  ssr: false,
-  loading: () => <div style={{ minHeight: '420px' }}></div>
-});
+import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
 const Footer = dynamic(() => import('@/components/Common/Footer'), { ssr: false });
 
 export default function Home() {

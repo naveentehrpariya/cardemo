@@ -4,8 +4,9 @@ import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import AboutContent from '../components/Common/AboutUs/AboutContent';
 
-const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
+// const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
 export default function AboutUs() {
     return (
         <>

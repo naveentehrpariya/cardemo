@@ -47,9 +47,7 @@ export default function WhyUs() {
                 </div>
             </section>
             <main role="main">
-                <LazyLoadSection rootMargin="300px" height="1000px">
-                    <WhyUsContent />
-                </LazyLoadSection>
+                <WhyUsContent />
                 <LazyLoadSection rootMargin="400px" height="800px">
                     <WhyUsReviews />
                 </LazyLoadSection>

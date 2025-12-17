@@ -106,14 +106,12 @@ const SellMyExotic = () => {
                     <div className='hassle-process-box d-md-flex cv-auto'>
                         <div className='hpb-right w-50 order-2'>
                                 <div className=' xl-title text-uppercase mb-md-5 mb-4 text-center'>NO HASSLE <br />PROCESS</div>
-                            <div ref={formRef}>
-                                {formReady && (
+                            <div>
                                     <MyVehicleForm
                                         setSelectedValue={setSelectedValue}
                                         getQuoteModal={getQuoteModal}
                                             setGetQuoteModal={setGetQuoteModal}
                                         />
-                                    )}
                                 </div>
                                 <div className=' sm-title text-center roboto mt-100 fw-500 text-white'>Simple, Fast & Free</div>
                                 <div className=' text-center pt-3'>
