@@ -52,7 +52,6 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = f
                                 sizes="(max-width: 576px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                 priority={priority && currentSlide === 0}
-                                unoptimized={true}
                                 onError={handleImageError}
                                 fetchPriority={priority && currentSlide === 0 ? "high" : "auto"}
                             />

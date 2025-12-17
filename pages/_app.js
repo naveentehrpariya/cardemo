@@ -53,10 +53,21 @@ export default function App({ Component, pageProps }) {
     };
 
     const initMutationObserver = () => {
-      const mo = new MutationObserver(() => {
+      const mo = new MutationObserver((mutations) => {
         if (!ioRef.current) return;
-        const els = Array.from(document.querySelectorAll('.wow'));
-        els.forEach((el) => ioRef.current.observe(el));
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === 1) {
+              if (node.classList && node.classList.contains('wow')) {
+                ioRef.current.observe(node);
+              }
+              if (node.querySelectorAll) {
+                const nested = node.querySelectorAll('.wow');
+                nested.forEach((el) => ioRef.current.observe(el));
+              }
+            }
+          });
+        });
       });
       mo.observe(document.body, { childList: true, subtree: true });
       moRef.current = mo;

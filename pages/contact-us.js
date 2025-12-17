@@ -26,17 +26,6 @@ export default function ContactUs() {
                     zIndex: 0
                 }}
             >
-                <div className='d-none d-md-block'>
-                    <Image 
-                        src={getImages('contact-hero.webp')} 
-                        alt="Contact Us" 
-                        fill 
-                        priority 
-                        quality={60}
-                        sizes="100vw"
-                        style={{objectFit: 'cover', zIndex: -1}} 
-                    />
-                </div>
                 <div className='container'>
                     <div className='xl-title contact-title1 text-start text-uppercase letter-spacing-3 mb-3'>Contact Us</div>
                     <div className='xs-title contact-title2 text-uppercase eurostile fw-300 font-1-4em letter-spacing-1 mb-md-5 mb-4 pb-md-4'>{"Drop us a line, we'd love to hear from you"}</div>

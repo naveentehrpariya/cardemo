@@ -6,6 +6,10 @@ export default function Vdp({ vehicleData }) {
 }
 
 export async function getServerSideProps(context) {
+  context.res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=60, stale-while-revalidate=59'
+  );
   const { query } = context;
   let vin = query.vin;
   

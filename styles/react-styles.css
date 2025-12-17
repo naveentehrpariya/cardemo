@@ -1251,7 +1251,13 @@
     padding: 95px 0 256px;
     background-size: 100% auto;
     background-repeat: no-repeat;
-    background-color: #222
+    background-color: #222;
+}
+
+@media (min-width: 769px) {
+    .contact-wrap {
+        background-image: url(/images/contact-hero.webp);
+    }
 }
 
 .contact-black-box {

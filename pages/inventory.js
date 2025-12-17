@@ -5,7 +5,7 @@ export default function Inventory({ initialData }) {
   return <InventoryContent initialData={initialData} />;
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const res = await fetch('https://alphaone.greenlightautomotivesolutions.com/bridge/inventory/inventory.php?dealership_id=wholesale-298&sort_inventory=true');
     const data = await res.json();
@@ -15,6 +15,7 @@ export async function getServerSideProps() {
       props: {
         initialData: processedData,
       },
+      revalidate: 60, // Revalidate every 60 seconds
     };
   } catch (error) {
     console.error('Error fetching inventory data:', error);
@@ -22,6 +23,7 @@ export async function getServerSideProps() {
       props: {
         initialData: null,
       },
+      revalidate: 60,
     };
   }
 }

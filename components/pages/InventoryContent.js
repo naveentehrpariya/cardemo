@@ -262,14 +262,6 @@ export default function Inventory({ initialData }) {
             <Head>
                 <title>Inventory | Alpha One Motors</title>
                 <meta name="description" content="Browse our selection of high-quality used cars at Alpha One Motors." />
-                {firstVehicleImage && (
-                    <link 
-                        rel="preload" 
-                        as="image" 
-                        href={firstVehicleImage} 
-                        fetchpriority="high"
-                    />
-                )}
             </Head>
             <Header />
             <main>
