@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic';
+// import dynamic from 'next/dynamic';
 import VdpContent from '../components/pages/VdpContent';
 // const VdpContent = dynamic(() => import('../components/pages/VdpContent'), {
 //   ssr: false,

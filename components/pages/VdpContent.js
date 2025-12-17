@@ -5,7 +5,6 @@ import { VehicleContext } from '../../context/VehicleContext';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import LazyLoadSection from '../Common/LazyLoadSection';
-
 const VdpContactForm = dynamic(() => import('./VdpContactForm'), { ssr: false });
 const VdpVehicleInfo = dynamic(() => import('./VdpVehicleInfo'), { ssr: false });
 const VdpAbout = dynamic(() => import('./VdpAbout'), { ssr: false });
