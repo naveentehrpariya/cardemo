@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
 import SrpLeft from '../Srp/SrpLeft';
 import { VehicleContext } from '../../context/VehicleContext';
 import SearchComponent from '../Srp/SearchComponent';
@@ -247,10 +248,15 @@ export default function Inventory() {
     );
     return (
         <>
+            <Head>
+                <title>Inventory | Alpha One Motors</title>
+                <meta name="description" content="Browse our selection of high-quality used cars at Alpha One Motors." />
+            </Head>
             <Header />
-            <section className='srp-wrap'>
-                <div className='container'>
-                    <div className='srp-flex d-flex'>
+            <main>
+                <section className='srp-wrap'>
+                    <div className='container'>
+                        <div className='srp-flex d-flex'>
                         <SrpLeft
                             mobFilter={mobFilter}
                             handleCloseFilter={handleCloseFilter}
@@ -341,6 +347,7 @@ export default function Inventory() {
                                                 openVDP={openVDP} 
                                                 priceFormatter={priceFormatter} 
                                                 isSlMobile={isSlMobile}
+                                                priority={index < 2}
                                             />
                                         </div>
                                     ))
@@ -350,6 +357,7 @@ export default function Inventory() {
                     </div>
                 </div>
             </section>
+            </main>
             {openFilterModal &&
                 <ModalLayout open={openFilterModal} close={closeMakeModal} darkThemeCls='true' cls="dark-bg-modal" modalWidth={970}>
                     <SelectFilterModal

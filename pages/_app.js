@@ -80,7 +80,7 @@ export default function App({ Component, pageProps }) {
     };
   }, [router.events]);
   return (
-    <VehicleContextProvider>
+    <VehicleContextProvider initialData={pageProps.initialData}>
       <Component {...pageProps} />
     </VehicleContextProvider>
   );

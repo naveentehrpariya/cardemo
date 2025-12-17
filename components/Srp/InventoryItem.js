@@ -7,7 +7,7 @@ import { getImages } from '../Common/const';
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false });
 
-const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile }) => {
+const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = false }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleMouseEnter = () => {
@@ -45,14 +45,15 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile }) => {
                                     if (j > 2) return null; // Limit to 3 images in slider as per original code logic intent (though it used `return false` which is weird in map)
                                     return (
                                         <div onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)} key={"vdp" + j}>
-                                            <div className='inner'>
+                                            <div className='inner' style={{ aspectRatio: '800/533', position: 'relative', overflow: 'hidden' }}>
                                                 <Image
                                                     src={photo}
                                                     alt={`${item.year} ${item.make} ${item.model}`}
                                                     width={800}
                                                     height={533}
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                    sizes="(max-width: 576px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                     priority={false} // Lazy load
+                                                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                                 />
                                             </div>
                                         </div>
@@ -61,13 +62,15 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile }) => {
                             </Slider>
                         ) : (
                             <div onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)} style={{ cursor: 'pointer' }}>
-                                <div className='inner'>
+                                <div className='inner' style={{ aspectRatio: '800/533', position: 'relative', overflow: 'hidden' }}>
                                     <Image
                                         src={item.images[0]}
                                         alt={`${item.year} ${item.make} ${item.model}`}
                                         width={800}
                                         height={533}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        sizes="(max-width: 576px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                        priority={priority}
                                     />
                                 </div>
                             </div>
@@ -75,7 +78,17 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile }) => {
                     </>
                 ) : (
                     <div style={{ cursor: 'pointer' }} onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)}>
-                        <Image src={getImages('srp_coming_soon.webp')} alt='' width={800} height={533} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+                        <div className='inner' style={{ aspectRatio: '800/533', position: 'relative', overflow: 'hidden' }}>
+                            <Image 
+                                src={getImages('srp_coming_soon.webp')} 
+                                alt='' 
+                                width={800} 
+                                height={533} 
+                                sizes="(max-width: 576px) 100vw, (max-width: 1200px) 50vw, 33vw" 
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                priority={priority}
+                            />
+                        </div>
                     </div>
                 )}
             </div>

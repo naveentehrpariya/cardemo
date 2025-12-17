@@ -1,32 +1,33 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { processVehicleData, getTopX } from '../utils/vehicleProcessing';
 
 export const VehicleContext = createContext();
 
-export const VehicleContextProvider = ({ children }) => {
+export const VehicleContextProvider = ({ children, initialData }) => {
     const baseURL = "https://alphaone.greenlightautomotivesolutions.com/";
     
     const Axios = axios.create({ baseURL: baseURL });
 
-    const [vehicleData, setVehicleData] = useState(false);
-    const [filteredVehicleData, setFilteredVehicleData] = useState(false);
-    const [vehiclesByVIN, setVehiclesByVIN] = useState(false);
-    const [vehicleVINsbyID, setVehicleVINsbyID] = useState({});
+    const [vehicleData, setVehicleData] = useState(initialData?.vehicleData || false);
+    const [filteredVehicleData, setFilteredVehicleData] = useState(initialData?.vehicleData || false);
+    const [vehiclesByVIN, setVehiclesByVIN] = useState(initialData?.vehiclesByVIN || false);
+    const [vehicleVINsbyID, setVehicleVINsbyID] = useState(initialData?.vehicleVINsbyID || {});
 
     const [searchText, setSearchText] = useState("");
 
-    const [currentFilterData, setCurrentFilterData] = useState({ 'year': [], 'make': [], 'model': [], 'trim': [], 'body_style': [] });
+    const [currentFilterData, setCurrentFilterData] = useState(initialData?.currentFilterData || { 'year': [], 'make': [], 'model': [], 'trim': [], 'body_style': [] });
     const [activeFilter, setActiveFilter] = useState("");
 
     const [priceFilterData, setPriceFilterData] = useState({ 'min': 0, 'max': 500000, 'current_min': 0, 'current_max': 500000 });
 
-    const [vehicleYears, setVehicleYears] = useState([]);
-    const [vehicleMakes, setVehicleMakes] = useState([]);
-    const [vehicleModels, setVehicleModels] = useState([]);
-    const [vehicleTrims, setVehicleTrims] = useState([]);
-    const [vehicleBodyStyles, setVehicleBodyStyles] = useState([]);
+    const [vehicleYears, setVehicleYears] = useState(initialData?.vehicleYears || []);
+    const [vehicleMakes, setVehicleMakes] = useState(initialData?.vehicleMakes || []);
+    const [vehicleModels, setVehicleModels] = useState(initialData?.vehicleModels || []);
+    const [vehicleTrims, setVehicleTrims] = useState(initialData?.vehicleTrims || []);
+    const [vehicleBodyStyles, setVehicleBodyStyles] = useState(initialData?.vehicleBodyStyles || []);
 
-    const [featuredVehicles, setFeaturedVehicles] = useState([]);
+    const [featuredVehicles, setFeaturedVehicles] = useState(initialData?.featuredVehicles || []);
 
     const getVehicleData = async () => {
         if (vehicleData) return;
@@ -41,113 +42,19 @@ export const VehicleContextProvider = ({ children }) => {
                 retry: 0, retryDelay: 3000, params: values
             });
 
-            var vehicles = [];
-            var vehicles_by_vin = {};
-            var vehicles_vins_by_id = {};
+            const processedData = processVehicleData(response.data);
 
-            var found_lastest_drop = false;
-            var latest_drop;
-
-            var vehicle_years = {};
-            var vehicle_makes = {};
-            var vehicle_models = {};
-            var vehicle_trims = {};
-            var vehicle_body_styles = {};
-
-            response.data.map((v, i) => {
-                if (v.image_urls) {
-                    v.images = v.image_urls.replaceAll('\\"', '').replaceAll('"', '').split(",");
-
-                    v.vdp_hero_image = "https://s3-us-west-2.amazonaws.com/ethosautos/vdp/alphaone/" + v.vin + ".gif?new";
-
-                    if (!found_lastest_drop && v['latest_drop']) {
-                        v.LatestDrop = true;
-                        latest_drop = v;
-                        found_lastest_drop = true;
-                    } else {
-                        vehicles.push(v);
-                        vehicles_by_vin[v.vin] = v;
-                    }
-
-                    if (latest_drop && i % 3 == 0 && i != 0) {
-                        vehicles.push(latest_drop);
-                        vehicles_by_vin[latest_drop.vin] = latest_drop;
-                        latest_drop = null;
-                    }
-                }
-
-                // Build filter data
-                if (v.year in vehicle_years) {
-                    vehicle_years[v.year]['available']++;
-                    vehicle_years[v.year]['visible']++;
-                    vehicle_years[v.year]['assocYears'].push(v.year);
-                    vehicle_years[v.year]['assocMakes'].push(v.make);
-                    vehicle_years[v.year]['assocModels'].push(v.model);
-                    vehicle_years[v.year]['assocTrims'].push(v.trim);
-                    vehicle_years[v.year]['assocBodyStyles'].push(v.body_style);
-                } else vehicle_years[v.year] = { name: v.year, available: 1, visible: 1, isSelected: false, isVisible: true, assocYears: [v.year], assocMakes: [v.make], assocModels: [v.model], assocTrims: [v.trim], assocBodyStyles: [v.body_style] };
-
-                if (v.make in vehicle_makes) {
-                    vehicle_makes[v.make]['available']++;
-                    vehicle_makes[v.make]['visible']++;
-                    vehicle_makes[v.make]['assocYears'].push(v.year);
-                    vehicle_makes[v.make]['assocMakes'].push(v.make);
-                    vehicle_makes[v.make]['assocModels'].push(v.model);
-                    vehicle_makes[v.make]['assocTrims'].push(v.trim);
-                    vehicle_makes[v.make]['assocBodyStyles'].push(v.body_style);
-                } else vehicle_makes[v.make] = { name: v.make, available: 1, visible: 1, isSelected: false, isVisible: true, assocYears: [v.year], assocMakes: [v.make], assocModels: [v.model], assocTrims: [v.trim], assocBodyStyles: [v.body_style] };
-
-                if (v.model in vehicle_models) {
-                    vehicle_models[v.model]['available']++;
-                    vehicle_models[v.model]['visible']++;
-                    vehicle_models[v.model]['assocYears'].push(v.year);
-                    vehicle_models[v.model]['assocMakes'].push(v.make);
-                    vehicle_models[v.model]['assocModels'].push(v.model);
-                    vehicle_models[v.model]['assocTrims'].push(v.trim);
-                    vehicle_models[v.model]['assocBodyStyles'].push(v.body_style);
-                } else vehicle_models[v.model] = { name: v.model, available: 1, visible: 1, isSelected: false, isVisible: true, assocYears: [v.year], assocMakes: [v.make], assocModels: [v.model], assocTrims: [v.trim], assocBodyStyles: [v.body_style] };
-
-                if (v.trim in vehicle_trims) {
-                    vehicle_trims[v.trim]['available']++;
-                    vehicle_trims[v.trim]['visible']++;
-                    vehicle_trims[v.trim]['assocYears'].push(v.year);
-                    vehicle_trims[v.trim]['assocMakes'].push(v.make);
-                    vehicle_trims[v.trim]['assocModels'].push(v.model);
-                    vehicle_trims[v.trim]['assocTrims'].push(v.trim);
-                    vehicle_trims[v.trim]['assocBodyStyles'].push(v.body_style);
-                } else vehicle_trims[v.trim] = { name: v.trim, available: 1, visible: 1, isSelected: false, isVisible: true, assocYears: [v.year], assocMakes: [v.make], assocModels: [v.model], assocTrims: [v.trim], assocBodyStyles: [v.body_style] };
-
-                if (v.body_style in vehicle_body_styles) {
-                    vehicle_body_styles[v.body_style]['available']++;
-                    vehicle_body_styles[v.body_style]['visible']++;
-                    vehicle_body_styles[v.body_style]['assocYears'].push(v.year);
-                    vehicle_body_styles[v.body_style]['assocMakes'].push(v.make);
-                    vehicle_body_styles[v.body_style]['assocModels'].push(v.model);
-                    vehicle_body_styles[v.body_style]['assocTrims'].push(v.trim);
-                    vehicle_body_styles[v.body_style]['assocBodyStyles'].push(v.body_style);
-                } else vehicle_body_styles[v.body_style] = { name: v.body_style, available: 1, visible: 1, isSelected: false, isVisible: true, assocYears: [v.year], assocMakes: [v.make], assocModels: [v.model], assocTrims: [v.trim], assocBodyStyles: [v.body_style] };
-            });
-
-            setFeaturedVehicles(getTopX(vehicles, 'price', 10));
-            setVehicleData(vehicles);
-            setFilteredVehicleData(vehicles);
-            setVehiclesByVIN(vehicles_by_vin);
-            setVehicleVINsbyID(vehicles_vins_by_id);
-
-            const newFilters = {
-                'year': Object.keys(vehicle_years).map(key => vehicle_years[key]).sort((b, a) => a.name - b.name),
-                'make': Object.keys(vehicle_makes).map(key => vehicle_makes[key]).sort((b, a) => b.name > a.name ? 1 : (a.name > b.name ? -1 : 0)),
-                'model': Object.keys(vehicle_models).map(key => vehicle_models[key]).sort((b, a) => b.name > a.name ? 1 : (a.name > b.name ? -1 : 0)),
-                'trim': Object.keys(vehicle_trims).map(key => vehicle_trims[key]).sort((b, a) => b.name > a.name ? 1 : (a.name > b.name ? -1 : 0)),
-                'body_style': Object.keys(vehicle_body_styles).map(key => vehicle_body_styles[key]).sort((b, a) => b.name > a.name ? 1 : (a.name > b.name ? -1 : 0))
-            }
-
-            setCurrentFilterData(newFilters);
-            setVehicleYears(Object.keys(vehicle_years));
-            setVehicleMakes(Object.keys(vehicle_makes));
-            setVehicleModels(Object.keys(vehicle_models));
-            setVehicleTrims(Object.keys(vehicle_trims));
-            setVehicleBodyStyles(Object.keys(vehicle_body_styles));
+            setFeaturedVehicles(processedData.featuredVehicles);
+            setVehicleData(processedData.vehicleData);
+            setFilteredVehicleData(processedData.vehicleData);
+            setVehiclesByVIN(processedData.vehiclesByVIN);
+            setVehicleVINsbyID(processedData.vehicleVINsbyID);
+            setCurrentFilterData(processedData.currentFilterData);
+            setVehicleYears(processedData.vehicleYears);
+            setVehicleMakes(processedData.vehicleMakes);
+            setVehicleModels(processedData.vehicleModels);
+            setVehicleTrims(processedData.vehicleTrims);
+            setVehicleBodyStyles(processedData.vehicleBodyStyles);
 
         } catch (error) {
             console.error('Error fetching vehicles:', error);
