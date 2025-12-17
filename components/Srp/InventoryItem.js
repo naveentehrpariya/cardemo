@@ -31,6 +31,11 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = f
 
     const shouldShowSlider = item.images.length > 0 && isHovered;
     
+    const handleImageError = (e) => {
+        e.target.src = getImages("unavailable_stockphoto.avif");
+        e.target.onerror = null;
+    };
+
     return (
         <div className='srp-box'
             onMouseEnter={handleMouseEnter}
@@ -42,7 +47,7 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = f
                         {(shouldShowSlider) ? (
                             <Slider className='srp-slider' {...srpCarSlider}>
                                 {item.images.map((photo, j) => {
-                                    if (j > 2) return null; // Limit to 3 images in slider as per original code logic intent (though it used `return false` which is weird in map)
+                                    if (j > 2) return null; // Limit to 3 images
                                     return (
                                         <div onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)} key={"vdp" + j}>
                                             <div className='inner' style={{ aspectRatio: '800/533', position: 'relative', overflow: 'hidden' }}>
@@ -55,6 +60,7 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = f
                                                     priority={false} // Lazy load
                                                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                                     unoptimized={true}
+                                                    onError={handleImageError}
                                                 />
                                             </div>
                                         </div>
@@ -73,6 +79,7 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = f
                                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                         priority={priority}
                                         unoptimized={true}
+                                        onError={handleImageError}
                                     />
                                 </div>
                             </div>
