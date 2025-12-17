@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import Head from 'next/head'
 import Image from 'next/image'
 import { getImages } from '../Common/const'
 import { VehicleContext } from '../../context/VehicleContext';
@@ -129,17 +130,17 @@ const Vdp = () => {
     };
     const [monthlyPayment, setMonthlyPayment] = useState('--');
     // console.log("vehicleData", vehicleData)
-    const [brandLogoSrc, setBrandLogoSrc] = useState(null);
-    useEffect(() => {
-        if (vehicleData?.make) {
-            const normalized = vehicleData.make.trim().replace(/\s+/g, '-');
-            setBrandLogoSrc(getImages(`logos/${normalized}.png`));
-        }
-    }, [vehicleData?.make]);
+    
+    const normalizedMake = vehicleData?.make?.trim().replace(/\s+/g, '-');
+    const brandLogoSrc = normalizedMake ? getImages(`logos/${normalizedMake}.png`) : null;
+    const [logoError, setLogoError] = useState(false);
     
     if (!vehicleData?.make) {
         return (
              <>
+                <Head>
+                    <title>Loading... | Alpha One Motors</title>
+                </Head>
                 <Header />
                 <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#000', color: '#fff' }}>
                     Loading...
@@ -151,13 +152,20 @@ const Vdp = () => {
 
     return (
         <>
+            <Head>
+                <title>{`${vehicleData.year} ${vehicleData.make} ${vehicleData.model} | Alpha One Motors`}</title>
+                <meta name="description" content={`Check out this ${vehicleData.year} ${vehicleData.make} ${vehicleData.model} for sale at Alpha One Motors. Price: ${priceFormatter(vehicleData.price, true)}.`} />
+            </Head>
             <Header />
+            <main>
             <section className='vdp-wrap' style={{ position: 'relative', minHeight: '600px' }}>
                 <Image 
                     src={getImages('vdp-hero.webp')}  
-                    alt="Hero"   
+                    alt={`${vehicleData.year} ${vehicleData.make} ${vehicleData.model} Hero Image`}   
                     fill   
-                    priority  
+                    priority
+                    fetchPriority="high"
+                    quality={60}
                     style={{ objectFit: 'cover' }} 
                     sizes="100vw" 
                 />
@@ -169,11 +177,11 @@ const Vdp = () => {
                             <div>
                                 <div className='brand-logo'>
                                     <Image 
-                                        src={brandLogoSrc || getImages('alpha-one-logo.webp')} 
+                                        src={(!logoError && brandLogoSrc) ? brandLogoSrc : getImages('alpha-one-logo.webp')} 
                                         alt={`${vehicleData.make} logo`} 
                                         width={64} 
                                         height={64} 
-                                        onError={() => setBrandLogoSrc(getImages('alpha-one-logo.webp'))}
+                                        onError={() => setLogoError(true)}
                                     />
                                 </div>
                             </div>
@@ -251,6 +259,7 @@ const Vdp = () => {
                     </div>
                 </section>
             </LazyLoadSection>
+            </main>
             <Footer />
         </>
     )
