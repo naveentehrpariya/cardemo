@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useRef, useState, Suspense } from 'react'
-import Link from 'next/link';
-import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { getImages } from '../components/Common/const'
@@ -8,7 +6,8 @@ import ModalLayout from '../components/Common/ModalLayout'
 import { VehicleContext } from '../context/VehicleContext';
 import SeoMeta from '../components/Common/SeoMeta';
 import Header from '../components/Common/Header';
-import Footer from '../components/Common/Footer';
+// import Footer from '../components/Common/Footer';
+const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
 //import { Helmet } from 'react-helmet';
 
@@ -79,8 +78,7 @@ const SellMyExotic = () => {
 
     return (
         <>
-            <Head>
-            </Head>
+            
             <Header />
             <SeoMeta
                 title="Sell Your Exotic Car | We Buy Bentley, Porsche & More | Alpha One Motors"
@@ -154,32 +152,32 @@ const SellMyExotic = () => {
             
             <LazyLoadSection rootMargin="200px" height="500px">
                 <SellMyExoticReviews />
-            </LazyLoadSection>
-
-            <section className='sell-or-trade-wrap'>
-                <div className='container'>
-                    <div className='d-lg-flex justify-content-between sot-flex'>
-                        <div className='sot-left'>
-                            <div className='flex lg:block   justify-center mb-3'>
-                                <Image src={getImages('tg-logo-bw.png')} alt='Trade Group' width={120} height={36} />
+                <section className='sell-or-trade-wrap'>
+                    <div className='container'>
+                        <div className='d-lg-flex justify-content-between sot-flex'>
+                            <div className='sot-left'>
+                                <div className='flex lg:block   justify-center mb-3'>
+                                    <Image src={getImages('tg-logo-bw.png')} alt='Trade Group' width={120} height={36} />
+                                </div>
+                                <div className='lg-title !text-center xl:!text-start  font-2-2em roboto'>Sell or Trade your Vehicle</div>
                             </div>
-                            <div className='lg-title !text-center xl:!text-start  font-2-2em roboto'>Sell or Trade your Vehicle</div>
-                        </div>
-                        <div className='sot-right'>
-                            <div ref={form2Ref}  >
-                                {form2Ready && (
-                                    <MyVehicleForm
-                                        setSelectedValue={setSelectedValue}
-                                        getQuoteModal={getQuoteModal}
-                                        setGetQuoteModal={setGetQuoteModal}
-                                        sotForm={true}
-                                    />
-                                )}
+                            <div className='sot-right'>
+                                <div ref={form2Ref}  >
+                                    {form2Ready && (
+                                        <MyVehicleForm
+                                            setSelectedValue={setSelectedValue}
+                                            getQuoteModal={getQuoteModal}
+                                            setGetQuoteModal={setGetQuoteModal}
+                                            sotForm={true}
+                                        />
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </LazyLoadSection>
+
             </main>
             
             <LazyLoadSection rootMargin="200px" height="400px">

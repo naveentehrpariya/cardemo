@@ -1,14 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
-import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
-import WowElement from '../components/Common/WowElement';
 import LazyLoadSection from '../components/Common/LazyLoadSection';
 
+// import Footer from '../components/Common/Footer';
+const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 const WhyUsReviews = dynamic(() => import('../components/Common/WhyUs/WhyUsReviews'), { ssr: false });
 const WhyUsContent = dynamic(() => import('../components/Common/WhyUs/WhyUsContent'), { ssr: false });
 
@@ -51,7 +50,7 @@ export default function WhyUs() {
                 <LazyLoadSection rootMargin="300px" height="1000px">
                     <WhyUsContent />
                 </LazyLoadSection>
-                <LazyLoadSection rootMargin="300px" height="800px">
+                <LazyLoadSection rootMargin="400px" height="800px">
                     <WhyUsReviews />
                 </LazyLoadSection>
             </main>
