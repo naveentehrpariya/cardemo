@@ -3,9 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
-import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
 import Header from '@/components/Common/Header';
-import Footer from '@/components/Common/Footer';
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
 import InstagramFeed from '@/components/Home/InstagramFeed';
 
@@ -15,6 +13,11 @@ const ModalLayout = dynamic(() => import('@/components/Common/ModalLayout'), { s
 const VehicleConsignmentInquiry = dynamic(() => import('@/components/Home/VehicleConsignmentInquiry'), { ssr: false });
 const MoreInfoAppraiseModal = dynamic(() => import('@/components/Home/MoreInfoAppraiseModal'), { ssr: false });
 // const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), { ssr: false });
+const EnterVehicleInfo = dynamic(() => import('@/components/Home/EnterVehicleInfo'), { 
+  ssr: false,
+  loading: () => <div style={{ minHeight: '420px' }}></div>
+});
+const Footer = dynamic(() => import('@/components/Common/Footer'), { ssr: false });
 
 export default function Home() {
   const section1Ref = useRef(null);
@@ -67,8 +70,11 @@ export default function Home() {
             alt="Banner" 
             fill 
             priority 
+            fetchPriority="high"
+            quality={60}
             className="slideshow-image"
             style={{ objectFit: 'cover' }} 
+            sizes="100vw"
           />
         </div>
         <div className='banner-shadow'></div>
