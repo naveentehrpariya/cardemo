@@ -1,5 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { getImages } from '@/components/Common/const';
@@ -92,7 +93,7 @@ const WhyUsReviews = () => {
         <section className="customer-served-wrap cv-auto">
             <div className="container">
                 <div className="fading xl-title text-uppercase mb-2">
-                    Don't Take our Word for it!
+                    Don&apos;t Take our Word for it!
                 </div>
                 <div className="fading lg-title fw-normal text-center font-40 mb-5 text-uppercase">
                     See what our Customers Have to Say!
@@ -112,16 +113,16 @@ const WhyUsReviews = () => {
                                             </div>
                                         </div>
                                         <div className="fading g-icon">
-                                            <img src={getImages('icon.svg')} alt="Google" />
+                                            <Image src={getImages('icon.svg')} alt="Google" width={48} height={48} />
                                         </div>
                                     </div>
                                     <div className="flex gap-1 wbe-cs-rating mb-2">
-                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" />
-                                        <img className="fading inline-block verify-icon ml-2" src={getImages('ti-verified.svg')} alt="verified" />
+                                        <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
+                                        <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
+                                        <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
+                                        <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
+                                        <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
+                                        <Image className="fading inline-block verify-icon ml-2" src={getImages('ti-verified.svg')} alt="verified" width={16} height={16} />
                                     </div>
                                     <div className="mb-1 wbe-cs-content">
                                         <p>{review.content}</p>

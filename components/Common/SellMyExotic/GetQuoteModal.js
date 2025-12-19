@@ -1,11 +1,13 @@
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, useRef, lazy } from 'react';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { VehicleContext } from '../../../context/VehicleContext';
 import { useRouter } from 'next/router';
 import ValidationError from '../../Errors/ValidationError';
-import ReCAPTCHA from 'react-google-recaptcha';
 import Image from 'next/image';
+import { getImages } from '../const';
+
+const ReCAPTCHA = lazy(() => import('react-google-recaptcha'));
 
 const validationSchemaStep1 = Yup.object({
     full_name: Yup.string().required('Full name is required'),
@@ -32,8 +34,7 @@ const GetQuoteModal = ({ close, selectedValue }) => {
         phone: '',
         mileage: '',
         comments: '',
-        photos: [],
-        g_recaptcha_response: ''
+        photos: []
     };
 
     const handleNext = async (validateForm, setTouched) => {
@@ -95,13 +96,13 @@ const GetQuoteModal = ({ close, selectedValue }) => {
 
     return (
         <>
-            <div className="modal-content">
+            <div className="modal-content !mt-[10vh]">
                 <div className="modal-header">
                     <h1 className="modal-title filter-modal-title">
                         GET YOUR QUOTE TODAY
                     </h1>
                     <button className="sm-box-close" type="button" onClick={closeHandler}>
-                        <Image src="/images/white-close.svg" alt="close" width={24} height={24} />
+                        <Image src={getImages('white-close.svg')} alt="close" width={24} height={24} />
                     </button>
                 </div>
                 <div className="modal-body px-5 py-5">
@@ -112,7 +113,9 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                         validationSchema={step === 1 ? validationSchemaStep1 : validationSchemaStep2}
                         innerRef={formikRef}
                         onSubmit={async (values, { resetForm }) => {
-                            values.token = values.g_recaptcha_response || '';
+                            const token = await recaptchaRef.current.executeAsync();
+                            recaptchaRef.current.reset();
+                            values.token = token || '';
                             values = { ...values, vehicle: selectedValue };
                             
                             const data = await submitContactForm(values);
@@ -129,35 +132,32 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                     >
                         {({ values, validateForm, setTouched, setFieldValue }) => (
                             <Form className="custom-form custom-style2 get-quote-form" autoComplete="off">
-                                <div className="text-center mb-3">
-                                    <ReCAPTCHA
-                                        ref={recaptchaRef}
-                                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
-                                        onChange={(val) => setFieldValue('g_recaptcha_response', val || '')}
-                                        onExpired={() => setFieldValue('g_recaptcha_response', '')}
-                                    />
-                                </div>
+                                <ReCAPTCHA
+                                    ref={recaptchaRef}
+                                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"}
+                                    size="invisible"
+                                />
                                 <FieldArray type="hidden" name="photos" value={values.photos} />
                                 {step === 1 && (
                                     <div className="getquotesetp1">
                                         <div className="form-group">
                                             <div className="cs-label mb-2">Full Name <span className="text-danger font-15">*</span></div>
                                             <Field name="full_name" className="form-control" />
-                                            <ValidationError name="full_name" formik={{ touched: {}, errors: {} }} />
+                                            <ValidationError name="full_name" />
                                         </div>
                                         <div className="form-group">
                                             <div className="cs-label mb-2">Email <span className="text-danger font-15">*</span></div>
                                             <Field name="email" className="form-control" />
-                                            <ValidationError name="email" formik={{ touched: {}, errors: {} }} />
+                                            <ValidationError name="email" />
                                         </div>
                                         <div className="form-group">
                                             <div className="cs-label mb-2">Phone Number <span className="text-danger font-15">*</span></div>
                                             <Field name="phone" className="form-control" />
-                                            <ValidationError name="phone" formik={{ touched: {}, errors: {} }} />
+                                            <ValidationError name="phone" />
                                         </div>
                                         <button
                                             type="button"
-                                            className="white-btn uppercase py-3 w-full mt-3"
+                                            className="white-btn text-uppercase py-3 w-100 mt-3"
                                             onClick={() => handleNext(validateForm, setTouched)}
                                         >
                                             Continue
@@ -170,7 +170,7 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                                         <div className="form-group">
                                             <div className="cs-label mb-2">Mileage <span className="text-danger font-15">*</span></div>
                                             <Field name="mileage" className="form-control" />
-                                            <ValidationError name="mileage" formik={{ touched: {}, errors: {} }} />
+                                            <ValidationError name="mileage" />
                                         </div>
                                         <div className="form-group">
                                             <div className="cs-label mb-2">General Condition & Comments</div>
@@ -180,10 +180,10 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                                             onDragOver={(e) => e.preventDefault()}
                                             onDrop={handleDrop}
                                         >
-                                            <div className="flex items-center justify-between mb-2">
+                                            <div className="d-flex align-items-center justify-content-between mb-2">
                                                 {selectedImages.length > 0 ?
-                                                    <div className="cs-label uppercase">You Have uploaded <span className="text-danger">{selectedImages.length}</span> photos</div> :
-                                                    <div className="cs-label uppercase">Upload a photo of your vehicle</div>
+                                                    <div className="cs-label text-uppercase">You Have uploaded <span className="text-danger">{selectedImages.length}</span> photos</div> :
+                                                    <div className="cs-label text-uppercase">Upload a photo of your vehicle</div>
                                                 }
                                                 <div className="cs-label opacity-50">(Optional)</div>
                                             </div>
@@ -199,7 +199,7 @@ const GetQuoteModal = ({ close, selectedValue }) => {
                                                 <span className="camera-icon"></span> Choose File
                                             </label>
                                         </div>
-                                        <button type="submit" className="white-btn uppercase py-3 w-full mt-3" disabled={!values.g_recaptcha_response}>
+                                        <button type="submit" className="white-btn text-uppercase py-3 w-100 mt-3">
                                             Submit
                                         </button>
                                     </div>

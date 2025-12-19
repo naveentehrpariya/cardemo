@@ -95,7 +95,7 @@ const VdpContactForm = ({ vehicleData, submitContactForm }) => {
                     <div className='row mt-3 align-items-center about-action-flex wow fadeInUp' data-wow-delay="0.6s">
                         <div className='col-md-6 fb-contact-info'>
                             <a href='tel:5127771240' className='d-inline-flex align-items-center phone-no-text'>
-                                <span className='call-icon me-3'><Image src={getImages('local-phone-material.png')} alt='call' width={24} height={24} /></span>
+                                <span className='call-icon me-3'><Image src={getImages('local-phone-material.webp')} alt='call' width={24} height={24} /></span>
                                 <span>(512) 777-1240</span>
                             </a>
                         </div>

@@ -78,7 +78,7 @@ export default function Home() {
         <div className='banner-pos'>
           <div className='container container-lg'>
             <div className='w-full d-flex align-items-center justify-content-between w-100 banner-flex'>
-              <div className='banner-title text-uppercase wow fadeIn' data-wow-duration="1s" data-wow-delay="0.2s">SELL US YOUR <br /><span>Exotic Vehicle</span></div>
+              <div className='banner-title text-uppercase'>SELL US YOUR <br /><span>Exotic Vehicle</span></div>
               <EnterVehicleInfo setOpenMoreInfoModal={setOpenMoreInfoModal} setAppraisalContactInfo={setAppraisalContactInfo} formikRef={formikRef}/>
             </div>
           </div>
@@ -87,8 +87,8 @@ export default function Home() {
 
       <section className='facility-wrap'>
         <div className='d-flex facility-flex'>
-          <div className='facility-col wow fadeIn' data-wow-delay="0.2s">
-            <Image src={getImages('facility-image1.jpg')} alt="Our Latest" width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
+          <div className='facility-col'>
+            <Image src={getImages('facility-image1.webp')} alt="Our Latest" width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Our <br />LATEST</div>
@@ -100,8 +100,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='facility-col wow fadeIn' data-wow-delay="0.4s">
-            <Image src={getImages('facility-image2.jpg')} alt="Get Your Cash Offer" width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
+          <div className='facility-col'>
+            <Image src={getImages('facility-image2.webp')} alt="Get Your Cash Offer" width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Get Your <br />Cash Offer</div>
@@ -113,8 +113,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='facility-col wow fadeIn' data-wow-delay="0.6s">
-            <Image src={getImages('facility-image3.jpg')} alt="Consignment Services" width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
+          <div className='facility-col'>
+            <Image src={getImages('facility-image3.webp')} alt="Consignment Services" width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
                 <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Consignment <br />Services</div>
@@ -130,30 +130,30 @@ export default function Home() {
       <section className='process-wrap' ref={section2Ref}>
         <div className='container container-lg'>
           <div className='d-flex align-items-center justify-content-between process-flex'>
-            <div className='process-left wow fadeInLeft' data-wow-delay="0.4s">
+            <div className='process-left'>
               <div className='lg-title text-uppercase mb-2 md:mb-4 !font-[100]'>ALPHA ONE DIFFERENCE</div>
-              <p className='!font-light'>At Alpha One Motors, we specialize in helping owners of luxury and exotic vehicles sell with confidence and ease. Whether you're in San Antonio, Austin, or anywhere across Central Texas, our team is here to deliver top-market offers and a seamless selling experience.</p>
+              <p className='!font-light'>At Alpha One Motors, we specialize in helping owners of luxury and exotic vehicles sell with confidence and ease. Whether you&apos;re in San Antonio, Austin, or anywhere across Central Texas, our team is here to deliver top-market offers and a seamless selling experience.</p>
 
               <p className='!font-light'>We buy high-end models from brands like Ferrari, Lamborghini, Porsche, Lexus, BMW, Mercedes-Benz, Audi, and more. From rare exotics to highline luxury, we value every unique vehicle and offer competitive appraisals that reflect the true worth of your collection.</p>
 
               <p className='!font-light'>Ready to sell? Let Alpha One Motors be your trusted partner in getting the most out of your luxury car.</p>
             </div>
             <div className='process-right'>
-              <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.5s">
+              <div className='pr-col'>
                 <span className='pr-circle lg-title flex items-center justify-content-center'>1</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>ENTER VEHICLE DETAILS</div>
                   <p>Simply fill out the 2 part form that takes less than 1 minute.</p>
                 </div>
               </div>
-              <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.7s">
+              <div className='pr-col'>
                 <span className='pr-circle lg-title flex items-center justify-content-center'>2</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>GET OFFER</div>
                   <p>Our tenured appraisers will contact you on the same day with a competitive price.</p>
                 </div>
               </div>
-              <div className='pr-col wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.9s">
+              <div className='pr-col'>
                 <span className='pr-circle lg-title flex items-center justify-content-center'>3</span>
                 <div className='pr-content'>
                   <div className='sm-title mb-2 text-uppercase'>FINISH</div>
@@ -170,10 +170,10 @@ export default function Home() {
       <section className='alpha-one-wrap'>
         <div className='container container-lg'>
           <div className='row gx-5'>
-            <div className='col-md-6 wow fadeInLeft' data-wow-duration="1s" data-wow-delay="0.2s">
+            <div className='col-md-6'>
               <div className='black-box d-flex align-items-center'>
                 <div>
-                  <Image src={getImages('ao-ford-logo.png')} alt="Alpha One Ford" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
+                  <Image src={getImages('ao-ford-logo.webp')} alt="Alpha One Ford" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                 </div>
                 <div className='ps-4'>
                   <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Ford</div>
@@ -183,10 +183,10 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className='col-md-6 wow fadeInRight' data-wow-duration="1s" data-wow-delay="0.4s">
+            <div className='col-md-6'>
               <div className='black-box d-flex align-items-center'>
                 <div>
-                  <Image src={getImages('ao-chv-logo.png')} alt="Alpha One Chevrolet" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
+                  <Image src={getImages('ao-chv-logo.webp')} alt="Alpha One Chevrolet" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                 </div>
                 <div className='ps-4'>
                   <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Chevrolet</div>
@@ -200,7 +200,7 @@ export default function Home() {
         </div>
       </section>
       <HomeRateAbout />
-      <section className=' insta-wrap wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s" ref={section1Ref}>
+      <section className=' insta-wrap' ref={section1Ref}>
         <LazyLoadSection rootMargin="1000px">
           <InstagramFeed/>
         </LazyLoadSection>

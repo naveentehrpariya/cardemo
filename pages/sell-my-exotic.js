@@ -1,12 +1,11 @@
-import React, { useEffect, useRef, useState, Suspense } from 'react'
+import React, { useRef, useState, Suspense } from 'react'
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { getImages } from '../components/Common/const'
 import ModalLayout from '../components/Common/ModalLayout'
 import SeoMeta from '../components/Common/SeoMeta';
 import Header from '../components/Common/Header';
-// import Footer from '../components/Common/Footer';
-const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
+import Footer from '../components/Common/Footer';
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
 //import { Helmet } from 'react-helmet';
 
@@ -37,10 +36,6 @@ const SellMyExotic = () => {
     }
 
     const formRef = useRef(null);
-    const form2Ref = useRef(null);
-    const [formReady, setFormReady] = useState(false);
-    const [form2Ready, setForm2Ready] = useState(false);
-    
     const [openDragDropModal, setopenDragDropModal] = useState(false);
     const [previewURL, setPreviewURL] = useState(null);
     const closeDragDropModal = () => {
@@ -48,26 +43,7 @@ const SellMyExotic = () => {
     }
     const [files, setFiles] = useState([]);
 
-    useEffect(() => {
-        const makeObserver = (ref, setter) => {
-            if (!ref.current) return;
-            const io = new IntersectionObserver((entries) => {
-                const entry = entries[0];
-                if (entry && entry.isIntersecting) {
-                    setter(true);
-                    io.disconnect();
-                }
-            }, { rootMargin: '200px' });
-            io.observe(ref.current);
-            return () => io.disconnect();
-        };
-        const c1 = makeObserver(formRef, setFormReady);
-        const c2 = makeObserver(form2Ref, setForm2Ready);
-        return () => {
-            if (typeof c1 === 'function') c1();
-            if (typeof c2 === 'function') c2();
-        };
-    }, []);
+    
 
 
     return (
@@ -82,7 +58,7 @@ const SellMyExotic = () => {
                 ogDescription="Looking to sell your exotic car? Alpha One Motors buys Bentley, Porsche, Ferrari, and other high-end vehicles with fast payment and nationwide pickup."
             />
             <section className='common-banner-wrap d-flex align-items-center' style={{ position: 'relative', overflow: 'hidden' }} >
-                <div className='min-h-[500px]'>
+                <div className='min-h-[350px]'>
                     <Image 
                         src={getImages('sell-exotic-hero.webp')} 
                         alt="Sell Your Exotic Car" 
@@ -106,17 +82,17 @@ const SellMyExotic = () => {
                     <div className='hassle-process-box d-md-flex cv-auto'>
                         <div className='hpb-right w-50 order-2'>
                                 <div className=' xl-title text-uppercase mb-md-5 mb-4 text-center'>NO HASSLE <br />PROCESS</div>
-                            <div>
-                                    <MyVehicleForm
-                                        setSelectedValue={setSelectedValue}
-                                        getQuoteModal={getQuoteModal}
-                                            setGetQuoteModal={setGetQuoteModal}
-                                        />
-                                </div>
+                            <div ref={formRef}>
+                                <MyVehicleForm
+                                    setSelectedValue={setSelectedValue}
+                                    getQuoteModal={getQuoteModal}
+                                    setGetQuoteModal={setGetQuoteModal}
+                                />
+                            </div>
                                 <div className=' sm-title text-center roboto mt-100 fw-500 text-white'>Simple, Fast & Free</div>
                                 <div className=' text-center pt-3'>
                                         <span className='px-5 d-inline-block hpb-border-t pt-3'>
-                                            <Image src={getImages('tg-logo-bw.png')} alt='Trade Group' width={120} height={36} />
+                                            <Image src={getImages('tg-logo-bw.webp')} alt='Trade Group' width={120} height={36} />
                                         </span>
                                 </div>
                             </div>
@@ -153,20 +129,18 @@ const SellMyExotic = () => {
                         <div className='d-lg-flex justify-content-between sot-flex'>
                             <div className='sot-left'>
                                 <div className='flex lg:block   justify-center mb-3'>
-                                    <Image src={getImages('tg-logo-bw.png')} alt='Trade Group' width={120} height={36} />
+                                    <Image src={getImages('tg-logo-bw.webp')} alt='Trade Group' width={120} height={36} />
                                 </div>
                                 <div className='lg-title !text-center xl:!text-start  font-2-2em roboto'>Sell or Trade your Vehicle</div>
                             </div>
                             <div className='sot-right'>
-                                <div ref={form2Ref}  >
-                                    {form2Ready && (
+                                <div>
                                         <MyVehicleForm
                                             setSelectedValue={setSelectedValue}
                                             getQuoteModal={getQuoteModal}
                                             setGetQuoteModal={setGetQuoteModal}
                                             sotForm={true}
                                         />
-                                    )}
                                 </div>
                             </div>
                         </div>

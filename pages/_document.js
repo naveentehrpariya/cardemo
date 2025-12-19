@@ -25,15 +25,13 @@ export default function Document() {
           name="description"
           content="Alpha One Motors - Sell Your Exotic Vehicles. We offer competitive prices for Ferrari, Lamborghini, Porsche, Lexus, BMW, Mercedes-Benz and Audi in San Antonio & Austin area."
         />
-        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="apple-touch-icon" href="/images/alpha-one-logo.webp" />
         <link rel="manifest" href="/manifest.json" />
         
         {/* Inline critical CSS for instant rendering */}
         <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
         
         {/* Preconnect to critical domains */}
-        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://alphaone.greenlightautomotivesolutions.com" />
         

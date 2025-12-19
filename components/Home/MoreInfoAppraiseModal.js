@@ -166,11 +166,11 @@ const MoreInfoAppraiseModal = ({ close, appraisalContactInfo, outerFormikRef }) 
                     <div className="upload-box" onDragOver={(e) => e.preventDefault()} onDrop={(event) => handleDrop(event, setFieldValue)}>
                       <div className="sm-title text-center mb-3 text-black">Upload Vehicle Photos</div>
                       <div className="text-center my-3 flex justify-content-center">
-                        <img src={getImages('icon-upload.png')} />
+                        <img src={getImages('icon-upload.webp')} />
                       </div>
                       <div className="text-gray font-18 text-center">Drag and Drop your files or</div>
                       <div className="black-btn upload-btn d-flex justify-content-center mt-4">
-                        <img src={getImages('icon-photo.png')} /> Browse 
+                        <img src={getImages('icon-photo.webp')} /> Browse 
                         <input type="file" multiple onChange={(event) => handleImageChange(event, setFieldValue)} />
                       </div>
                       <div className="text-gray font-12 text-center mt-2">You can upload up to 10 photos</div>

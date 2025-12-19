@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
-const ModalLayout = ({ children, open, close, modalWidth = 1200, darkThemeCls = false }) => {
+const ModalLayout = ({ children, open, close, modalWidth = 1200, darkThemeCls = false, cls = '' }) => {
   return (
     <Transition appear show={open} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={close}>
@@ -17,8 +17,8 @@ const ModalLayout = ({ children, open, close, modalWidth = 1200, darkThemeCls = 
           <div className="fixed inset-0 bg-black/50" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4">
+        <div className="fixed inset-0 z-10 overflow-y-auto">
+          <div className="flex min-h-screen items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -29,9 +29,9 @@ const ModalLayout = ({ children, open, close, modalWidth = 1200, darkThemeCls = 
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`transform overflow-hidden transition-all mx-auto ${
+                className={`w-full transform overflow-hidden text-left align-middle transition-all mx-auto ${
                   darkThemeCls ? 'custom-modal dark-theme-modal' : 'custom-modal'
-                }`}
+                } ${cls}`}
                 style={{ maxWidth: `${modalWidth}px` }}
               >
                 {children}

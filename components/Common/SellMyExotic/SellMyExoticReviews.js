@@ -91,7 +91,7 @@ const SellMyExoticReviews = () => {
                             <div className="review-item" key={index}>
                                 <div className="review-box">
                                     <span className='google-icon'>
-                                        <Image src={getImages('google-logo.png')} alt='google' width={100} height={32} style={{width: 'auto', height: 'auto'}} />
+                                        <Image src={getImages('google-logo.webp')} alt='google' width={100} height={32} style={{width: 'auto', height: 'auto'}} />
                                     </span>
                                     <div className="review-mnh">
                                         <p className="clamp-4">

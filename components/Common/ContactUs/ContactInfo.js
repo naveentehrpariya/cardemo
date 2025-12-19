@@ -8,7 +8,7 @@ const ContactInfo = () => {
             <div className='contact-black-box cv-auto wow fadeInUp'>
                 <div className='xs-title font-1-4em eurostile fw-bold mb-4'>AUSTIN OFFICE</div>
                 <div className='d-flex align-items-center mb-4'>
-                    <div className='cb-icon'><Image src={getImages('local-phone-material.png')} alt='phone' width={24} height={24} /></div> 
+                    <div className='cb-icon'><Image src={getImages('local-phone-material.webp')} alt='phone' width={24} height={24} /></div> 
                     <div className='xs-title font-1-1em eurostile fw-bold'>512-777-1240</div>
                 </div>
                 <div className='d-flex align-items-center'>

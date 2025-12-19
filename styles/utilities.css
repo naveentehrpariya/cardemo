@@ -26,14 +26,6 @@
     font-display: swap;
 }
 @font-face {
-    font-family: "Helvetica";
-    src: url('/fonts/Helvetica.woff2') format('woff2'),
-        url('/fonts/Helvetica.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
     font-family: 'Eurostile';
     src: url('/fonts/EurostileRegular.woff2') format('woff2'),
         url('/fonts/EurostileRegular.woff') format('woff');
@@ -179,7 +171,7 @@ body {
     font-size: 38px;
 }
 .caret-right-icon {
-    background: url(/images/caret-right.png) no-repeat center center;
+    background: url(/images/caret-right.webp) no-repeat center center;
     background-size: 100%;
     width: 6px;
     height: 10px;
@@ -188,7 +180,7 @@ body {
     margin-right: 5px;
 }
 .white-caret-icon {
-    background: url(/images/white-caret-right.png) no-repeat center center;
+    background: url(/images/white-caret-right.webp) no-repeat center center;
     background-size: 100%;
     width: 6px;
     height: 10px;
@@ -255,7 +247,7 @@ p {
     font-size: 12px !important;
 }
 .check-icon {
-    background: url(/images/check.png) no-repeat center center;
+    background: url(/images/check.webp) no-repeat center center;
     background-size: 100%;
     width: 18px;
     height: 18px;
@@ -326,12 +318,13 @@ p {
 }
 .w-330 {
     width: 330px !important;
+    max-width: 100% !important;
 }
 .lg-btn {
     padding: 20px 25px;
 }
 .helvetica {
-    font-family: "Helvetica" !important;
+    font-family: "HelveticaNeue" !important;
 }
 .font-13 {
     font-size: 13px !important;

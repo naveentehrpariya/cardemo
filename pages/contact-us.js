@@ -2,11 +2,10 @@ import Header from '../components/Common/Header';
 import SeoMeta from '../components/Common/SeoMeta';
 import { getImages } from '../components/Common/const';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
 import ContactForm from '../components/Common/ContactForm';
+import Footer from '../components/Common/Footer';
 
-const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 
 export default function ContactUs() {
     
@@ -39,7 +38,7 @@ export default function ContactUs() {
                             <div className='contact-black-box cv-auto'>
                                 <div className='xs-title font-1-4em eurostile fw-bold mb-4'>AUSTIN OFFICE</div>
                                 <div className='d-flex align-items-center mb-4'>
-                                    <div className='cb-icon'><Image src={getImages('local-phone-material.png')} alt='phone' width={24} height={24} /></div> 
+                                    <div className='cb-icon'><Image src={getImages('local-phone-material.webp')} alt='phone' width={24} height={24} /></div> 
                                     <div className='xs-title font-1-1em eurostile fw-bold'>512-777-1240</div>
                                 </div>
                                 <div className='d-flex align-items-center'>

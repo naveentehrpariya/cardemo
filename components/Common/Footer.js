@@ -19,11 +19,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="w-full md:w-auto  !mt-8 md:!mt-0">
+          <div className="  w-full  md:max-w-[300px]">
             <div className="sm-title font-16 mb-4 uppercase fw-500 text-center md:text-left">
               Store Hours
             </div>
-            <div className="flex items-center justify-between mb-3 max-w-xs mx-auto md:mx-0">
+            <div className="flex items-center justify-between mb-3 w-full  mx-auto md:mx-0">
               <div className="sm-title font-16 fw-500 text-gray">
                 Monday - Friday
               </div>
@@ -31,13 +31,13 @@ const Footer = () => {
                 10am - 5pm
               </div>
             </div>
-            <div className="flex items-center justify-between mb-3 max-w-xs mx-auto md:mx-0">
+            <div className="flex items-center justify-between mb-3 w-full  mx-auto md:mx-0">
               <div className="sm-title font-16 fw-500 text-gray">Saturday</div>
               <div className="sm-title font-16 w-80px fw-500 text-gray text-right">
                 Appointment Only
               </div>
             </div>
-            <div className="flex items-center justify-between mb-3 max-w-xs mx-auto md:mx-0">
+            <div className="flex items-center justify-between mb-3 w-full   mx-auto md:mx-0">
               <div className="sm-title font-16 fw-500 text-gray">Sunday</div>
               <div className="sm-title font-16 w-80px fw-500 text-gray text-right">
                 Closed
@@ -59,7 +59,7 @@ const Footer = () => {
               className="hover:opacity-80 transition-opacity"
             >
               <Image
-                src="/images/fbf-icon.png"
+                src="/images/fbf-icon.webp"
                 alt="Facebook"
                 width={32}
                 height={32}
@@ -72,7 +72,7 @@ const Footer = () => {
               className="hover:opacity-80 transition-opacity"
             >
               <Image
-                src="/images/insta-icon.png"
+                src="/images/insta-icon.webp"
                 alt="Instagram"
                 width={32}
                 height={32}

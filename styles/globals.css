@@ -202,7 +202,7 @@ img {
     appearance: none;
     background-color: white;
     padding-right: 40px;
-    background-image: url('/images/down-chevron.png');
+    background-image: url('/images/down-chevron.webp');
     background-repeat: no-repeat;
     background-position: calc(100% - 8px) center;
     background-size: 24px;
@@ -375,7 +375,7 @@ img {
     font-size: 50px;
     font-weight: 400;
     color: #fff;
-    background: url(/images/shadow.png) center center/100% 100% no-repeat;
+    background: url(/images/shadow.webp) center center/100% 100% no-repeat;
     padding: 70px 45px
 }
 
@@ -398,7 +398,8 @@ img {
     background-color: rgb(255 255 255 / .1);
     padding: 30px 50px;
     width: 420px;
-    min-width: 420px;
+    max-width: 100%;
+    min-width: auto;
     min-height: 495px
 }
 
@@ -471,7 +472,7 @@ img {
 }
 
 .process-wrap {
-    background: url(/images/fade-cars.png) right top/auto 100% no-repeat;
+    background: url(/images/fade-cars.webp) right top/auto 100% no-repeat;
     padding: 65px 0;
     overflow: hidden
 }
@@ -702,7 +703,8 @@ img {
 }
 
 .store-hours-info {
-    width: 320px
+    width: 320px;
+    max-width: 100%;
 }
 
 .footer-bottom {
@@ -768,7 +770,8 @@ img {
 }
 
 .dark-theme-modal .modal-content {
-    background: #fff;
+    background: #181818;
+    color: #fff;
     padding: 0;
     border: none;
     border-radius: 0
@@ -828,7 +831,7 @@ img {
 }
 
 .custom-form select.form-control {
-    background: url(/images/down-chevron.png) calc(100% - 8px) center no-repeat #fff;
+    background: url(/images/down-chevron.webp) calc(100% - 8px) center no-repeat #fff;
     background-size: 24px
 }
 
@@ -885,7 +888,7 @@ img {
 .consignment-wrap {
     width: 100%;
     height: 450px;
-    background: url(/images/consignment-image.jpg) center center/cover no-repeat
+    background: url(/images/consignment-image.webp) center center/cover no-repeat
 }
 
 .mouse-text {
@@ -1373,7 +1376,7 @@ img {
 }
 
 .camera-icon {
-    background: url(/images/photo-camera.png) center center/100% no-repeat;
+    background: url(/images/photo-camera.webp) center center/100% no-repeat;
     width: 24px;
     height: 24px;
     display: inline-block;
@@ -1449,7 +1452,7 @@ img {
     background-color: #512da8;
     line-height: 40px;
     border-radius: 50%;
-    font-family: Helvetica;
+    font-family: HelveticaNeue;
     font-size: 1.4em;
     font-weight: 400;
     letter-spacing: normal;
@@ -1544,7 +1547,7 @@ img {
 }
 
 .contact-wrap {
-    padding: 95px 0 256px;
+    padding: 95px 0 100px;
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-color: #222
@@ -1779,7 +1782,7 @@ img {
     height: 60px;
     padding: 9px 20px 11px 62px;
     border: 1px solid #fff;
-    background: url(/images/search.png) 20px center/25px 25px no-repeat #fff;
+    background: url(/images/search.webp) 20px center/25px 25px no-repeat #fff;
     border-radius: 0;
     font-family: "Roboto", sans-serif;
     font-size: 16px;
@@ -2045,7 +2048,7 @@ img {
 }
 
 .copy_icon {
-    background: url(/images/content-copy.png) center center/100% no-repeat;
+    background: url(/images/content-copy.webp) center center/100% no-repeat;
     width: 18px;
     height: 21px;
     display: inline-block;
@@ -3438,14 +3441,6 @@ img {
     font-display: swap;
 }
 @font-face {
-    font-family: "Helvetica";
-    src: url('/fonts/Helvetica.woff2') format('woff2'),
-        url('/fonts/Helvetica.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
     font-family: 'Eurostile';
     src: url('/fonts/EurostileRegular.woff2') format('woff2'),
         url('/fonts/EurostileRegular.woff') format('woff');
@@ -3591,7 +3586,7 @@ body {
     font-size: 38px;
 }
 .caret-right-icon {
-    background: url(/images/caret-right.png) no-repeat center center;
+    background: url(/images/caret-right.webp) no-repeat center center;
     background-size: 100%;
     width: 6px;
     height: 10px;
@@ -3600,7 +3595,7 @@ body {
     margin-right: 5px;
 }
 .white-caret-icon {
-    background: url(/images/white-caret-right.png) no-repeat center center;
+    background: url(/images/white-caret-right.webp) no-repeat center center;
     background-size: 100%;
     width: 6px;
     height: 10px;
@@ -3650,6 +3645,7 @@ p {
 }
 .w-240 {
     width: 240px;
+    max-width: 100%;
 }
 .font-18 {
     font-size: 18px !important;
@@ -3667,7 +3663,7 @@ p {
     font-size: 12px !important;
 }
 .check-icon {
-    background: url(/images/check.png) no-repeat center center;
+    background: url(/images/check.webp) no-repeat center center;
     background-size: 100%;
     width: 18px;
     height: 18px;

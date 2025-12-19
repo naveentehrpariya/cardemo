@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import WowElement from '../Common/WowElement';
 
 const ExoticConsignment = ({ handleConsignmentModal }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -26,11 +25,11 @@ const ExoticConsignment = ({ handleConsignmentModal }) => {
           <div className='w-full text-center mouse-text'>
             <div className='w-full d-flex align-items-center consignment-flex'>
               <div className='w-full'>
-                <WowElement className='xl-title text-uppercase text-center wow fadeInUp' duration="1s" delay="0.2s">Exotic Car Consignment</WowElement>
-                <WowElement className='lg-title font-40 text-uppercase text-center fw-300 my-4 wow fadeInUp' duration="1s" delay="0.4s">Looking to sell your supercar?</WowElement>
-                <WowElement className='text-center mt-5 wow fadeInUp' duration="1s" delay="0.6s">
+                <div className='xl-title text-uppercase text-center'>Exotic Car Consignment</div>
+                <div className='lg-title font-40 text-uppercase text-center fw-300 my-4'>Looking to sell your supercar?</div>
+                <div className='text-center mt-5'>
                   <button type='button' className='black-btn get-started-btn w-240 text-uppercase' onClick={handleConsignmentModal}>Get Started</button>
-                </WowElement>
+                </div>
               </div>
             </div>
           </div>

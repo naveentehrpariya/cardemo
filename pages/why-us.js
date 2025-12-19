@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
 import SeoMeta from '../components/Common/SeoMeta';
 import LazyLoadSection from '../components/Common/LazyLoadSection';
+import WhyUsReviews from '../components/Common/WhyUs/WhyUsReviews';
+import WhyUsContent from '../components/Common/WhyUs/WhyUsContent';
 
-// import Footer from '../components/Common/Footer';
-const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
-const WhyUsReviews = dynamic(() => import('../components/Common/WhyUs/WhyUsReviews'), { ssr: false });
-const WhyUsContent = dynamic(() => import('../components/Common/WhyUs/WhyUsContent'), { ssr: false });
+import Footer from '../components/Common/Footer';
 
 export default function WhyUs() {
     return (
@@ -29,6 +27,8 @@ export default function WhyUs() {
                     alt="Why Choose Us" 
                     fill
                     priority 
+                    placeholder="blur"
+                    blurDataURL="data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoKAAQAAUAmJZwAAup3gDCQAAD+/XDKwGYt+SY75deR+HS2EAA3wz3vcEAAAA=="
                     sizes="100vw"
                     style={{ objectFit: 'cover', zIndex: -1 }}
                 />

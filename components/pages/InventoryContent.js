@@ -7,13 +7,11 @@ import SearchComponent from '../Srp/SearchComponent';
 import { getImages } from '../Common/const';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
-import dynamic from 'next/dynamic';
 import InventoryItem from '../Srp/InventoryItem';
 import Header from '../Common/Header';
-
-const Footer = dynamic(() => import('../Common/Footer'), { ssr: false });
-const ModalLayout = dynamic(() => import('../Common/ModalLayout'), { ssr: false });
-const SelectFilterModal = dynamic(() => import('../Srp/SelectFilterModal'), { ssr: false });
+import Footer from '../Common/Footer';
+import ModalLayout from '../Common/ModalLayout';
+import SelectFilterModal from '../Srp/SelectFilterModal';
 
 export default function Inventory({ initialData }) {
     const router = useRouter();

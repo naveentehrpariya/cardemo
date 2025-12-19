@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { getImages } from '@/components/Common/const';
-import WowElement from '../WowElement';
 
 const WhyUsContent = () => {
     return (
@@ -29,9 +28,9 @@ const WhyUsContent = () => {
 
             <section className="about-wrap cv-auto">
                 <div className="d-lg-flex align-items-center">
-                    <WowElement className="aw-left w-50 wow fadeInLeft" duration="1s" delay="0.1s">
+                    <div className="aw-left w-50">
                         <Image src={getImages('about-side-bg.webp')} alt="Alpha One Motors" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
-                    </WowElement>
+                    </div>
                     <div className="aw-right w-50  "  >
                         <div className="mxw-560">
                             <div className="fading lg-title text-uppercase mb-lg-4 mb-3">We Know Luxury Automotive!</div>
@@ -50,9 +49,9 @@ const WhyUsContent = () => {
                     </div>
                 </div>
                 <div className="d-lg-flex align-items-center reverse-block">
-                    <WowElement className="aw-left w-50 order-2 wow fadeInRight" duration="1s" delay="0.1s">
+                    <div className="aw-left w-50 order-2">
                         <Image src={getImages('about-side-bg2.webp')} alt="Sell Your Exotic" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
-                    </WowElement>
+                    </div>
                     <div className="aw-right w-50    "  >
                         <div className="mxw-560">
                             <div className="fading lg-title text-uppercase mb-lg-4 mb-3">Ready to Sell Your Exotic Car?</div>

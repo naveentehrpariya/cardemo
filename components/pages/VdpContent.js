@@ -137,7 +137,7 @@ const Vdp = ({ initialVehicleData }) => {
     // console.log("vehicleData", vehicleData)
     
     const normalizedMake = vehicleData?.make?.trim().replace(/\s+/g, '-');
-    const brandLogoSrc = normalizedMake ? getImages(`logos/${normalizedMake}.png`) : null;
+    const brandLogoSrc = normalizedMake ? getImages(`logos/${normalizedMake}.webp`) : null;
     const [logoError, setLogoError] = useState(false);
     
     if (!vehicleData?.make) {

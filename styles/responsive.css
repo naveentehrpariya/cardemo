@@ -738,6 +738,7 @@
     }
     .hpb-process-list {
         max-width: 400px;
+        width: 100%;
         padding: 0px;
     }
     /* Sell or Trade */

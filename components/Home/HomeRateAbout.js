@@ -1,20 +1,19 @@
 import React from 'react';
 import Image from 'next/image';
 import { getImages } from '@/components/Common/const';
-import WowElement from '../Common/WowElement';
 
 const HomeRateAbout = () => {
   return (
     <section className='rate-about-wrap'>
       <div className='container container-lg'>
         <div className='row px-3 md:px-0'>
-          <WowElement className='col-md-6 wow fadeInUp' duration="1s" delay="0.2s">
+          <div className='col-md-6'>
             <div className='text-center lg:text-start text-xl md:text-2xl font-euro text-uppercase mb-4'>Highly Ranked by Customers</div>
             <div className='rating-box'>
               <div className='d-flex align-items-center justify-content-between mb-3'>
                 <div className='xl-title helveticaneue'>4.9</div>
                 <div className='google-icon flex justify-content-center align-items-center'>
-                  <Image src={getImages('google-logo.png')} alt='Google' width={30} height={30} style={{ width: 'auto', height: 'auto' }} />
+                  <Image src={getImages('google-logo.webp')} alt='Google' width={30} height={30} style={{ width: 'auto', height: 'auto' }} />
                 </div>
               </div>
               <div className='d-flex align-items-center justify-content-between mb-3'>
@@ -95,17 +94,17 @@ const HomeRateAbout = () => {
                 <div className='w-50px'>0</div>
               </div>
             </div>
-          </WowElement>
-          <WowElement className='col-md-6 wow fadeInUp' duration="1s" delay="0.4s">
+          </div>
+          <div className='col-md-6'>
             <div className='lg-title text-uppercase mb-4'>OUR PASSION</div>
             <div className='about-box'>
               <div className='about-image'>
-                <Image src={getImages('porche.jpg')} alt="Our Passion" width={600} height={400} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: '100%' }} />
+                <Image src={getImages('porche.webp')} alt="Our Passion" width={600} height={400} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: '100%' }} />
               </div>
               <div className='about-content'>Our passion is sharing our love for elite cars with incredible people. We put reputation above all else. Our network of investors and collectors ensure you get the most value on any appraisal you bring us. We cut out the middleman and connect investors across the country.
               </div>
             </div>
-          </WowElement>
+          </div>
         </div>
       </div>
     </section>
