@@ -4,7 +4,6 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
 import Header from '@/components/Common/Header';
-
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
 // import InstagramFeed from '@/components/Home/InstagramFeed';
 const ExoticConsignment = dynamic(() => import('@/components/Home/ExoticConsignment'), { ssr: false });
@@ -16,31 +15,35 @@ const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), {
 // import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
 const EnterVehicleInfo = dynamic(() => import('@/components/Home/EnterVehicleInfo'), { ssr: false });
 const Footer = dynamic(() => import('@/components/Common/Footer'), { ssr: false });
+
 export default function Home() {
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
   const section3Ref = useRef(null);
-
   const scrollToSection = (sectionRef) => {
     if (sectionRef.current) {
       sectionRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  // Vehicle Consignment Inquiry
   const [openConsignmentModal, setOpenConsignmentModal] = useState(false);
   const handleConsignmentModal = () => {
     setOpenConsignmentModal(true);
   };
+
+
   const closeConsignmentModal = () => {
     setOpenConsignmentModal(false);
   };
+
 
   // More Info to appraise your vehicle
   const [openMoreInfoModal, setOpenMoreInfoModal] = useState(false);
   const handleMoreInfoModal = () => {
     setOpenMoreInfoModal(true);
   };
+
+  
   const closeMoreInfoModal = () => {
     setOpenMoreInfoModal(false);
   };
