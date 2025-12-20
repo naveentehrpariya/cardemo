@@ -33,18 +33,17 @@ export default function Document() {
         
         {/* Preconnect to critical domains */}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://alphaone.greenlightautomotivesolutions.com" />
+        <link rel="preconnect" href="https://alphaone.greenlightautomotivesolutions.com" />
+        <link rel="preconnect" href="https://pictures.dealer.com" />
+        <link rel="preconnect" href="https://inventory.dealersocket.com" />
+        <link rel="dns-prefetch" href="https://cdninstagram.com" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://www.gstatic.com" />
         
         {/* Preload critical resources */}
         <link rel="preload" as="font" href="/fonts/HelveticaNeue-Medium.woff2" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" as="font" href="/fonts/EurostileRegular.woff2" type="font/woff2" crossOrigin="anonymous" />
         
-        {/* Self-hosted Lato fonts */}
-        <link rel="preload" href="/fonts/lato/lato.css" as="style" />
-        <link rel="stylesheet" href="/fonts/lato/lato.css" media="print" onLoad="this.media='all'" />
-        <noscript>
-            <link rel="stylesheet" href="/fonts/lato/lato.css" />
-        </noscript>
         
       </Head>
       <body>
