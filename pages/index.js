@@ -87,7 +87,7 @@ export default function Home() {
 
 
 
-      
+
       <section className='facility-wrap'>
         <div className='d-flex facility-flex'>
           <div className='facility-col'>
@@ -103,6 +103,11 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+
+
+
+
           <div className='facility-col'>
             <Image src={getImages('facility-image2.webp')} alt="Get Your Cash Offer" width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
