@@ -84,7 +84,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className='facility-wrap'>
         <div className='d-flex facility-flex'>
           <div className='facility-col'>
