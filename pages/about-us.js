@@ -22,8 +22,12 @@ export default function AboutUs() {
                     alt="About Us" 
                     fill 
                     priority 
-                    quality={60}
+                    fetchPriority="high"
+                    loading="eager"
+                    quality={50}
                     sizes="100vw"
+                    placeholder="blur"
+                    blurDataURL="data:image/webp;base64,UklGRhIAAABXRUJQVlA4IAYAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA="
                     style={{objectFit: 'cover', zIndex: -1}} 
                 />
                 <div className="w-100" style={{ zIndex: 1 }}>

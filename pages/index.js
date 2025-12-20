@@ -68,7 +68,7 @@ export default function Home() {
             fill 
             priority 
             fetchPriority="high"
-            quality={60}
+            quality={50}
             loading="eager"
             className="slideshow-image"
             style={{ objectFit: 'cover' }} 

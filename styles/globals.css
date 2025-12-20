@@ -1,4 +1,8 @@
 @import "tailwindcss";
+@import "./animate.css";
+@import "./utilities.css";
+@import "./react-styles.css";
+@import "./responsive.css";
 
 @keyframes fading-effect {
   from {

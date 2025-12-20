@@ -28,9 +28,11 @@ export default function WhyUs() {
                     alt="Why Choose Us" 
                     fill
                     priority 
+                    fetchPriority="high"
+                    loading="eager"
+                    quality={50}
                     placeholder="blur"
-                    blurDataURL={getImages('about-hero.webp?w=1000&q=1')}
-                    // blurDataURL="data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoKAAQAAUAmJZwAAup3gDCQAAD+/XDKwGYt+SY75deR+HS2EAA3wz3vcEAAAA=="
+                    blurDataURL="data:image/webp;base64,UklGRhIAAABXRUJQVlA4IAYAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA="
                     sizes="100vw"
                     style={{ objectFit: 'cover', zIndex: -1 }}
                 />
