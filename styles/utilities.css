@@ -230,6 +230,7 @@ p {
 }
 .w-240 {
     width: 240px;
+    max-width: 100%;
 }
 .font-18 {
     font-size: 18px !important;
@@ -242,6 +243,7 @@ p {
 }
 .w-80px {
     width: 140px !important;
+    max-width: 100% !important;
 }
 .font-12 {
     font-size: 12px !important;

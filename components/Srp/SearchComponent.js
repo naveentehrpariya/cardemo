@@ -96,7 +96,7 @@ const SearchComponent = ({filteredVehicleData, searchText, setSearchText, openVD
                             onClick={() => openVDP(item.vdp_url ?? "used-" + item.vin)}
                             className='d-block'
                         >
-                            {item.images[0] && <img src={item.images[0]} alt={`${item.year} ${item.make} ${item.model}`} onError={(e) => { e.target.src = getImages("unavailable_stockphoto.avif") }} />}
+                            {item.images[0] && <img src={item.images[0]} alt={`${item.year} ${item.make} ${item.model}`} onError={(e) => { e.target.src = getImages("unavailable_stockphoto.webp") }} />}
                             <div className='fd-title'>{item.year} {item.make} {item.model} {item.trim}</div>
                         </button>
                     </li>

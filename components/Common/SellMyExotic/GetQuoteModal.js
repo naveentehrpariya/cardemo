@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, lazy } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { Field, FieldArray, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { VehicleContext } from '../../../context/VehicleContext';
@@ -6,8 +6,9 @@ import { useRouter } from 'next/router';
 import ValidationError from '../../Errors/ValidationError';
 import Image from 'next/image';
 import { getImages } from '../const';
+import dynamic from 'next/dynamic';
 
-const ReCAPTCHA = lazy(() => import('react-google-recaptcha'));
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 
 const validationSchemaStep1 = Yup.object({
     full_name: Yup.string().required('Full name is required'),
@@ -96,7 +97,7 @@ const GetQuoteModal = ({ close, selectedValue }) => {
 
     return (
         <>
-            <div className="modal-content !mt-[10vh]">
+            <div className="modal-content mt-20 md:!mt-[10vh]">
                 <div className="modal-header">
                     <h1 className="modal-title filter-modal-title">
                         GET YOUR QUOTE TODAY

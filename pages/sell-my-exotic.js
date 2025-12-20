@@ -5,9 +5,11 @@ import { getImages } from '../components/Common/const'
 import ModalLayout from '../components/Common/ModalLayout'
 import SeoMeta from '../components/Common/SeoMeta';
 import Header from '../components/Common/Header';
-import Footer from '../components/Common/Footer';
+// import Footer from '../components/Common/Footer';
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
 //import { Helmet } from 'react-helmet';
+
+const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 
 const SellMyExoticReviews = dynamic(() => import('../components/Common/SellMyExotic/SellMyExoticReviews'), { 
     ssr: false,
@@ -16,7 +18,7 @@ const SellMyExoticReviews = dynamic(() => import('../components/Common/SellMyExo
 
 const MyVehicleForm = dynamic(() => import("../components/Common/SellMyExotic/MyVehicleForm"), {
     ssr: false,
-    loading: () => <div ></div>
+    loading: () => <div style={{ height: '400px' }}></div>
 });
 
 const GetQuoteModal = React.lazy(() => import("../components/Common/SellMyExotic/GetQuoteModal"));

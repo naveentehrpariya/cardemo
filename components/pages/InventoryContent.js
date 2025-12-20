@@ -5,13 +5,15 @@ import SrpLeft from '../Srp/SrpLeft';
 import { VehicleContext } from '../../context/VehicleContext';
 import SearchComponent from '../Srp/SearchComponent';
 import { getImages } from '../Common/const';
-import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 import InventoryItem from '../Srp/InventoryItem';
 import Header from '../Common/Header';
-import Footer from '../Common/Footer';
 import ModalLayout from '../Common/ModalLayout';
-import SelectFilterModal from '../Srp/SelectFilterModal';
+import dynamic from 'next/dynamic';
+
+const SelectFilterModal = dynamic(() => import('../Srp/SelectFilterModal'), { ssr: false });
+const Footer = dynamic(() => import('../Common/Footer'), { ssr: false });
+const SimpleBar = dynamic(() => import('simplebar-react'), { ssr: false });
 
 export default function Inventory({ initialData }) {
     const router = useRouter();

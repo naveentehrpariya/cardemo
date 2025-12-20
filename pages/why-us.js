@@ -1,13 +1,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
 import SeoMeta from '../components/Common/SeoMeta';
 import LazyLoadSection from '../components/Common/LazyLoadSection';
-import WhyUsReviews from '../components/Common/WhyUs/WhyUsReviews';
-import WhyUsContent from '../components/Common/WhyUs/WhyUsContent';
 
-import Footer from '../components/Common/Footer';
+const WhyUsReviews = dynamic(() => import('../components/Common/WhyUs/WhyUsReviews'), { ssr: false });
+const WhyUsContent = dynamic(() => import('../components/Common/WhyUs/WhyUsContent'), { ssr: false });
+const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 
 export default function WhyUs() {
     return (

@@ -2,10 +2,13 @@ import Header from '../components/Common/Header';
 import SeoMeta from '../components/Common/SeoMeta';
 import { getImages } from '../components/Common/const';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
-import ContactForm from '../components/Common/ContactForm';
-import Footer from '../components/Common/Footer';
+// import ContactForm from '../components/Common/ContactForm';
+// import Footer from '../components/Common/Footer';
 
+const ContactForm = dynamic(() => import('../components/Common/ContactForm'), { ssr: false });
+const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 
 export default function ContactUs() {
     

@@ -715,6 +715,7 @@
     .store-hours-info .w-80px {
         text-align: end;
         width: 160px;
+        max-width: 100%;
     }
     .hassle-process-wrap {
         padding: 0;
@@ -881,6 +882,7 @@
     }
     .w-330 {
         width: 230px !important;
+        max-width: 100%;
     }
     .aw-right .lg-title   {
         line-height: 32px;

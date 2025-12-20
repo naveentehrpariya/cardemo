@@ -1,12 +1,12 @@
 import { getImages } from '@/components/Common/const';
 import Header from '../components/Common/Header';
-import Footer from '../components/Common/Footer';
 import SeoMeta from '../components/Common/SeoMeta';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import AboutContent from '../components/Common/AboutUs/AboutContent';
+// import AboutContent from '../components/Common/AboutUs/AboutContent';
 
-// const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
+const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
+const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 export default function AboutUs() {
     return (
         <>

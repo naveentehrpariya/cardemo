@@ -32,7 +32,7 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = f
     
     // Determine which image to show
     const displayImage = errorImages[currentSlide] 
-        ? getImages("unavailable_stockphoto.avif")
+        ? getImages("unavailable_stockphoto.webp")
         : (item.images && item.images.length > 0 ? item.images[currentSlide] : null);
 
     return (

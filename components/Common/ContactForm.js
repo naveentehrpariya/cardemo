@@ -1,9 +1,11 @@
 import { useContext, useRef, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import ReCAPTCHA from 'react-google-recaptcha';
+import dynamic from 'next/dynamic';
 import { VehicleContext } from '../../context/VehicleContext';
 import { useRouter } from 'next/router';
+
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 
 export default function ContactForm() {
     const router = useRouter();
