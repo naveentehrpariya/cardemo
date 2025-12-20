@@ -15,7 +15,6 @@ const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), {
 // import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
 const EnterVehicleInfo = dynamic(() => import('@/components/Home/EnterVehicleInfo'), { ssr: false });
 const Footer = dynamic(() => import('@/components/Common/Footer'), { ssr: false });
-
 export default function Home() {
   const section1Ref = useRef(null);
   const section2Ref = useRef(null);
