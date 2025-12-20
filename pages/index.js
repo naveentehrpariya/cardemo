@@ -76,17 +76,20 @@ export default function Home() {
       <Header secref={section2Ref} />
 
       <section className='banner-wrap'>
-        <div className="slideshow" style={{ position: 'relative' }}>
+        <div className="slideshow" style={{ position: 'relative', backgroundColor: '#1a1a1a' }}>
           <Image 
             src={getImages('banner-image.webp')} 
             alt="Banner" 
             fill 
             priority 
             fetchPriority="high"
-            quality={60}
+            quality={50}
+            loading="eager"
             className="slideshow-image"
             style={{ objectFit: 'cover' }} 
             sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/webp;base64,UklGRhIAAABXRUJQVlA4IAYAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA="
           />
         </div>
         <div className='banner-shadow'></div> 
@@ -106,10 +109,10 @@ export default function Home() {
       <section className='facility-wrap'>
         <div className='d-flex facility-flex'>
           <div className='facility-col'>
-            <Image src={getImages('facility-image1.webp')} alt="Our Latest" width={800} height={600} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
+            <Image src={getImages('facility-image1.webp')} alt="Our Latest" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
-                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Our <br />LATEST</div>
+                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4 text-white'>Our <br />LATEST</div>
                 <div className='mt-3'>
                   <button onClick={() => scrollToSection(section1Ref)} className='white-btn pe-5'>
                     <span className='caret-right-icon'></span> View
@@ -124,10 +127,10 @@ export default function Home() {
 
 
           <div className='facility-col'>
-            <Image src={getImages('facility-image2.webp')} alt="Get Your Cash Offer" width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
+            <Image src={getImages('facility-image2.webp')} alt="Get Your Cash Offer" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
-                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Get Your <br />Cash Offer</div>
+                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4 text-white'>Get Your <br />Cash Offer</div>
                 <div className='mt-3'>
                   <button onClick={() => scrollToSection(section2Ref)} className='white-btn pe-5'>
                     <span className='caret-right-icon'></span> View
@@ -137,10 +140,10 @@ export default function Home() {
             </div>
           </div>
           <div className='facility-col'>
-            <Image src={getImages('facility-image3.webp')} alt="Consignment Services" width={800} height={600} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
+            <Image src={getImages('facility-image3.webp')} alt="Consignment Services" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
-                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4'>Consignment <br />Services</div>
+                <div className='text-2xl md:text-4xl font-euro font-bold  text-uppercase mb-4 text-white'>Consignment <br />Services</div>
                 <div className='mt-3'>
                   <button type="button" onClick={handleConsignmentModal} className='white-btn pe-5'><span className='caret-right-icon'></span> View</button>
                 </div>

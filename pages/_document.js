@@ -13,6 +13,13 @@ export default function Document() {
   } catch (e) {
     console.error('Failed to load critical CSS:', e);
   }
+  
+  // Preload hero images based on common patterns
+  const heroImages = [
+    '/images/banner-image.webp',
+    '/images/about-hero.webp',
+    '/images/new-about-hero.webp'
+  ];
 
   return (
     <Html lang="en" className="font-helvetica">
@@ -32,19 +39,50 @@ export default function Document() {
         <style dangerouslySetInnerHTML={{ __html: criticalCSS }} />
         
         {/* Preconnect to critical domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://alphaone.greenlightautomotivesolutions.com" />
+        <link rel="preconnect" href="https://alphaone.greenlightautomotivesolutions.com" />
+        <link rel="preconnect" href="https://pictures.dealer.com" />
+        <link rel="preconnect" href="https://inventory.dealersocket.com" />
+        <link rel="dns-prefetch" href="https://cdninstagram.com" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://www.gstatic.com" />
+        
+        {/* Bootstrap CSS - Load with high priority but non-blocking */}
+        <link rel="preload" href="/bootstrap.min.css" as="style" />
+        <link rel="stylesheet" href="/bootstrap.min.css" />
+        
+        {/* Slick Carousel CSS */}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" media="print" onLoad="this.media='all'" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" media="print" onLoad="this.media='all'" />
+        
+        {/* Optimized Google Fonts - Load asynchronously */}
+        <link
+          rel="preload"
+          as="style"
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+          rel="stylesheet"
+          media="print"
+          onLoad="this.media='all'"
+        />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         
         {/* Preload critical resources */}
-        <link rel="preload" as="font" href="/fonts/HelveticaNeue-Medium.woff2" type="font/woff2" crossOrigin="anonymous" />
-        <link rel="preload" as="font" href="/fonts/EurostileRegular.woff2" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/images/banner-image.webp" fetchpriority="high" />
+        <link rel="preload" as="font" href="/fonts/HelveticaNeue-Medium.woff2" type="font/woff2" crossOrigin="anonymous" fetchpriority="high" />
+        <link rel="preload" as="font" href="/fonts/EurostileRegular.woff2" type="font/woff2" crossOrigin="anonymous" fetchpriority="high" />
         
-        {/* Self-hosted Lato fonts */}
-        <link rel="preload" href="/fonts/lato/lato.css" as="style" />
-        <link rel="stylesheet" href="/fonts/lato/lato.css" media="print" onLoad="this.media='all'" />
-        <noscript>
-            <link rel="stylesheet" href="/fonts/lato/lato.css" />
-        </noscript>
+        {/* Preload CSS for faster parsing */}
+        <link rel="preload" href="/_next/static/css/app.css" as="style" />
+        
         
       </Head>
       <body>

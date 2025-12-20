@@ -192,7 +192,7 @@ button {
 }
 
 /* Typography */
-.lg-title   {
+.lg-title {
   font-family: Eurostile;
   font-size: 30px;
   font-weight: bold;
@@ -200,19 +200,146 @@ button {
   color: #f4eeee;
 }
 
-/* Buttons */
+.sm-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Additional utility classes */
+.font-euro {
+  font-family: Eurostile, sans-serif;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.md\:text-4xl {
+  font-size: 2.25rem;
+}
+
 .white-btn {
-  padding: 9px 20px;
-  border: 1px solid white;
-  background-color: white;
-  font-family: Eurostile;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: normal;
-  text-align: center;
-  color: black;
   display: inline-block;
+  padding: 12px 24px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.3s;
   cursor: pointer;
+  position: relative;
+}
+
+.white-btn:hover {
+  opacity: 0.9;
+}
+
+.caret-right-icon::before {
+  content: '›';
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+/* Header styles */
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-logo img {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Mobile menu */
+.main-menu {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .main-menu {
+    display: flex;
+  }
+  .d-lg-none {
+    display: none !important;
+  }
+  .d-lg-flex {
+    display: flex !important;
+  }
+}
+
+/* Facility wrap */
+.facility-wrap {
+  display: flex;
+}
+
+.facility-col {
+  position: relative;
+  flex: 1;
+}
+
+.facility-pos {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+}
+
+/* Process wrap */
+.process-wrap {
+  padding: 60px 0;
+}
+
+.process-flex {
+  display: flex;
+  gap: 40px;
+}
+
+.process-left {
+  flex: 1;
+}
+
+.process-right {
+  flex: 1;
+}
+
+.pr-col {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.pr-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  color: black;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .process-flex {
+    flex-direction: column;
+  }
+  .facility-wrap {
+    flex-direction: column;
+  }
+  .banner-title {
+    font-size: 32px;
+    padding: 40px 25px;
+  }
+  .banner-title span {
+    font-size: 42px;
+  }
 }
 
 /* Slideshow background */

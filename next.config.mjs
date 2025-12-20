@@ -8,14 +8,16 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
-    // Disabled to improve dev stability
-    optimizePackageImports: [],
+    // Optimize common package imports
+    optimizePackageImports: ['react-icons', '@headlessui/react', 'formik'],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'inline',
     remotePatterns: [
       {
         protocol: 'https',
@@ -49,7 +51,6 @@ const nextConfig = {
       },
     ],
     unoptimized: false,
-    dangerouslyAllowSVG: true,
   },
   compress: true,
   poweredByHeader: false,
