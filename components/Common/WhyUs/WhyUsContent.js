@@ -29,7 +29,12 @@ const WhyUsContent = () => {
             <section className="about-wrap cv-auto">
                 <div className="d-lg-flex align-items-center">
                     <div className="aw-left w-50">
-                        <Image src={getImages('about-side-bg.webp')} alt="Alpha One Motors" width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
+                        <Image 
+                        placeholder="blur"
+                        blurDataURL={getImages('about-side-bg.webp?w=1000&q=1')}
+                        src={getImages('about-side-bg.webp')} alt="Alpha One Motors" 
+                        width={1200} height={800} sizes="(max-width: 768px) 100vw, 50vw" 
+                        style={{ width: '100%', height: 'auto' }} />
                     </div>
                     <div className="aw-right w-50  "  >
                         <div className="mxw-560">

@@ -5,15 +5,15 @@ import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
 import Header from '@/components/Common/Header';
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
-// import InstagramFeed from '@/components/Home/InstagramFeed';
-
+import InstagramFeed from '@/components/Home/InstagramFeed';
 const ExoticConsignment = dynamic(() => import('@/components/Home/ExoticConsignment'), { ssr: false });
 const HomeRateAbout = dynamic(() => import('@/components/Home/HomeRateAbout'), { ssr: false });
 const ModalLayout = dynamic(() => import('@/components/Common/ModalLayout'), { ssr: false });
 const VehicleConsignmentInquiry = dynamic(() => import('@/components/Home/VehicleConsignmentInquiry'), { ssr: false });
 const MoreInfoAppraiseModal = dynamic(() => import('@/components/Home/MoreInfoAppraiseModal'), { ssr: false });
-const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), { ssr: false });
+// const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), { ssr: false });
 import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
+// const EnterVehicleInfo = dynamic(() => import('@/components/Home/EnterVehicleInfo'), { ssr: false });
 const Footer = dynamic(() => import('@/components/Common/Footer'), { ssr: false });
 
 export default function Home() {
@@ -74,7 +74,7 @@ export default function Home() {
             sizes="100vw"
           />
         </div>
-        <div className='banner-shadow'></div>
+        <div className='banner-shadow'></div> 
         <div className='banner-pos'>
           <div className='container container-lg'>
             <div className='w-full d-flex align-items-center justify-content-between w-100 banner-flex'>
