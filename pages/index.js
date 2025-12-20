@@ -5,16 +5,15 @@ import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
 import Header from '@/components/Common/Header';
 import LazyLoadSection from '@/components/Common/LazyLoadSection';
-import InstagramFeed from '@/components/Home/InstagramFeed';
+// import InstagramFeed from '@/components/Home/InstagramFeed';
+const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), { ssr: false });
+// import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
 const EnterVehicleInfo = dynamic(() => import('@/components/Home/EnterVehicleInfo'), { ssr: false, loading: () => <div className="rounded-[10px] !p-[30px] md:!p-[50px] md:!pb-[70px] md:!pt-[30px] shadow-md lg:max-w-[410px] backdrop-blur-[10px] bg-white/10 w-full" aria-busy="true">Loading...</div> });
 const ExoticConsignment = dynamic(() => import('@/components/Home/ExoticConsignment'), { ssr: false });
 const HomeRateAbout = dynamic(() => import('@/components/Home/HomeRateAbout'), { ssr: false });
 const ModalLayout = dynamic(() => import('@/components/Common/ModalLayout'), { ssr: false });
 const VehicleConsignmentInquiry = dynamic(() => import('@/components/Home/VehicleConsignmentInquiry'), { ssr: false });
 const MoreInfoAppraiseModal = dynamic(() => import('@/components/Home/MoreInfoAppraiseModal'), { ssr: false });
-// const InstagramFeed = dynamic(() => import('@/components/Home/InstagramFeed'), { ssr: false });
-// import EnterVehicleInfo from '@/components/Home/EnterVehicleInfo';
-// const EnterVehicleInfo = dynamic(() => import('@/components/Home/EnterVehicleInfo'), { ssr: false });
 const Footer = dynamic(() => import('@/components/Common/Footer'), { ssr: false });
 
 export default function Home() {
@@ -106,9 +105,9 @@ export default function Home() {
 
 
 
-      <section className='facility-wrap'>
-        <div className='d-flex facility-flex'>
-          <div className='facility-col'>
+      <section className='facility-wrap w-full'>
+        <div className='d-flex facility-flex w-full'>
+          <div className='facility-col w-full'>
             <Image src={getImages('facility-image1.webp')} alt="Our Latest" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
@@ -126,7 +125,7 @@ export default function Home() {
 
 
 
-          <div className='facility-col'>
+          <div className='facility-col w-full'>
             <Image src={getImages('facility-image2.webp')} alt="Get Your Cash Offer" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
@@ -139,7 +138,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='facility-col'>
+          <div className='facility-col w-full'>
             <Image src={getImages('facility-image3.webp')} alt="Consignment Services" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
