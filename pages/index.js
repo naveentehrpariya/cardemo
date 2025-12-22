@@ -79,14 +79,13 @@ export default function Home() {
           <Image 
             src={getImages('banner-image.webp')} 
             alt="Banner" 
-            fill 
             priority 
             fetchPriority="high"
-            quality={35}
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMCcgaGVpZ2h0PScxMCc+PHJlY3Qgd2lkdGg9JzEwMCUnIGhlaWdodD0nMTAwJScgZmlsbD0nIzFhMWExYScvPjwvc3ZnPg=="
+            quality={40}
             className="slideshow-image"
-            style={{ objectFit: 'cover' }} 
+            width={1920}
+            height={1080}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
             sizes="100vw"
           />
         </div>

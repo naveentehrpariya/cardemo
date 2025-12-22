@@ -298,6 +298,16 @@
     padding: 30px 60px 47px 40px
 }
 
+/* Performance: avoid rendering offscreen sections on first paint */
+.facility-wrap,
+.process-wrap,
+.alpha-one-wrap,
+.rate-about-wrap,
+.insta-wrap {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+}
+
 .google-icon {
     width: 64px;
     height: 64px;

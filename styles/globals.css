@@ -940,7 +940,7 @@ img {
 }
 
 .slideshow {
-    position: absolute;
+    position: relative;
     width: 100vw;
     height: calc(100vh - 100px);
     overflow: hidden;

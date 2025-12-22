@@ -7,6 +7,7 @@ const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false }
 
 const EnterVehicleInfo = ({ setOpenMoreInfoModal, setAppraisalContactInfo, formikRef }) => {
   const [step, setStep] = useState(1);
+  const [enableBlur, setEnableBlur] = useState(false);
   const recaptchaRef = useRef(null);
   const [loadRecaptcha, setLoadRecaptcha] = useState(false);
 
@@ -15,6 +16,10 @@ const EnterVehicleInfo = ({ setOpenMoreInfoModal, setAppraisalContactInfo, formi
       setLoadRecaptcha(true);
     }
   }, [step]);
+  useEffect(() => {
+    const id = setTimeout(() => setEnableBlur(true), 100);
+    return () => clearTimeout(id);
+  }, []);
 
   const getValidationSchema = (currentStep) => {
     return Yup.object().shape({
@@ -63,7 +68,7 @@ const EnterVehicleInfo = ({ setOpenMoreInfoModal, setAppraisalContactInfo, formi
   };
 
   return (
-    <div className="rounded-[10px] !p-[30px] !pb-[30px] !pt-[30px] md:!p-[50px] md:!pb-[70px] md:!pt-[30px] shadow-md  lg:max-w-[410px]  backdrop-blur-[10px] bg-white/10  w-full">
+    <div className={`rounded-[10px] !p-[30px] !pb-[30px] !pt-[30px] md:!p-[50px] md:!pb-[70px] md:!pt-[30px] shadow-md  lg:max-w-[410px]  ${enableBlur ? 'backdrop-blur-[10px]' : ''} bg-white/10  w-full`}>
       <div className="custom-form">
         <div className="font-eurostile text-[20px] font-[100] leading-normal tracking-normal text-black mb-4 uppercase">
           Enter Vehicle Info
