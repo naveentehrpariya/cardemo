@@ -1,9 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import dynamic from 'next/dynamic';
-
-const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
+import ReCAPTCHA from 'react-google-recaptcha';
+// const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 
 const EnterVehicleInfo = ({ setOpenMoreInfoModal, setAppraisalContactInfo, formikRef }) => {
   const [step, setStep] = useState(1);
