@@ -36,7 +36,7 @@ export default function AboutUs() {
                     alt="About Us" 
                     priority 
                     fetchPriority="high"
-                    quality={30}
+                    quality={10}
                     fill
                     sizes="100vw"
                     placeholder="blur"
@@ -53,9 +53,9 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            {/* <div style={{ minHeight: '500px' }}> */}
+            <div style={{ minHeight: '500px' }}>
                 <AboutContent />
-            {/* </div> */}
+            </div>
         
             {showFooter && <Footer />}
         </>
