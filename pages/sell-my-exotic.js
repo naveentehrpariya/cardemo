@@ -63,7 +63,7 @@ const SellMyExotic = () => {
                         src={getImages('sell-exotic-hero.webp')} 
                         alt="Sell Your Exotic Car" 
                         priority
-                        quality={20} fill
+                        quality={40} fill
                         fetchPriority="high"
                         sizes="100vw"
                         className=''
@@ -99,7 +99,7 @@ const SellMyExotic = () => {
                                             placeholder="blur"
                                             blurDataURL={getImages('tg-logo-bw.webp?quality=1')}
                                             // priority
-                                            quality={20}
+                                            quality={40}
                                             // fetchPriority="high"
                                             sizes="100vw"
                                              />
