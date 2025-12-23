@@ -34,6 +34,7 @@ const Header = forwardRef(function Header({ secref }, ref) {
                                     alt="Alpha One Motors" 
                                     width={220} 
                                     height={40} 
+                                    style={{ width: 'auto', height: 'auto' }}
                                     loading="lazy"
                                     fetchPriority="low"
                                     sizes="220px"

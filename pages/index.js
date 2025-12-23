@@ -84,16 +84,18 @@ export default function Home() {
         //   backgroundRepeat: 'no-repeat' }}
           >
           <Image 
-            src={getImages('banner-image.webp?q=10')} 
+            src={getImages('banner-image.webp')} 
             alt="Banner" 
             priority 
             fetchPriority="high"
-            // quality={10}
+            quality={40}
             className="slideshow-image"
             width={1920}
             height={1080}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
             sizes="100vw"
+            placeholder="blur"
+            blurDataURL={getImages('banner-image.webp?quality=1')}
           />
         </div>
         <div className='banner-shadow w-full !h-full opacity-50'></div> 

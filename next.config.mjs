@@ -12,7 +12,8 @@ const nextConfig = {
     optimizePackageImports: ['react-icons', '@headlessui/react', 'formik'],
   },
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ['image/webp'],
+    qualities: [1, 5, 10, 20, 30, 35, 40, 50, 60, 70, 75, 80, 90],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
     minimumCacheTTL: 60,
