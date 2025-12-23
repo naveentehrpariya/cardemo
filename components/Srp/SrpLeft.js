@@ -71,7 +71,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('year.svg')} alt='Year' width={24} height={25} />
                                         </div>
                                         <div className='slc-title'>Year</div>
@@ -86,7 +86,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('make.svg')} alt='Make' width={24} height={18} />
                                         </div>
                                         <div className='slc-title'>Make</div>
@@ -101,7 +101,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('model.svg')} alt='Model' width={24} height={23} />
                                         </div>
                                         <div className='slc-title'>Model</div>
@@ -116,7 +116,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('mileage.svg')} alt='Mileage' width={30} height={20} />
                                         </div>
                                         <div className='slc-title'>Mileage</div>
@@ -131,7 +131,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('ext-color.svg')} alt='Exterior Color' width={14} height={24} />
                                         </div>
                                         <div className='slc-title'>Ext Color</div>
@@ -146,7 +146,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('int-color.svg')} alt='Interior Color' width={24} height={23} />
                                         </div>
                                         <div className='slc-title'>Int Color</div>
@@ -161,7 +161,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('body-style.svg')} alt='Body Style' width={22} height={22} />
                                         </div>
                                         <div className='slc-title'>Body Style</div>
@@ -176,7 +176,7 @@ const SrpLeft = ({
                                     }}
                                 >
                                     <div className='w-100'>
-                                        <div className='mb-2'>
+                                        <div className='mb-2 m-auto flex justify-center'>
                                             <Image src={getImages('transmission.svg')} alt='Transmission' width={22} height={22} />
                                         </div>
                                         <div className='slc-title'>Transmission</div>

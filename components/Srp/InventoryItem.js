@@ -124,7 +124,7 @@ const InventoryItem = ({ item, openVDP, priceFormatter, isSlMobile, priority = f
                 )}
             </div>
             <div className='srp-bottom'>
-                <div className='srpb-title1'>{item.year} {item.make} {item.model}</div>
+                <div className='srpb-title1 min-h-[60px] line-clamp-2'>{item.year}{item.year}{item.year}  {item.make} {item.model}</div>
                 <div className='srpb-title2'>{item.trim || '\u00A0'}</div>
                 <div className='xs-title font-0-9em fw-400 mb-2 srpt-desc'>{item.desc}</div>
                 <div className='d-flex align-items-center justify-content-between'>

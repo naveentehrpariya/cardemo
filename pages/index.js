@@ -200,7 +200,7 @@ export default function Home() {
                 <div className='grid !grid-cols-1 lg:!grid-cols-2 w-full gap-4'>
                     <div className='black-box flex gap-2 px-4 py-4 align-items-center wow fadeInLeft' data-wow-duration="1s" data-wow-delay="0.2s">
                       <div>
-                        <Image src={getImages('ao-ford-logo.webp')} alt="Alpha One Ford" width={300} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
+                        <Image src={getImages('ao-ford-logo.webp')} alt="Alpha One Ford" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                       </div>
                       <div className='ps-4'>
                         <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Ford</div>
@@ -211,7 +211,7 @@ export default function Home() {
                     </div>
                     <div className='black-box flex gap-2 px-4 py-4 align-items-center wow fadeInRight' data-wow-duration="1s" data-wow-delay="0.4s">
                       <div>
-                        <Image src={getImages('ao-chv-logo.webp')} alt="Alpha One Chevrolet" width={300} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
+                        <Image src={getImages('ao-chv-logo.webp')} alt="Alpha One Chevrolet" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                       </div>
                       <div className='ps-4'>
                         <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Chevrolet</div>
