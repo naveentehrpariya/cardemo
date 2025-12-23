@@ -67,7 +67,7 @@ const EnterVehicleInfo = ({ setOpenMoreInfoModal, setAppraisalContactInfo, formi
   };
 
   return (
-    <div className={`rounded-[10px] hero-animate slide-left fast !p-[30px] !pb-[30px] !pt-[30px] md:!p-[50px] md:!pb-[70px] md:!pt-[30px] shadow-md  lg:max-w-[410px]  ${enableBlur ? 'backdrop-blur-[10px]' : ''} bg-white/10  w-full`}>
+    <div className={`rounded-[10px] wow fadeIn !p-[30px] !pb-[30px] !pt-[30px] md:!p-[50px] md:!pb-[70px] md:!pt-[30px] shadow-md  lg:max-w-[410px]  ${enableBlur ? 'backdrop-blur-[10px]' : ''} bg-white/10  w-full`} data-wow-duration="1s" data-wow-delay="0.4s">
       <div className="custom-form">
         <div className="font-eurostile text-[20px] font-[100] leading-normal tracking-normal text-black mb-4 uppercase">
           Enter Vehicle Info

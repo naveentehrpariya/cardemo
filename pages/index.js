@@ -96,7 +96,7 @@ export default function Home() {
         <div className='banner-pos '>
           <div className='container container-lg'>
             <div className='w-full d-flex align-items-center justify-content-between w-100 banner-flex'>
-              <div className='hero-animate fade-in banner-title !bg-none text-uppercase'>SELL US YOUR <br /><span>Exotic Vehicle</span></div>
+              <div className='hero-animate fade-in banner-title !bg-none text-uppercase wow fadeIn' data-wow-duration="1s" data-wow-delay="0.2s">SELL US YOUR <br /><span>Exotic Vehicle</span></div>
               <EnterVehicleInfo setOpenMoreInfoModal={setOpenMoreInfoModal} setAppraisalContactInfo={setAppraisalContactInfo} formikRef={formikRef}/>
             </div>
           </div>
@@ -105,7 +105,7 @@ export default function Home() {
 
       <section className='facility-wrap w-full'>
         <div className='d-flex facility-flex w-full'>
-          <div className='facility-col w-full'>
+          <div className='facility-col w-full wow fadeIn' data-wow-delay="0.2s">
             <Image src={getImages('facility-image1.webp')} alt="Our Latest" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 50vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
@@ -123,7 +123,7 @@ export default function Home() {
 
 
 
-          <div className='facility-col w-full'>
+          <div className='facility-col w-full wow fadeIn' data-wow-delay="0.4s">
             <Image src={getImages('facility-image2.webp')} alt="Get Your Cash Offer" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
@@ -136,7 +136,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className='facility-col w-full'>
+          <div className='facility-col w-full wow fadeIn' data-wow-delay="0.6s">
             <Image src={getImages('facility-image3.webp')} alt="Consignment Services" width={800} height={600} quality={50} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: 'auto' }} />
             <div className='facility-pos d-flex align-items-center'>
               <div className='w-100'>
@@ -153,7 +153,7 @@ export default function Home() {
       <section className='process-wrap overflow-visible' ref={section2Ref}>
         <div className='container container-lg'>
           <div className='d-flex align-items-center justify-content-between process-flex'>
-            <div className='process-left'>
+            <div className='process-left wow fadeInLeft' data-wow-delay="0.4s">
               <div className='lg-title text-uppercase mb-2 md:mb-4 !font-[100]'>ALPHA ONE DIFFERENCE</div>
               <p className='!font-light'>At Alpha One Motors, we specialize in helping owners of luxury and exotic vehicles sell with confidence and ease. Whether you&apos;re in San Antonio, Austin, or anywhere across Central Texas, our team is here to deliver top-market offers and a seamless selling experience.</p>
 
@@ -162,21 +162,21 @@ export default function Home() {
               <p className='!font-light'>Ready to sell? Let Alpha One Motors be your trusted partner in getting the most out of your luxury car.</p>
             </div>
             <div className='process-right !pb-[50px] sm:!pb-[30px] md:!pb-[10px]'>
-              <div className='pr-col !pb-0 md:!pb-[25px] '>
+              <div className='pr-col !pb-0 md:!pb-[25px] wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.5s">
                 <span className='pr-circle lg-title flex items-center justify-content-center'>1</span>
                 <div className='pr-content fading'>
                   <div className='sm-title mb-2 text-uppercase'>ENTER VEHICLE DETAILS</div>
                   <p>Simply fill out the 2 part form that takes less than 1 minute.</p>
                 </div>
               </div>
-              <div className='pr-col !pb-0 md:!pb-[25px] '>
+              <div className='pr-col !pb-0 md:!pb-[25px] wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.7s">
                 <span className='pr-circle lg-title flex items-center justify-content-center'>2</span>
                 <div className='pr-content fading'>
                   <div className='sm-title mb-2 text-uppercase'>GET OFFER</div>
                   <p>Our tenured appraisers will contact you on the same day with a competitive price.</p>
                 </div>
               </div>
-              <div className='pr-col !pb-0 md:!pb-[25px] '>
+              <div className='pr-col !pb-0 md:!pb-[25px] wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.9s">
                 <span className='pr-circle lg-title flex items-center justify-content-center'>3</span>
                 <div className='pr-content fading' >
                   <div className='sm-title mb-2 text-uppercase'>FINISH</div>
@@ -198,7 +198,7 @@ export default function Home() {
             <section className='alpha-one-wrap'>
               <div className='container container-lg'>
                 <div className='grid !grid-cols-1 lg:!grid-cols-2 w-full gap-4'>
-                    <div className='black-box flex gap-2 px-4 py-4 align-items-center'>
+                    <div className='black-box flex gap-2 px-4 py-4 align-items-center wow fadeInLeft' data-wow-duration="1s" data-wow-delay="0.2s">
                       <div>
                         <Image src={getImages('ao-ford-logo.webp')} alt="Alpha One Ford" width={300} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                       </div>
@@ -209,7 +209,7 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                    <div className='black-box flex gap-2 px-4 py-4 align-items-center'>
+                    <div className='black-box flex gap-2 px-4 py-4 align-items-center wow fadeInRight' data-wow-duration="1s" data-wow-delay="0.4s">
                       <div>
                         <Image src={getImages('ao-chv-logo.webp')} alt="Alpha One Chevrolet" width={300} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                       </div>
@@ -229,11 +229,11 @@ export default function Home() {
             <HomeRateAbout />
           </LazyLoadSection> 
    
-        <section className=' insta-wrap' ref={section1Ref}>
+        <section className=' insta-wrap wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s" ref={section1Ref}>
           <LazyLoadSection rootMargin="1000px">
             <InstagramFeed/>
           </LazyLoadSection>
-        </section> 
+        </section>
       </>
       : ''}
 

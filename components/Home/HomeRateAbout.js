@@ -7,7 +7,7 @@ const HomeRateAbout = () => {
     <section className='rate-about-wrap'>
       <div className='container container-lg'>
         <div className='row px-3 md:px-0'>
-          <div className='col-md-6'>
+          <div className='col-md-6 wow fadeInUp' data-wow-duration="1s" data-wow-delay="0.2s">
             <div className='lg-title text-uppercase mb-4 !text-center lg:!text-start w-full text-xl md:text-2xl font-euro text-uppercase mb-4'>Highly Ranked by Customers</div>
             <div className='rating-box'>
               <div className='d-flex align-items-center justify-content-between mb-3'>

@@ -119,35 +119,49 @@ const SellMyExoticReviews = () => {
         }
     }, []);
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
-        autoplay: false,
-        arrows: true,
-        adaptiveHeight: true,
-        responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                },
-            },
-        ],
+    function useBreakpoint() {
+  const [bp, setBp] = useState(null);
+
+  useEffect(() => {
+    const calc = () => {
+      const w = window.innerWidth;
+      if (w < 768) setBp(1);
+      else if (w < 1024) setBp(2);
+      else setBp(2);
     };
+    calc();
+    window.addEventListener('resize', calc);
+    return () => window.removeEventListener('resize', calc);
+  }, []);
+
+  return bp;
+}
+
+
+  const slidesToShow = useBreakpoint();
+if (!slidesToShow) return null;
+
+const settings = {
+  infinite: true,
+  speed: 500,
+  slidesToShow,
+  slidesToScroll: slidesToShow,
+  arrows: true,
+  autoplay: false,
+  adaptiveHeight: false,
+};
+
+
 
     return (
-        <section className='reviews-wrap' style={{ contentVisibility: 'visible' }}>
+        <section className='reviews-wrap'>
             <div className='container'>
                 <div className='fading hpb-xs-title text-uppercase mb-3'>Recent</div>
                 <div className='fading lg-title text-center font-40 text-uppercase mb-md-5 mb-4'>Google Reviews</div>
                 <div className='' ref={containerRef}>
-                    <Slider ref={sliderRef} key={bpKey} {...settings} className='review-slider'>
+                    <Slider ref={sliderRef} key={slidesToShow} {...settings} className='review-slider'>
                         {reviewsList.map((review, index) => (
-                            <div className="review-item wow fadeInUp" data-wow-duration="1s" data-wow-delay={`${index * 0.1}s`} key={index}>
+                            <div className="review-item" data-wow-duration="1s" data-wow-delay={`${index * 0.1}s`} key={index}>
                                 <div className="review-box">
                                     <span className='google-icon '>
                                         <Image src={getImages('google-logo.webp')} alt='google' width={100} height={32} style={{width: 'auto', height: 'auto'}} />
