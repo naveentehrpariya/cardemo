@@ -30,10 +30,10 @@ export default function WhyUs() {
                     priority 
                     fetchPriority="high"
                     sizes="100vw"
-                    quality={40}
+                    quality={30}
                     style={{ objectFit: 'cover', zIndex: -1 }}
                     placeholder="blur"
-                    blurDataURL={getImages('about-hero.webp?quality=10')}
+                    blurDataURL={getImages('about-hero.webp?quality=5')}
                 />
                 <div className="w-100" style={{ zIndex: 1 }}>
                     <div className=" xl-title text-uppercase text-center font-80 letter-spacing-3">
