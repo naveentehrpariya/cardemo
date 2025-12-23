@@ -62,9 +62,8 @@ const SellMyExotic = () => {
                     <Image 
                         src={getImages('sell-exotic-hero.webp')} 
                         alt="Sell Your Exotic Car" 
-                        fill 
                         priority
-                        quality={30}
+                        quality={30} fill
                         fetchPriority="high"
                         sizes="100vw"
                         className=''
@@ -99,7 +98,6 @@ const SellMyExotic = () => {
                                             width={120} height={36}
                                             placeholder="blur"
                                             blurDataURL={getImages('tg-logo-bw.webp?quality=1')}
-                                            fill 
                                             priority
                                             quality={30}
                                             fetchPriority="high"
