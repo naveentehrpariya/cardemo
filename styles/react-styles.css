@@ -73,7 +73,7 @@
     font-size: 50px;
     font-weight: 400;
     color: #fff;
-    background: url(/images/shadow.webp) center center/100% 100% no-repeat;
+    background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,0));
     padding: 70px 45px
 }
 

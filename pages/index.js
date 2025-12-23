@@ -75,25 +75,32 @@ export default function Home() {
       <Header secref={section2Ref} />
 
       <section className='banner-wrap'>
-        <div className="slideshow" style={{ position: 'relative', backgroundColor: '#1a1a1a', backgroundImage: 'url(/images/banner-image.webp)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+        <div className="slideshow" 
+        // style={{ 
+        //   position: 'relative', 
+        //   backgroundColor: '#1a1a1a', 
+        //   backgroundImage: 'url(/images/banner-image.webp)', 
+        //   backgroundSize: 'cover', backgroundPosition: 'center', 
+        //   backgroundRepeat: 'no-repeat' }}
+          >
           <Image 
-            src={getImages('banner-image.webp')} 
+            src={getImages('banner-image.webp?q=10')} 
             alt="Banner" 
             priority 
             fetchPriority="high"
-            quality={10}
+            // quality={10}
             className="slideshow-image"
             width={1920}
             height={1080}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
-            sizes="(max-width: 480px) 100vw, (max-width: 768px) 100vw, 1400px"
+            sizes="100vw"
           />
         </div>
-        <div className='banner-shadow'></div> 
+        <div className='banner-shadow w-full !h-full opacity-50'></div> 
         <div className='banner-pos'>
           <div className='container container-lg'>
             <div className='w-full d-flex align-items-center justify-content-between w-100 banner-flex'>
-              <div className='banner-title text-uppercase'>SELL US YOUR <br /><span>Exotic Vehicle</span></div>
+              <div className='banner-title !bg-none text-uppercase'>SELL US YOUR <br /><span>Exotic Vehicle</span></div>
               <EnterVehicleInfo setOpenMoreInfoModal={setOpenMoreInfoModal} setAppraisalContactInfo={setAppraisalContactInfo} formikRef={formikRef}/>
             </div>
           </div>
