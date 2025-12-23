@@ -173,6 +173,8 @@ const Vdp = ({ initialVehicleData }) => {
                     quality={40}
                     style={{ objectFit: 'cover' }} 
                     sizes="100vw" 
+                    placeholder="blur"
+                    blurDataURL="vdp-hero.webp?q=1"
                 />
             </section>
             <section className='vdp-hero-bottom'>
