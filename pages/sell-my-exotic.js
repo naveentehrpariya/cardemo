@@ -48,7 +48,6 @@ const SellMyExotic = () => {
 
     return (
         <>
-            
             <Header />
             <SeoMeta
                 title="Sell Your Exotic Car | We Buy Bentley, Porsche & More | Alpha One Motors"
@@ -63,7 +62,7 @@ const SellMyExotic = () => {
                         src={getImages('sell-exotic-hero.webp')} 
                         alt="Sell Your Exotic Car" 
                         priority
-                        quality={40} fill
+                        quality={20} fill
                         fetchPriority="high"
                         sizes="100vw"
                         className=''
@@ -99,7 +98,7 @@ const SellMyExotic = () => {
                                             placeholder="blur"
                                             blurDataURL={getImages('tg-logo-bw.webp?quality=1')}
                                             // priority
-                                            quality={40}
+                                            quality={20}
                                             // fetchPriority="high"
                                             sizes="100vw"
                                              />
@@ -131,56 +130,56 @@ const SellMyExotic = () => {
                     </div>
                 </section>
                 
-                <LazyLoadSection rootMargin="200px" height="500px">
+                <LazyLoadSection rootMargin="300px" height="500px">
                     <SellMyExoticReviews />
-                </LazyLoadSection>
-                <section className='sell-or-trade-wrap'>
-                    <div className='container'>
-                        <div className='d-lg-flex justify-content-between sot-flex'>
-                            <div className='sot-left'>
-                                <div className='flex lg:block   justify-center mb-3'>
-                                    <Image src={getImages('tg-logo-bw.webp')} alt='Trade Group' width={120} height={36} />
+                    <section className='sell-or-trade-wrap'>
+                        <div className='container'>
+                            <div className='d-lg-flex justify-content-between sot-flex'>
+                                <div className='sot-left'>
+                                    <div className='flex lg:block   justify-center mb-3'>
+                                        <Image src={getImages('tg-logo-bw.webp')} alt='Trade Group' width={120} height={36} />
+                                    </div>
+                                    <div className='lg-title !text-center xl:!text-start  font-2-2em roboto'>Sell or Trade your Vehicle</div>
                                 </div>
-                                <div className='lg-title !text-center xl:!text-start  font-2-2em roboto'>Sell or Trade your Vehicle</div>
-                            </div>
-                            <div className='sot-right'>
-                                <div>
-                                        <MyVehicleForm
-                                            setSelectedValue={setSelectedValue}
-                                            getQuoteModal={getQuoteModal}
-                                            setGetQuoteModal={setGetQuoteModal}
-                                            sotForm={true}
-                                        />
+                                <div className='sot-right'>
+                                    <div>
+                                            <MyVehicleForm
+                                                setSelectedValue={setSelectedValue}
+                                                getQuoteModal={getQuoteModal}
+                                                setGetQuoteModal={setGetQuoteModal}
+                                                sotForm={true}
+                                            />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-
+                    </section>
+                </LazyLoadSection>
             </main>
             
-            <LazyLoadSection rootMargin="200px" height="400px">
+            <LazyLoadSection rootMargin="300px" height="400px">
                 <SellMyExoticTips />
             </LazyLoadSection>
-            <LazyLoadSection rootMargin="200px" height="500px">
+            <LazyLoadSection rootMargin="300px" height="500px">
                 <SellMyExoticFaq />
+                
+                <ModalLayout open={getQuoteModal} close={closeGetQuoteModal} darkThemeCls='true' cls="dark-bg-modal" modalWidth={750}>
+                    <Suspense
+                        fallback={<div>Component1 are loading please wait...</div>}
+                    >
+                        <GetQuoteModal
+                            selectedValue={selectedValue}
+                            close={closeGetQuoteModal}
+                            setopenDragDropModal={setopenDragDropModal}
+                            setPreviewURL={setPreviewURL}
+                            files={files}
+                            setFiles={setFiles}
+                        />
+                    </Suspense>
+                </ModalLayout>
+                <Footer />
             </LazyLoadSection>
 
-            <ModalLayout open={getQuoteModal} close={closeGetQuoteModal} darkThemeCls='true' cls="dark-bg-modal" modalWidth={750}>
-                <Suspense
-                    fallback={<div>Component1 are loading please wait...</div>}
-                >
-                    <GetQuoteModal
-                        selectedValue={selectedValue}
-                        close={closeGetQuoteModal}
-                        setopenDragDropModal={setopenDragDropModal}
-                        setPreviewURL={setPreviewURL}
-                        files={files}
-                        setFiles={setFiles}
-                    />
-                </Suspense>
-            </ModalLayout>
-            <Footer />
         </>
     )
 }
