@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState, useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import { getImages } from '@/components/Common/const';
 
 const Slider = dynamic(() => import('react-slick'), { ssr: false });
@@ -57,184 +56,97 @@ const reviewsList = [
 ];
 
 const WhyUsReviews = () => {
-    const [fallback, setFallback] = useState(false);
-    const containerRef = useRef(null);
+    const [mounted, setMounted] = useState(false);
     const sliderRef = useRef(null);
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            try {
-                const root = containerRef.current;
-                if (!root) return;
-                const slides = root.querySelectorAll('.slick-slide');
-                const visible = Array.from(slides).some(s => s.offsetWidth > 0 && s.offsetHeight > 0);
-                if (!visible) setFallback(true);
-            } catch (_) {
-                setFallback(true);
-            }
-        }, 800);
-        return () => clearTimeout(timer);
+        setMounted(true);
     }, []);
 
-    const [bpKey, setBpKey] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
+    const [ready, setReady] = useState(false);
+
+    function useWindowWidth() {
+    const [width, setWidth] = useState(
+        typeof window !== 'undefined' ? window.innerWidth : 0
+    );
+
     useEffect(() => {
-        const onResize = () => {
-            const w = typeof window !== 'undefined' ? window.innerWidth : 0;
-            const key = w < 768 ? 0 : w < 1024 ? 1 : 2;
-            setBpKey(key);
-            setIsMobile(w < 768);
-            try {
-                sliderRef.current?.innerSlider?.onWindowResized?.();
-                sliderRef.current?.slickGoTo?.(0, true);
-            } catch (_) {}
-        };
-        onResize();
-        window.addEventListener('resize', onResize);
-        window.addEventListener('orientationchange', onResize);
-        return () => {
-            window.removeEventListener('resize', onResize);
-            window.removeEventListener('orientationchange', onResize);
-        };
+        const handleResize = () => setWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
-    useLayoutEffect(() => {
-        const id = setTimeout(() => {
-            try {
-                sliderRef.current?.innerSlider?.onWindowResized?.();
-            } catch (_) {}
-        }, 0);
-        return () => clearTimeout(id);
-    }, []);
-    useEffect(() => {
-        if (typeof ResizeObserver !== 'undefined' && containerRef.current) {
-            const ro = new ResizeObserver(() => {
-                try {
-                    sliderRef.current?.innerSlider?.onWindowResized?.();
-                } catch (_) {}
-            });
-            ro.observe(containerRef.current);
-            return () => ro.disconnect();
-        }
-    }, []);
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        arrows: true,
-        autoplay: false,
-        adaptiveHeight: true,
-        // Use max-width breakpoints (default)
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    dots: false,
-                },
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    dots: false,
-                },
-            },
-        ],
-    };
+
+    return width;
+}
+const width = useWindowWidth();
+
+const slidesToShow =
+    width < 768 ? 1 :
+    width < 1024 ? 2 :
+    4;
+
+const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    adaptiveHeight: false, // IMPORTANT
+};
+
 
     return (
-        <section className="customer-served-wrap" style={{ contentVisibility: 'visible' }}>
+        <section className="customer-served-wrap cv-auto">
             <div className="container">
-                <div className="fading xl-title text-uppercase mb-2">
-                    Don&apos;t Take our Word for it!
+                <div className="xl-title text-uppercase mb-2">
+                    Don't Take our Word for it!
                 </div>
-                <div className="fading lg-title fw-normal text-center font-40 mb-5 text-uppercase">
+                <div className="lg-title fw-normal text-center font-40 mb-5 text-uppercase">
                     See what our Customers Have to Say!
                 </div>
-                <div className="mt-70 " ref={containerRef}>
-                    {!fallback && !isMobile ? (
-                        <Slider ref={sliderRef} key={bpKey} {...settings} className="wbecs-slider">
-                            {reviewsList.map((review, index) => (
-                                <div key={index}>
-                                    <div className="wbe-cs-box">
-                                        <div className="flex items-center justify-content-between mb-2">
-                                            <div className="flex items-center gap-2">
-                                                <div className="fading wbe-cs-circle" style={{ backgroundColor: review.bgColor }}>
-                                                    {review.name?.charAt(0).toUpperCase()}
-                                                </div>
-                                                <div className="fading pl-3">
-                                                    <div className="xs-title font-bold text-black helveticaneue">{review.name}</div>
-                                                </div>
+                <div className="mt-70">
+                    <Slider ref={sliderRef} key={slidesToShow} {...settings} className="wbecs-slider">
+                        {reviewsList.map((review, index) => (
+                            <div key={index}>
+                                <div className="wbe-cs-box  " data-wow-duration="1s" data-wow-delay="0.1s">
+                                    <div className="flex items-center justify-content-between mb-2">
+                                        <div className="flex items-center gap-2">
+                                            <div className="wbe-cs-circle" style={{ backgroundColor: review.bgColor }}>
+                                                {review.name?.charAt(0).toUpperCase()}
                                             </div>
-                                            <div className="fading g-icon">
-                                                <Image src={getImages('icon.svg')} alt="Google" width={48} height={48} />
+                                            <div className="pl-3">
+                                                <div className="xs-title font-bold text-black helveticaneue">{review.name}</div>
                                             </div>
                                         </div>
-                                        <div className="flex gap-1 wbe-cs-rating mb-2">
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block verify-icon ml-2" src={getImages('ti-verified.svg')} alt="verified" width={16} height={16} />
-                                        </div>
-                                        <div className="mb-1 wbe-cs-content">
-                                            <p>{review.content}</p>
-                                        </div>
-                                        <div>
-                                            <a href="https://share.google/erYHCMlUwduOzew3b" target="_blank" rel="noopener noreferrer" className="wbe-read-more">
-                                                Read Reviews
-                                            </a>
+                                        <div className="g-icon">
+                                            <img src={getImages('icon.svg')} alt="Google" />
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </Slider>
-                    ) : (
-                        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(4, minmax(0, 1fr))', gap: '20px' }}>
-                            {reviewsList.map((review, index) => (
-                                <div key={index}>
-                                    <div className="wbe-cs-box">
-                                        <div className="flex items-center justify-content-between mb-2">
-                                            <div className="flex items-center gap-2">
-                                                <div className="fading wbe-cs-circle" style={{ backgroundColor: review.bgColor }}>
-                                                    {review.name?.charAt(0).toUpperCase()}
-                                                </div>
-                                                <div className="fading pl-3">
-                                                    <div className="xs-title font-bold text-black helveticaneue">{review.name}</div>
-                                                </div>
-                                            </div>
-                                            <div className="fading g-icon">
-                                                <Image src={getImages('icon.svg')} alt="Google" width={48} height={48} />
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-1 wbe-cs-rating mb-2">
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block star-icon" src={getImages('star.svg')} alt="star" width={24} height={22} />
-                                            <Image className="fading inline-block verify-icon ml-2" src={getImages('ti-verified.svg')} alt="verified" width={16} height={16} />
-                                        </div>
-                                        <div className="mb-1 wbe-cs-content">
-                                            <p>{review.content}</p>
-                                        </div>
-                                        <div>
-                                            <a href="https://share.google/erYHCMlUwduOzew3b" target="_blank" rel="noopener noreferrer" className="wbe-read-more">
-                                                Read more
-                                            </a>
-                                        </div>
+                                    <div className="flex gap-1 wbe-cs-rating mb-2">
+                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="inline-block star-icon" src={getImages('star.svg')} alt="star" />
+                                        <img className="inline-block verify-icon ml-2" src={getImages('ti-verified.svg')} alt="verified" />
+                                    </div>
+                                    <div className="mb-1 wbe-cs-content">
+                                        <p>{review.content}</p>
+                                    </div>
+                                    <div>
+                                        <a href="https://share.google/erYHCMlUwduOzew3b" target="_blank" rel="noopener noreferrer" className="wbe-read-more">
+                                            Read more
+                                        </a>
                                     </div>
                                 </div>
-                            ))}
-                        </div>
-                    )}
+                            </div>
+                        ))}
+                    </Slider>
                 </div>
-                <div className="fading text-center mt-75">
+                <div className="text-center mt-75">
                     <a href="https://share.google/erYHCMlUwduOzew3b" target="_blank" rel="noopener noreferrer" className="black-btn get-started-btn font-bold uppercase w-330 inline-block lg-btn">
                         Read Reviews
                     </a>

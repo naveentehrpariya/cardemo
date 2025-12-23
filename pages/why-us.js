@@ -5,11 +5,11 @@ import { getImages } from '@/components/Common/const';
 // import Header from '../components/Common/Header';
 const Header = dynamic(() => import('../components/Common/Header'), { ssr: true });
 import { useEffect, useState } from 'react';
-// import WhyUsContent from '../components/Common/WhyUs/WhyUsContent';
+import WhyUsReviews from '../components/Common/WhyUs/WhyUsReviews';
 // import LazyLoadSection from '../components/Common/LazyLoadSection';
 // import SeoMeta from '../components/Common/SeoMeta';
 const SeoMeta = dynamic(() => import('../components/Common/SeoMeta'), { ssr: true });
-const WhyUsReviews = dynamic(() => import('../components/Common/WhyUs/WhyUsReviews'), { ssr: false });
+// const WhyUsReviews = dynamic(() => import('../components/Common/WhyUs/WhyUsReviews'), { ssr: false });
 const WhyUsContent = dynamic(() => import('../components/Common/WhyUs/WhyUsContent'), { ssr: false });
 const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 
@@ -64,7 +64,7 @@ export default function WhyUs() {
             </section>
             <main role="main">
                 <WhyUsContent />
-                {showFooter  ? <WhyUsReviews /> : ''}
+                 <WhyUsReviews />
             </main>
             {showFooter  ? <Footer /> : ''}
         </>

@@ -75,13 +75,7 @@ export default function Home() {
       <Header secref={section2Ref} />
 
       <section className='banner-wrap'>
-        <div className="slideshow" 
-        // style={{ 
-        //   position: 'relative', 
-        //   backgroundColor: '#1a1a1a', 
-        //   backgroundImage: 'url(/images/banner-image.webp)', 
-        //   backgroundSize: 'cover', backgroundPosition: 'center', 
-        //   backgroundRepeat: 'no-repeat' }}
+        <div className="slideshow md:!h-full"  
 >
           <Image 
             src={getImages('banner-image.webp')} 
@@ -89,7 +83,7 @@ export default function Home() {
             priority 
             fetchPriority="high"
             quality={30}
-            className="slideshow-image"
+            className="slideshow-image !h-full"
             width={1080}
             height={600}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
@@ -98,11 +92,11 @@ export default function Home() {
             blurDataURL={getImages('banner-image.webp?quality=10')}
           />
         </div>
-        <div className='banner-shadow w-full !h-full opacity-50'></div> 
-        <div className='banner-pos'>
+        <div className='banner-shadow '></div> 
+        <div className='banner-pos '>
           <div className='container container-lg'>
             <div className='w-full d-flex align-items-center justify-content-between w-100 banner-flex'>
-              <div className='banner-title !bg-none text-uppercase'>SELL US YOUR <br /><span>Exotic Vehicle</span></div>
+              <div className='hero-animate fade-in banner-title !bg-none text-uppercase'>SELL US YOUR <br /><span>Exotic Vehicle</span></div>
               <EnterVehicleInfo setOpenMoreInfoModal={setOpenMoreInfoModal} setAppraisalContactInfo={setAppraisalContactInfo} formikRef={formikRef}/>
             </div>
           </div>
@@ -156,7 +150,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='process-wrap' ref={section2Ref}>
+      <section className='process-wrap overflow-visible' ref={section2Ref}>
         <div className='container container-lg'>
           <div className='d-flex align-items-center justify-content-between process-flex'>
             <div className='process-left'>
@@ -167,24 +161,24 @@ export default function Home() {
 
               <p className='!font-light'>Ready to sell? Let Alpha One Motors be your trusted partner in getting the most out of your luxury car.</p>
             </div>
-            <div className='process-right'>
-              <div className='pr-col'>
+            <div className='process-right !pb-[50px] sm:!pb-[30px] md:!pb-[10px]'>
+              <div className='pr-col !pb-0 md:!pb-[25px] '>
                 <span className='pr-circle lg-title flex items-center justify-content-center'>1</span>
-                <div className='pr-content'>
+                <div className='pr-content fading'>
                   <div className='sm-title mb-2 text-uppercase'>ENTER VEHICLE DETAILS</div>
                   <p>Simply fill out the 2 part form that takes less than 1 minute.</p>
                 </div>
               </div>
-              <div className='pr-col'>
+              <div className='pr-col !pb-0 md:!pb-[25px] '>
                 <span className='pr-circle lg-title flex items-center justify-content-center'>2</span>
-                <div className='pr-content'>
+                <div className='pr-content fading'>
                   <div className='sm-title mb-2 text-uppercase'>GET OFFER</div>
                   <p>Our tenured appraisers will contact you on the same day with a competitive price.</p>
                 </div>
               </div>
-              <div className='pr-col'>
+              <div className='pr-col !pb-0 md:!pb-[25px] '>
                 <span className='pr-circle lg-title flex items-center justify-content-center'>3</span>
-                <div className='pr-content'>
+                <div className='pr-content fading' >
                   <div className='sm-title mb-2 text-uppercase'>FINISH</div>
                   <p>Get a check cut on the day you exchange the vehicle. Simple, easy & no-hassle!</p>
                 </div>
@@ -203,11 +197,10 @@ export default function Home() {
           <LazyLoadSection>
             <section className='alpha-one-wrap'>
               <div className='container container-lg'>
-                <div className='row gx-5'>
-                  <div className='col-md-6'>
-                    <div className='black-box d-flex align-items-center'>
+                <div className='grid !grid-cols-1 lg:!grid-cols-2 w-full gap-4'>
+                    <div className='black-box flex gap-2 px-4 py-4 align-items-center'>
                       <div>
-                        <Image src={getImages('ao-ford-logo.webp')} alt="Alpha One Ford" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
+                        <Image src={getImages('ao-ford-logo.webp')} alt="Alpha One Ford" width={300} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                       </div>
                       <div className='ps-4'>
                         <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Ford</div>
@@ -216,11 +209,9 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className='col-md-6'>
-                    <div className='black-box d-flex align-items-center'>
+                    <div className='black-box flex gap-2 px-4 py-4 align-items-center'>
                       <div>
-                        <Image src={getImages('ao-chv-logo.webp')} alt="Alpha One Chevrolet" width={200} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
+                        <Image src={getImages('ao-chv-logo.webp')} alt="Alpha One Chevrolet" width={300} height={60} style={{ width: 'auto', height: 'auto', maxWidth: '100%' }} />
                       </div>
                       <div className='ps-4'>
                         <div className='sm-title text-uppercase font-18 font-euro mb-3'>Alpha One Chevrolet</div>
@@ -229,7 +220,6 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>
                 </div>
               </div>
             </section>

@@ -8,7 +8,7 @@ const HomeRateAbout = () => {
       <div className='container container-lg'>
         <div className='row px-3 md:px-0'>
           <div className='col-md-6'>
-            <div className='text-center lg:text-start text-xl md:text-2xl font-euro text-uppercase mb-4'>Highly Ranked by Customers</div>
+            <div className='lg-title text-uppercase mb-4 !text-center lg:!text-start w-full text-xl md:text-2xl font-euro text-uppercase mb-4'>Highly Ranked by Customers</div>
             <div className='rating-box'>
               <div className='d-flex align-items-center justify-content-between mb-3'>
                 <div className='xl-title helveticaneue'>4.9</div>

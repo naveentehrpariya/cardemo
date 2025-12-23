@@ -13,7 +13,7 @@ const Footer = () => {
                     alt="Alpha One Motors" width={220} height={40}
                     className="inline-block w-56 md:w-[220px] h-auto" />
                 </Link>
-            <div className="flex md:flex justify-center md:justify-start sm-title font-16  !mb-4 md:!mb-0 !mt-4 md:!mb-4 ">
+            <div className="!pb-4 !pt-4 flex md:flex justify-start md:justify-start sm-title font-16  !mb-4 md:!mb-0 !mt-4 md:!mb-4 ">
                 <Link href="tel:5127771240">
                   <span className="text-gray">Sales:</span> (512) 777-1240
                 </Link>
@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
 
           <div className="  w-full  md:max-w-[300px]">
-            <div className="sm-title font-16 mb-4 uppercase fw-500 text-center md:text-left">
+            <div className="sm-title font-16 mb-4 uppercase fw-500 text-start md:text-start">
               Store Hours
             </div>
             <div className="flex items-center justify-between mb-3 w-full  mx-auto md:mx-0">
@@ -48,11 +48,8 @@ const Footer = () => {
         </div>
 
         
-        <div className="flex flex-col md:flex-row   items-center !justify-center md:!justify-between py-5 md:py-6">
-          <div className="font-helvetica text-base font-light tracking-tight text-white    text-center lg:text-start">
-            &copy; 2025 Alpha One Motors. All Rights Reserved.
-          </div>
-          <div className="flex items-center gap-4 mt-4 md:mt-0 mb-6 md:mb-0 ">
+        <div className="lg:!flex  items-center !justify-between lg:!justify-between pt-0 pb-5 md:pb-6 md:pt-6">
+          <div className="flex !mb-6 lg:!mb-0 !justify-center lg:!justify-start items-center gap-4 !m-auto lg:!m-0  ">
             <a
               href="https://www.facebook.com/alphaonemotors/"
               target="_blank"
@@ -79,6 +76,9 @@ const Footer = () => {
                 height={32}
               />
             </a>
+          </div>
+          <div className="font-helvetica text-base font-light tracking-tight text-white    text-center ">
+            &copy; 2025 Alpha One Motors. All Rights Reserved.
           </div>
         </div>
       </div>

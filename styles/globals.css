@@ -21,6 +21,123 @@
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .scroll-animate {
+      animation-timeline: view();
+      animation-range: contain 0% contain 30%;
+      animation-fill-mode: both;
+    }
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes zoom-out {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(8vw);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(-8vw);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fade-zoom-lift {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(6vh);
+    box-shadow: none;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  }
+}
+
+
+.fade-in{animation-name:fade-in;}
+.fade-out{animation-name:fade-out;}
+.zoom-in{animation-name:zoom-in;}
+.slide-up{animation-name:slide-up;}
+.slide-down{animation-name:slide-down;}
+.slide-left{animation-name:slide-left;}
+.slide-right{animation-name:slide-right;}
+.zoom-out{animation-name:zoom-out;}
+.fade-zoom-lift{animation-name:fade-zoom-lift;}
+.scroll-animate{animation-duration:1s;animation-timing-function:ease-out;}
+.fast{animation-duration:.6s;}
+.slow{animation-duration:1.4s;}
+.hero-animate {
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
 
 /* Font Face Declarations */
 @font-face {
