@@ -146,7 +146,7 @@ const WhyUsReviews = () => {
                                         </div>
                                         <div>
                                             <a href="https://share.google/erYHCMlUwduOzew3b" target="_blank" rel="noopener noreferrer" className="wbe-read-more">
-                                                Read more
+                                                Read Reviews
                                             </a>
                                         </div>
                                     </div>
