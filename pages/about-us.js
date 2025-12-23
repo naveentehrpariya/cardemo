@@ -3,11 +3,24 @@ import Header from '../components/Common/Header';
 import SeoMeta from '../components/Common/SeoMeta';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-// import AboutContent from '../components/Common/AboutUs/AboutContent';
-
+import { useEffect, useState } from 'react';
 const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
 const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 export default function AboutUs() {
+
+    const [showFooter, setShowFooter] = useState(false);
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 400) {
+            setShowFooter(true);
+            window.removeEventListener('scroll', handleScroll);
+            }
+        };
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <>
             <SeoMeta 
@@ -42,8 +55,8 @@ export default function AboutUs() {
             {/* <div style={{ minHeight: '500px' }}> */}
                 <AboutContent />
             {/* </div> */}
-
-            <Footer />
+        
+            {showFooter && <Footer />}
         </>
     );
 }
