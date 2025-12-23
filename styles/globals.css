@@ -1723,7 +1723,7 @@ img {
 }
 
 .contact-form textarea.form-control {
-    height: 246px;
+    height: 246px !important;
     resize: none
 }
 
@@ -3376,7 +3376,7 @@ img {
     }
     .contact-wrap {
         padding: 35px 0 60px;
-        /* background-image: url(/images/mob-hero-bg.webp) !important; */
+        background-image: url(/images/mob-hero-bg.webp) !important;
     }
     .contact-title1 {
         text-align: center !important;

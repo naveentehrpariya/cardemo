@@ -20,11 +20,15 @@ export default function ContactForm() {
     };
 
     const validationSchema = Yup.object().shape({
-        full_name: Yup.string().required('Full Name is required'),
-        email: Yup.string().email('Invalid email address').required('Email is required'),
-        phone: Yup.string().required('Phone number is required'),
-        comment: Yup.string().max(500, 'Comments cannot exceed 500 characters'),
-        subject: Yup.string()
+        full_name: Yup.string()
+            .required('Full Name is required'),
+        email: Yup.string()
+            .email('Invalid email address')
+            .required('Email is required'),
+        phone: Yup.string()
+            .required('Phone number is required'),
+        comment: Yup.string()
+            .max(500, 'Comments cannot exceed 500 characters')
     });
 
     return (
@@ -83,14 +87,14 @@ export default function ContactForm() {
                         <ErrorMessage name='email' component='div' className='text-error text-danger' />
                     </div>
                     <div className='form-group' onFocus={handleFocus}>
-                        <label htmlFor='phone' className='cs-label'>Phone <span className='text-danger font-15'>*</span></label>
+                        <label htmlFor='phone' className='cs-label'>Phone Number <span className='text-danger font-15'>*</span></label>
                         <Field  id='phone' type='tel' name='phone' className='form-control' />
                         <ErrorMessage name='phone' component='div' className='text-error text-danger' />
                     </div>
                     <div className='form-group' onFocus={handleFocus}>
-                        <label htmlFor='comment' className='cs-label'>Message</label>
-                        <Field  id='comment' as='textarea' name='comment' rows='5' className='form-control' />
-                        <ErrorMessage name='comment' component='div' className='text-error text-danger' />
+                        <label htmlFor='message' className='cs-label'>Message</label>
+                        <Field  id='message' as='textarea' name='message' rows='5' className='form-control' />
+                        <ErrorMessage name='message' component='div' className='text-error text-danger' />
                     </div>
 
                     {loadCaptcha && (

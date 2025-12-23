@@ -5,26 +5,33 @@ import { getImages } from '@/components/Common/const';
 const WhyUsContent = () => {
     return (
         <>
-            <section className="about-info-wrap cv-auto">
-                <div className="container">
-                    <div className="flex flex-wrap gap-3 align-items-center justify-content-between">
-                            <div className="fading d-inline-flex align-items-center">
-                                <div className="xl-title text-uppercase pe-3">+5k</div>
-                                <div className="sm-title fw-500">Customers Served</div>
-                            </div>
-                        <div className="aiw-sep d-none d-md-block"></div>
-                            <div className="fading d-inline-flex align-items-center">
-                                <div className="xl-title text-uppercase pe-3">4.7</div>
-                                <div className="sm-title fw-500">Google Rating</div>
-                            </div>
-                        <div className="aiw-sep d-none d-md-block"></div>
-                            <div className="fading d-inline-flex align-items-center">
-                                <div className="xl-title text-uppercase pe-3">193</div>
-                                <div className="sm-title fw-500">Google Reviews</div>
-                            </div>
+           
+            <section className='about-info-wrap'>
+                <div className='container'>
+                  <div className='d-md-flex align-items-center justify-content-between'>
+                    <div className='aiw-col wow reveal fadeIn'>
+                      <div className='d-inline-flex align-items-center'>
+                        <div className='xl-title text-uppercase pe-3'>+5k</div>
+                        <div className='sm-title fw-500'>Customers Served</div>
+                      </div>
                     </div>
+                    <div className='aiw-sep d-none d-md-block wow reveal fadeIn'></div>
+                    <div className='aiw-col wow reveal fadeIn'>
+                      <div className='d-inline-flex align-items-center'>
+                        <div className='xl-title text-uppercase pe-3'>4.7</div>
+                        <div className='sm-title fw-500'>Google Rating</div>
+                      </div>
+                    </div>
+                    <div className='aiw-sep d-none d-md-block wow reveal fadeIn'></div>
+                    <div className='aiw-col wow reveal fadeIn'>
+                      <div className='d-inline-flex align-items-center'>
+                        <div className='xl-title text-uppercase pe-3'>193</div>
+                        <div className='sm-title fw-500'>Google Reviews</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </section>
+              </section>
 
             <section className="about-wrap cv-auto">
                 <div className="d-lg-flex align-items-center">

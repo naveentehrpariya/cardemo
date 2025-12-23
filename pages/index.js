@@ -223,6 +223,7 @@ export default function Home() {
                 </div>
               </div>
             </section>
+            
           </LazyLoadSection>
 
         <LazyLoadSection>
