@@ -10,6 +10,7 @@ import InventoryItem from '../Srp/InventoryItem';
 import Header from '../Common/Header';
 import ModalLayout from '../Common/ModalLayout';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const SelectFilterModal = dynamic(() => import('../Srp/SelectFilterModal'), { ssr: false });
 const Footer = dynamic(() => import('../Common/Footer'), { ssr: false });
@@ -343,7 +344,12 @@ export default function Inventory({ initialData }) {
                                                                 return (
                                                                     <div className='tag-btn me-2 mb-0' key={index}>
                                                                         {displayLabel}
-                                                                        <img
+                                                                        <Image
+                                                                            width={16}
+                                                                            height={16}
+                                                                            quality={50}
+                                                                            // placeholder='blur'
+                                                                            // blurDataURL={getImages('about-hero.webp?quality=1')}
                                                                             src={getImages('close-anticon.svg')}
                                                                             alt="Remove"
                                                                             onClick={() => clearFilter(key)}
