@@ -88,7 +88,7 @@ export default function Home() {
             alt="Banner" 
             priority 
             fetchPriority="high"
-            quality={40}
+            quality={20}
             className="slideshow-image"
             width={1920}
             height={1080}
