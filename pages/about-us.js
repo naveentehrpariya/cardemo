@@ -4,7 +4,8 @@ import SeoMeta from '../components/Common/SeoMeta';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
+import AboutContent from '../components/Common/AboutUs/AboutContent';
+// const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
 const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 export default function AboutUs() {
 
