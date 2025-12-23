@@ -270,6 +270,14 @@ export default function Inventory({ initialData }) {
     Object.keys(currentFilterData).some((key) =>
         currentFilterData[key].some(item => item.isSelected)
     );
+    const [isInitialLoading, setIsInitialLoading] = useState(true);
+    useEffect(() => {
+        if (filteredVehicleData && Array.isArray(filteredVehicleData)) {
+            const id = setTimeout(() => setIsInitialLoading(false), 300);
+            return () => clearTimeout(id);
+        }
+    }, [filteredVehicleData]);
+    const showSkeleton = isInitialLoading || !filteredVehicleData || filteredVehicleData.length === 0;
     return (
         <>
             <Head>
@@ -281,33 +289,42 @@ export default function Inventory({ initialData }) {
                 <section className='srp-wrap'>
                     <div className='container'>
                         <div className='srp-flex d-flex'>
-                        <SrpLeft
-                            mobFilter={mobFilter}
-                            handleCloseFilter={handleCloseFilter}
-                            handlePriceSliderChange={handlePriceSliderChange}
-                            // value={value}
-                            // handleInputChange={handleInputChange}
-                            handleFilterModal={handleFilterModal}
-                            filteredVehicleData={filteredVehicleData}
-                            numberFormatter={numberFormatter}
-                            currentFilterData={currentFilterData}
-                            priceFilterData={priceFilterData}
-                            // mileageFilterData={mileageFilterData}
-                            clearAllFilters={clearAllFilters}
-                            // locationFilters={locationFilters}
-                            // setLocationFilters={setLocationFilters}
-                        // clearFilter={clearFilter}
-                        />
+                        {showSkeleton ? (
+                            <div className='w-330 me-4 d-none d-lg-block'>
+                                <div className='skeleton skeleton-card' style={{ padding: '20px' }}>
+                                    <div className='skeleton skeleton-text w-80'></div>
+                                    <div className='skeleton skeleton-text w-60'></div>
+                                    <div className='skeleton skeleton-text w-40'></div>
+                                    <div className='skeleton skeleton-text w-80'></div>
+                                    <div className='skeleton skeleton-text w-60'></div>
+                                    <div className='skeleton skeleton-text w-40'></div>
+                                </div>
+                            </div>
+                        ) : (
+                            <SrpLeft
+                                mobFilter={mobFilter}
+                                handleCloseFilter={handleCloseFilter}
+                                handlePriceSliderChange={handlePriceSliderChange}
+                                handleFilterModal={handleFilterModal}
+                                filteredVehicleData={filteredVehicleData}
+                                numberFormatter={numberFormatter}
+                                currentFilterData={currentFilterData}
+                                priceFilterData={priceFilterData}
+                                clearAllFilters={clearAllFilters}
+                            />
+                        )}
                         <div className='srp-right'>
                             <div className='d-flex align-items-center srp-title-flex justify-content-between mb-3'>
                                 <div className='srp-title text-uppercase'>Search Results</div>
                                 <div className='d-lg-none'>
-                                    <button type='button' className='filter-btn' onClick={handleFilterBtn}>
+                                    <button type='button' className='filter-btn flex gap-1 items-center' onClick={handleFilterBtn}>
                                         Filters <img src={getImages('filter-icon.svg')} alt='icon' />
                                     </button>
                                 </div>
                             </div>
-                            <SearchComponent filteredVehicleData={filteredVehicleData} searchText={searchText} setSearchText={setSearchText} openVDP={openVDP} />
+                            {!showSkeleton && (
+                                <SearchComponent filteredVehicleData={filteredVehicleData} searchText={searchText} setSearchText={setSearchText} openVDP={openVDP} />
+                            )}
 
                             <div className={`selected-filter-flex ${totalFilterCount > 2 ? 'mob-filter-flex' : ''}`}>
                                 <div className='d-lg-block selected-items'>
@@ -366,22 +383,43 @@ export default function Inventory({ initialData }) {
                                 </div>
                             </div>
 
-                            <div className='row g-4 mt-md-2'>
-                                {/* {console.log("filteredVehicleData", filteredVehicleData)} */}
-                                        {displayedVehicles &&
-                                    displayedVehicles.map((item, index) => (
-                                        <div className='col-xl-4 col-sm-6 col-12' key={index}>
-                                            <InventoryItem 
-                                                item={item} 
-                                                openVDP={openVDP} 
-                                                priceFormatter={priceFormatter} 
-                                                isSlMobile={isSlMobile}
-                                                priority={index < 2}
-                                            />
+                            {showSkeleton ? (
+                                <div className='row g-4 mt-md-2'>
+                                    {Array.from({ length: 12 }).map((_, i) => (
+                                        <div className='col-xl-4 col-sm-6 col-12' key={i}>
+                                            <div className='srp-box'>
+                                                <div className='srp-top'>
+                                                    <div className='inner'>
+                                                        <div className='skeleton skeleton-image'></div>
+                                                    </div>
+                                                </div>
+                                                <div className='srp-bottom'>
+                                                    <div className='skeleton skeleton-text w-80'></div>
+                                                    <div className='skeleton skeleton-text w-60'></div>
+                                                    <div className='skeleton skeleton-text w-40'></div>
+                                                    <div className='skeleton skeleton-btn'></div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    ))
-                                }
-                            </div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className='row g-4 mt-md-2'>
+                                    {displayedVehicles &&
+                                        displayedVehicles.map((item, index) => (
+                                            <div className='col-xl-4 col-sm-6 col-12' key={index}>
+                                                <InventoryItem 
+                                                    item={item} 
+                                                    openVDP={openVDP} 
+                                                    priceFormatter={priceFormatter} 
+                                                    isSlMobile={isSlMobile}
+                                                    priority={index < 2}
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            )}
                             {sortedVehicles.length > visibleCount && (
                                 <div className="text-center mt-5">
                                     <button 

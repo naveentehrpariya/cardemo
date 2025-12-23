@@ -528,6 +528,37 @@
     color: #3f404c;
     margin-bottom: 3px
 }
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, rgba(255,255,255,.06) 25%, rgba(255,255,255,.12) 37%, rgba(255,255,255,.06) 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.skeleton-card {
+    border-radius: 8px;
+    background-color: rgba(255,255,255,.04);
+}
+.skeleton-image {
+    height: 200px;
+}
+.skeleton-text {
+    height: 14px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.skeleton-text.w-60 { width: 60%; }
+.skeleton-text.w-40 { width: 40%; }
+.skeleton-text.w-80 { width: 80%; }
+.skeleton-btn {
+    height: 36px;
+    border-radius: 4px;
+    margin-top: 14px;
+}
 
 .vci-box textarea.form-control {
     height: calc(100% - 41px);

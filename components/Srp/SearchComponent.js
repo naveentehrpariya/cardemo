@@ -86,8 +86,8 @@ const SearchComponent = ({filteredVehicleData, searchText, setSearchText, openVD
             <div>
                 <button className='black-btn lg-btn srs-btn' type='button' >
                     <span className='d-none d-md-block'>Search</span>
-                    <span className='d-md-none'>
-                        <img src={getImages('search-icon.svg')} alt='search' />
+                    <span className='d-md-none 2'>
+                        <img className='ms-3' src={getImages('search-icon.svg')} alt='search' />
                     </span>
                 </button>
             </div>
