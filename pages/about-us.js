@@ -3,11 +3,12 @@ import Header from '../components/Common/Header';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
-// import SeoMeta from '../components/Common/SeoMeta';
+import SeoMeta from '../components/Common/SeoMeta';
 // import AboutContent from '../components/Common/AboutUs/AboutContent';
-const SeoMeta = dynamic(() => import('../components/Common/SeoMeta'), { ssr: false });
+// const SeoMeta = dynamic(() => import('../components/Common/SeoMeta'), { ssr: false });
 const AboutContent = dynamic(() => import('../components/Common/AboutUs/AboutContent'), { ssr: false });
 const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
+
 export default function AboutUs() {
 
     const [showFooter, setShowFooter] = useState(false);
@@ -54,11 +55,15 @@ export default function AboutUs() {
                 </div>
             </section>
 
-            <div style={{ minHeight: '500px' }}>
-                <AboutContent />
-            </div>
         
-            {showFooter && <Footer />}
+            {showFooter && 
+                <>
+                    <div style={{ minHeight: '500px' }}>
+                        <AboutContent />
+                    </div>
+                    <Footer />
+                </>
+            }
         </>
     );
 }
