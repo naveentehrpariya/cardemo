@@ -2,41 +2,40 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { getImages } from '@/components/Common/const';
-import Header from '../components/Common/Header';
-// import SeoMeta from '../components/Common/SeoMeta';
+// import Header from '../components/Common/Header';
+const Header = dynamic(() => import('../components/Common/Header'), { ssr: true });
 import { useEffect, useState } from 'react';
 // import WhyUsContent from '../components/Common/WhyUs/WhyUsContent';
 // import LazyLoadSection from '../components/Common/LazyLoadSection';
+// import SeoMeta from '../components/Common/SeoMeta';
 const SeoMeta = dynamic(() => import('../components/Common/SeoMeta'), { ssr: true });
 const WhyUsReviews = dynamic(() => import('../components/Common/WhyUs/WhyUsReviews'), { ssr: false });
 const WhyUsContent = dynamic(() => import('../components/Common/WhyUs/WhyUsContent'), { ssr: false });
 const Footer = dynamic(() => import('../components/Common/Footer'), { ssr: false });
 
 export default function WhyUs() {
+    
     const [showFooter, setShowFooter] = useState(false);
-      useEffect(() => {
-        const handleScroll = () => {
-          if (window.scrollY > 400) {
-            setShowFooter(true);
-            window.removeEventListener('scroll', handleScroll);
-          }
-        };
-        handleScroll();
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-      }, []);
+    useEffect(() => {
+    const handleScroll = () => {
+        if (window.scrollY > 400) {
+        setShowFooter(true);
+        window.removeEventListener('scroll', handleScroll);
+        }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <>
-            <SeoMeta 
-                title="Why Choose Us | Alpha One Motors" 
-                description="Why choose Alpha One Motors - We Know Luxury Automotive. 5000+ customers served, 4.7 Google rating, 193 reviews." />
+            <SeoMeta  title="Why Choose Us | Alpha One Motors"  description="Why choose Alpha One Motors - We Know Luxury Automotive. 5000+ customers served, 4.7 Google rating, 193 reviews." />
             <Header />
 
             <section 
                 className=" common-banner-wrap d-flex align-items-center"
-                style={{ position: 'relative', overflow: 'hidden' }}
-            >
+                style={{ position: 'relative', overflow: 'hidden' }} >
                 <Image 
                     src={getImages('about-hero.webp')} 
                     alt="Why Choose Us"  
