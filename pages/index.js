@@ -94,8 +94,8 @@ export default function Home() {
             height={600}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
             sizes="100vw"
-            // placeholder="blur"
-            // blurDataURL={getImages('banner-image.webp?quality=1')}
+            placeholder="blur"
+            blurDataURL={getImages('banner-image.webp?quality=10')}
           />
         </div>
         <div className='banner-shadow w-full !h-full opacity-50'></div> 
